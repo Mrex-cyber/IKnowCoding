@@ -1,0 +1,8 @@
+.mat-selector {
+  width: fit-content;
+  height: 56px;
+  font-size: 24px;
+  border-radius: 30px;
+  border: solid gray 2px;
+  text-align: center;
+}

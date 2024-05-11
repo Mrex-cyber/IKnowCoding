@@ -1,0 +1,19 @@
+h2 {
+  text-align: center;
+}
+
+.question-container {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.sendBtn {
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+  margin-left: 40%;
+}
+
+.list-selector {
+  margin: 0px 5px;
+}

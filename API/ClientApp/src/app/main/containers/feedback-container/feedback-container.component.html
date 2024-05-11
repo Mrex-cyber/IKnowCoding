@@ -1,0 +1,15 @@
+<div class="feedback-container" matBadgeColor="primary" matBadgeSize="large">
+  <h2>Feedbacks</h2>
+  <button class="btn-left">L</button>
+  <div *ngFor="let feedback of feedbacks" class="feedback-card">
+    <div class="img-container"></div>
+    <div class="text-container">
+      <h2>{{feedback.date}}</h2>
+      <p>{{feedback.text}}</p>
+      <h3>{{feedback.fullName}}</h3>
+    </div>
+  </div>
+  <button class="btn-right">R</button>
+</div>
+
+

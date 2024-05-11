@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=IKnowCodingDB;Trusted_Connection=True;"
+}

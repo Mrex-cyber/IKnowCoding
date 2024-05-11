@@ -1,0 +1,18 @@
+<div class="auth-options">
+  <mat-form-field>
+    <mat-label>
+      Authorize
+    </mat-label>
+    <mat-select>
+      <mat-option id="sign-in-option" (click)="userSignInSubmit()">
+        <mat-label>Sign In</mat-label>
+      </mat-option>
+      <mat-option id="sign-up-option" (click)="userRegisterSubmit()">
+        <mat-label>Sign Up</mat-label>
+      </mat-option>
+      <mat-option [disabled]="!authorized" id="sign-up-option" (click)="logOut()">
+        <mat-label>Log Out</mat-label>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

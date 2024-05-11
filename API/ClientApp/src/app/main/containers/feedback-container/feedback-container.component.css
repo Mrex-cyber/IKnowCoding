@@ -1,0 +1,57 @@
+h2 {
+  display: block;
+  margin: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.img-container {
+  border: solid 2px gray;
+  background-image: url("../../../../assets/photos/testing-photo.jpg");
+  background-position: center;
+  height: 50%;
+}
+
+.feedback-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
+.btn-left {
+  grid-column: 1;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 32px;
+  background-color: orange;
+  padding: 15px;
+  border-radius: 100%;
+}
+
+.btn-left:hover {
+  background-color: purple;
+}
+
+.btn-right {
+  grid-column: 3;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 32px;
+  background-color: orange;
+  padding: 15px;
+  border-radius: 100%;
+}
+
+.btn-right:hover {
+  background-color: purple;
+}
+
+.feedback-card {
+  display: inline-block;
+  width: 20%;
+  height: 300px;
+  margin: 15px 2.5%;
+  border: solid 3px orange;
+}

@@ -1,0 +1,28 @@
+<div class="user-profile-form">
+  <form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+    <mat-form-field class="form-field">
+      <mat-label>First Name</mat-label>
+      <input type="firstName" matInput formControlName="firstNameFormControl">
+      <mat-error>First Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Last Name</mat-label>
+      <input type="lastName" matInput formControlName="lastNameFormControl">
+      <mat-error>Last Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="emailFormControl">
+      <mat-error>Email is wrong</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="passwordFormControl">
+      <mat-error>Min length of password is 8</mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions class="form-buttons">
+      <button id="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Sign Up</button>
+      <button id="cancel-btn" mat-button color="accent" (click)="ngNoClick()">Cancel</button>
+    </div>
+  </form>
+</div>

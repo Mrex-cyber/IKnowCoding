@@ -1,0 +1,27 @@
+h2 {
+  display: block;
+  margin: 5px;
+  text-align: center;
+}
+
+.test-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.test-card {
+  display: inline-block;
+  width: 40%;
+  height: 300px;
+  margin: 15px 2.5%;
+  border: solid 3px orange;
+}
+
+.passing-test-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 5px 15px;
+}
