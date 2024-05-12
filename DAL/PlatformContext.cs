@@ -21,14 +21,15 @@ namespace IKnowCoding.DAL
 
         public PlatformContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            // Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IKnowCodingDB;Trusted_Connection=True;", builder =>
             {
+                builder.MigrationsAssembly("API");
                 builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
             });
         }

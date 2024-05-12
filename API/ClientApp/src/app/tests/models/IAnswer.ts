@@ -1,5 +1,6 @@
-export interface IAnswer {
-  id?: number;
+import { BaseModel } from "./BaseModel";
+
+export interface IAnswer extends BaseModel {
   text: string;
-  questionId?: number
+  questionId: number;
 }

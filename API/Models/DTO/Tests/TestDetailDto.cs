@@ -1,15 +1,11 @@
-﻿using IKnowCoding.API.Models.DTO.Questions;
-using IKnowCoding.DAL.Models.Entities;
+﻿using API.Models.DTO;
+using IKnowCoding.API.Models.DTO.Questions;
 using Newtonsoft.Json;
-using System.Data;
 
 namespace IKnowCoding.API.Models.DTO.Tests
 {
-    public class TestDetailDto
+    public class TestDetailDto : BaseDto
     {
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
