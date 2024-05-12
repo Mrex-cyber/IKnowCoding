@@ -1,4 +1,6 @@
-﻿using IKnowCoding.Auth;
+﻿using API.Application.Helpers;
+using AutoMapper;
+using IKnowCoding.Auth;
 using IKnowCoding.DAL;
 using IKnowCoding.DAL.Models.Program;
 using IKnowCoding.DAL.Repositories.MainPage;
@@ -39,6 +41,12 @@ public class Program
                 IssuerSigningKey = AuthOptions.GetSecurityKey()
             };
         });
+
+        builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile(new AutomapperProfile());
+        }).CreateMapper());
+
         builder.Services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo
