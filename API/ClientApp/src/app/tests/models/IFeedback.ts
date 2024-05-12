@@ -1,6 +1,8 @@
-export interface IFeedback {
+import { BaseModel } from "./BaseModel";
+
+export interface IFeedback extends BaseModel {
   text: string;
   imagePath: string;
-  fullName: string;
   date: string;
+  fullName: string;
 }

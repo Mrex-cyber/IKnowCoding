@@ -1,7 +1,7 @@
+import { BaseModel } from "./BaseModel";
 import { IAnswer } from "./IAnswer";
 
-export interface IQuestion {
-  id: number;
+export interface IQuestion extends BaseModel {
   text: string;
   answers: IAnswer[];
 }
