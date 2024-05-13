@@ -1,8 +1,13 @@
-﻿using IKnowCoding.Auth;
+﻿using API.Application.Helpers;
+using AutoMapper;
+using EnglishTesterServer.DAL.UnitsOfWork;
+using IKnowCoding.Auth;
 using IKnowCoding.DAL;
 using IKnowCoding.DAL.Models.Program;
 using IKnowCoding.DAL.Repositories.MainPage;
 using IKnowCoding.DAL.Repositories.Tests;
+using IKnowCoding.DAL.Repositories.Users;
+using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -23,6 +28,9 @@ public class Program
         builder.Services.AddDbContext<PlatformContext>();
         builder.Services.AddScoped<ITestRepository, TestRepository>();
         builder.Services.AddScoped<IMainPageRepository, MainPageRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWorkPlatform>();
 
         builder.Services.AddAuthorization();
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -39,6 +47,12 @@ public class Program
                 IssuerSigningKey = AuthOptions.GetSecurityKey()
             };
         });
+
+        builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile(new AutomapperProfile());
+        }).CreateMapper());
+
         builder.Services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo

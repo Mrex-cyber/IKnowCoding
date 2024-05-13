@@ -5,15 +5,29 @@ using EnglishTesterServer.DAL.UnitsOfWork;
 using IKnowCoding.DAL.Models.Entities;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using AutoMapper;
+using IKnowCoding.DAL.UnitsOfWork;
+using IKnowCoding.API.Models.DTO.Tests;
 
 namespace EnglishTesterServer.Controllers
 {
     [Authorize]
     public class TestController : Controller
     {
-        private UnitOfWorkPlatform unitOfWork = new UnitOfWorkPlatform();
+        private UnitOfWorkPlatform _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public TestController() { }
+        public TestController(IUnitOfWork unitOfWork, IMapper mapper) {
+            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
+            {
+                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWorkPlatform();
+            }
+            _mapper = mapper;
+        }
 
         /// <summary>
         /// Getting all free tests
@@ -31,14 +45,14 @@ namespace EnglishTesterServer.Controllers
         [AllowAnonymous]
         public IResult OnGetTests()
         {
-            var commonTests = unitOfWork.TestRepository.GetEntities();
+            var commonTests = _unitOfWork.TestRepository.GetEntities();
 
             if (commonTests.Count() == 0)
             {
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(commonTests, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
 
             return Results.Text(json, "text/plain");
         }
@@ -60,14 +74,14 @@ namespace EnglishTesterServer.Controllers
         [HttpPost("/api/tests")]
         public IResult OnGetUserTests([FromBody] string userEmail)
         {
-            var userTests = unitOfWork.TestRepository.GetUserTests(userEmail);
+            var userTests = _unitOfWork.TestRepository.GetUserTests(userEmail);
 
             if (userTests.Count() == 0)
             {
                 return Results.NoContent();
             }
 
-            return Results.Json(userTests);
+            return Results.Json(_mapper.Map<TestDto>(userTests));
         }
 
         /// <summary>
@@ -85,7 +99,7 @@ namespace EnglishTesterServer.Controllers
         [HttpGet("/api/tests/{testId}")]
         public IResult OnGetTestById(int testId)
         {
-            var test = unitOfWork.TestRepository.GetEntityById(testId);
+            var test = _unitOfWork.TestRepository.GetEntityById(testId);
 
             if (test is null)
             {
@@ -123,8 +137,8 @@ namespace EnglishTesterServer.Controllers
         {
             try
             {
-                int result = unitOfWork.TestRepository.CheckTestById(testData.userEmail, testData.testId, testData.answers).Result;
-                unitOfWork.Save();
+                int result = _unitOfWork.TestRepository.CheckTestById(testData.userEmail, testData.testId, testData.answers).Result;
+                _unitOfWork.Save();
 
                 return Results.Json(result);
             }
@@ -138,48 +152,8 @@ namespace EnglishTesterServer.Controllers
         public record AnswersForTheTestCheck(string userEmail, int testId, AnswerVariantEntity[] answers);
         protected override void Dispose(bool disposing)
         {
-            unitOfWork.Dispose();
+            _unitOfWork.Dispose();
             base.Dispose(disposing);
         }
-
-        //private readonly IMediator _mediator;
-        //public TestController(IMediator mediator)
-        //{
-        //    _mediator = mediator;
-        //}
-
-        //[HttpGet("/api/tests")]
-        //[AllowAnonymous]
-        //public async Task<IResult> OnGetTests()
-        //{
-        //    GetAllTestsQuery query = new GetAllTestsQuery(null);
-
-        //    return await _mediator.Send(query);
-        //}
-        //[HttpPost("/api/tests")]
-        //public async Task<IResult> OnGetUserTests([FromBody] string userEmail)
-        //{
-        //    GetAllTestsQuery query = new GetAllTestsQuery(userEmail);
-
-        //    return await _mediator.Send(query);
-        //}
-
-
-        //[HttpGet("/api/tests/{testId}")]
-        //public async Task<IResult> OnGetTestById(int testId)
-        //{
-        //    GetTestById query = new GetTestById(testId);
-
-        //    return await _mediator.Send(query);
-        //}
-        //[AllowAnonymous]
-        //[HttpPost("/api/tests/check")]
-        //public async Task<IResult> OnPostCheckTestByid([FromBody] AnswersForTheTestCheck testData)
-        //{
-        //    GetAllAnswersQuery command = new GetAllAnswersQuery(testData);
-
-        //    return await _mediator.Send(command);
-        //}
-        //public record AnswersForTheTestCheck(string userEmail, int testId, AnswerVariant[] answers);
     }
 }
