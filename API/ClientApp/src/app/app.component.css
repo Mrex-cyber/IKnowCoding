@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+
+.main-navigation {
+  height: 32px;
+}
+
+.container {
+  grid-template-columns: 1fr 1fr;
+}
+
+.first {
+  grid-column: 1;
+}
+
+.first {
+  grid-column: 2;
+}

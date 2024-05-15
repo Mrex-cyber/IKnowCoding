@@ -1,0 +1,25 @@
+<div>
+  <div class="settings-menu">
+    <button mat-mini-fab color="primary" (click)="changeMenuState()"
+    [ngClass]="{
+      'menu-btn': true,
+      'menu-btn-rotated': menuIsOpen}">
+    <mat-icon>menu</mat-icon>
+    </button>
+    <app-localization></app-localization>
+    <app-user-auth></app-user-auth>
+  </div>
+
+
+  <nav [ngClass]="{
+    'main-navigation': true,
+    'main-navigation-open': menuIsOpen }">
+    <button mat-button routerLink="/main">Home</button>
+    <button mat-button routerLink="/tests">Tests</button>
+    <button mat-button routerLink="/beginners">For Beginners</button>
+    <button mat-button routerLink="/blogs">Blogs</button>
+    <button mat-button routerLink="/admin">Admin</button>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

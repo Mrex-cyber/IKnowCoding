@@ -1,0 +1,29 @@
+h2 {
+  text-align: center;
+}
+
+.user-profile-form {
+  margin-left: 20%;
+  margin-top: 5%;
+  width: 60%;
+  height: 100%;
+  vertical-align: baseline;
+}
+
+.form-field {
+  margin: 5px;
+  display: block;
+  width: 100%;
+}
+
+.form-buttons {
+  display: block;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.form-buttons > button {
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,43 @@
+.contacts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.other-helpful-links {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.partners {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contacts {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.social-links{
+  grid-column: 2;
+  grid-row: 2;
+  text-align: end;
+  padding-right: 40%;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: orange;
+}

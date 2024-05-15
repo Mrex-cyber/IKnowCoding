@@ -1,0 +1,9 @@
+<div>
+  <h2>Just begin!</h2>
+  <div class="test-container">
+    <app-test-card *ngFor="let test of tests" [test]="test" class="test-card" (passTestCommand)="onSelectTest($event)"></app-test-card>
+    <div class="passing-test-container">
+    </div>
+  </div>
+
+</div>

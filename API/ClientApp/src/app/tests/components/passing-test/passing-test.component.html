@@ -1,0 +1,13 @@
+<h2>{{test.title}}</h2>
+<form>
+  <div class="question-container" *ngFor="let question of test.questions; let i = index">
+    <h3>{{question.text}}</h3>
+    <mat-form-field class="asnwer-selector">
+      <mat-label>Choose your answer</mat-label>
+      <mat-select class="list-selector" [(ngModel)]="selectedValues[i]">
+        <mat-option *ngFor="let answer of question.answers" [value]="answer">{{answer.text}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button class="sendBtn" mat-raised-button color="primary" (click)="submitForm()">Send</button>
+</form>

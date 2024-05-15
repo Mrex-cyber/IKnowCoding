@@ -1,0 +1,46 @@
+.questions-card {
+  display: inline-block;
+  border: 2px solid green;
+  margin: 5px;
+}
+
+.question-field {
+  margin: 5px;
+}
+
+.answers-container {
+  display: inline-block;
+  border: 1px solid orange;
+  margin: 5px;
+}
+
+.answers-container > li {
+  margin: 5px;
+}
+
+.answer-field {
+  margin: 5px;
+}
+
+button {
+  display: block;
+  width: 70%;
+  height: fit-content;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 15%;
+  font-size: 18px;
+  font-weight: bold;
+  color: blueviolet;
+  border: solid 2px blueviolet;
+  border-radius: 15px;
+
+  word-wrap: break-word;
+  background-color: orange;
+}
+
+button:hover {
+  scale: 125%;
+  transform: translateX(20px);
+}
