@@ -1,4 +1,6 @@
-﻿using EnglishTesterServer.DAL.UnitsOfWork;
+﻿using AutoMapper;
+using EnglishTesterServer.DAL.UnitsOfWork;
+using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +9,21 @@ namespace EnglishTesterServer.Controllers
     [ApiController]
     public class MainPageController : ControllerBase
     {
-        private UnitOfWorkPlatform _unitOfWork = new UnitOfWorkPlatform();
-        public MainPageController() { }
+        private UnitOfWorkPlatform _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public MainPageController(IUnitOfWork unitOfWork, IMapper mapper)
+        {
+            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
+            {
+                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWorkPlatform();
+            }
+            _mapper = mapper;
+        }
 
         /// <summary>
         /// Getting achievements

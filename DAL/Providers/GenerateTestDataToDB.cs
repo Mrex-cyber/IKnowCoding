@@ -54,8 +54,8 @@ namespace DAL.Providers
         };
 
         public static IEnumerable<UserTestResultEntity> UserTestResults = new UserTestResultEntity[] {
-            new UserTestResultEntity(1, 1, 1),
-            new UserTestResultEntity(2, 1, 2),
+            new UserTestResultEntity(1, 1, 1) { Result = 5 },
+            new UserTestResultEntity(2, 1, 2) { Result = 5 },
             new UserTestResultEntity(3, 2, 3)
         };
 

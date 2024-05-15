@@ -8,10 +8,6 @@ namespace IKnowCoding.API.Models.DTO.Answers
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
 
-
-        [JsonProperty(PropertyName = "questionId")]
-        public int QuestionId { get; set; }
-
         public AnswerVariantDto() { }
     }
 }
