@@ -16,6 +16,9 @@ namespace IKnowCoding.API.Models.DTO.Tests
         [JsonProperty(PropertyName = "questions")]
         public QuestionDto[] Questions { get; set; }
 
+        [JsonProperty(PropertyName = "result")]
+        public int Result { get; set; }
+
         public TestDto() { }
         public TestDto(int id, string title, string description)
         {

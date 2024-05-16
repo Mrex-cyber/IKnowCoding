@@ -1,14 +1,29 @@
-﻿using EnglishTesterServer.DAL.UnitsOfWork;
+﻿using API.Models.DTO.User;
+using AutoMapper;
+using EnglishTesterServer.DAL.UnitsOfWork;
 using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.Models.Models;
+using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 namespace IKnowCoding.Controllers
 {
     public class UserController : Controller
     {
-        private UnitOfWorkPlatform unitOfWork = new UnitOfWorkPlatform();
+        private UnitOfWorkPlatform _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public UserController() { }
+        public UserController(IUnitOfWork unitOfWork, IMapper mapper)
+        {
+            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
+            {
+                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
+            }
+            else
+            {
+                _unitOfWork = new UnitOfWorkPlatform();
+            }
+            _mapper = mapper;
+        }
 
         /// <summary>
         /// Signing in
@@ -33,9 +48,14 @@ namespace IKnowCoding.Controllers
         [HttpPost("/api/user/signin")]
         public async Task<IResult> SignIn([FromBody]DAL.Models.UserCredentialsModel credentials)
         {
-            UserEntity user = unitOfWork.UserRepository.GetModelByCredentials(credentials);
+            UserEntity user = _unitOfWork.UserRepository.GetModelByCredentials(credentials);
 
-            return Results.Json(user);
+            UserSettingsDto userSettings = _mapper.Map<UserSettingsDto>(user);
+
+            userSettings.IsAdmin = true;
+            userSettings.Token = AuthTokenModel.MakeToken(userSettings.Email);
+
+            return Results.Json(userSettings);
         }
 
         /// <summary>
@@ -60,7 +80,7 @@ namespace IKnowCoding.Controllers
         [HttpPost("/api/user/signup")]
         public async Task<IResult> SignUp([FromBody] UserEntity userData)
         {
-            bool result = unitOfWork.UserRepository.AddEntity(userData);
+            bool result = _unitOfWork.UserRepository.AddEntity(userData);
 
             return Results.Json(result);
         }

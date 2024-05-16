@@ -14,7 +14,7 @@ namespace IKnowCoding.DAL.Repositories.Tests
 
         public IEnumerable<TestEntity> GetEntities()
         {
-            var tests = _context.Tests
+            IEnumerable<TestEntity> tests = _context.Tests
                 .Where(t => t.IsFree)
                 .Include(t => t.Questions)
                     .ThenInclude(q => q.Answers)
@@ -25,9 +25,15 @@ namespace IKnowCoding.DAL.Repositories.Tests
 
         public IEnumerable<TestEntity> GetUserTests(string userEmail)
         {
-            List<TestEntity> allTests = GetEntities().ToList();
+            IEnumerable<TestEntity> commonTests = GetEntities();
 
-            return allTests;
+            IEnumerable<TestEntity> userAccessedTests = _context.Tests
+                .Include(t => t.Questions)
+                    .ThenInclude(q => q.Answers)
+                .Include(t => t.TestResultEntities)
+                .ToList();
+
+            return commonTests.Concat(userAccessedTests);
         }
 
         public bool AddEntity(TestEntity newTest)
@@ -55,62 +61,43 @@ namespace IKnowCoding.DAL.Repositories.Tests
         {
             return _context.Tests.Find(id);
         }
-        public UserTestResultEntity? CheckTestById(string userEmail, int testId, AnswerVariantEntity[] userAnswers)
+        public async Task<UserTestResultEntity> CheckTestById(string userEmail, int testId, AnswerVariantEntity[] userAnswers)
         {
-            AnswerVariantEntity[] rightAnswers = GetAllRightAnswersForQuestions(userAnswers);
+            int result = CalculatePoints(userAnswers);
 
-            int result = CalculatePoints(userAnswers, rightAnswers);
-
-            return GetResultAndSave(userEmail, testId, result);
+            return await GetResultAndSave(userEmail, testId, result);
         }
 
-        private AnswerVariantEntity[] GetAllRightAnswersForQuestions(AnswerVariantEntity[] userAnswers)
+        private async Task<AnswerVariantEntity[]> GetAllRightAnswers(AnswerVariantEntity[] userAnswers)
         {
-            AnswerVariantEntity[] rightAnswers = new AnswerVariantEntity[userAnswers.Length];
+            int[] userAnswersIds = userAnswers.Select(a => a.Id).ToArray();
 
-            for (int i = 0; i < userAnswers.Length; i++)
-            {
-                AnswerVariantEntity currentAnswer = userAnswers[i];
-
-                var variant = from answer in _context.Answers
-                              join questions in _context.Questions
-                                on answer.QuestionId equals questions.Id
-                              where answer.IsRight == true
-                                && questions.Id == currentAnswer.QuestionId
-                              select new AnswerVariantEntity()
-                              {
-                                  Id = answer.Id,
-                                  Text = answer.Text,
-                                  QuestionId = currentAnswer.QuestionId
-                              };
-
-                if (variant is not null)
-                {
-                    rightAnswers[i] = variant.First();
-                }
-            }
+            AnswerVariantEntity[] rightAnswers = await _context.Answers
+                .Where(a => a.IsRight 
+                    && userAnswersIds.Contains(a.Id))
+                .ToArrayAsync();
 
             return rightAnswers;
         }        
 
-        private UserTestResultEntity GetResultAndSave(string userEmail, int testId, int result)
+        private async Task<UserTestResultEntity> GetResultAndSave(string userEmail, int testId, int result)
         {
             try
             {
-                var userToTestField = from userToTest in _context.UserTestResults
+                var userTestResult = from testResultEntity in _context.UserTestResults
                                       join users in _context.Users
-                                         on userToTest.UserId equals users.Id
-                                      where userToTest.TestId == testId
+                                         on testResultEntity.UserId equals users.Id
+                                      where testResultEntity.TestId == testId
                                          && users.Email == userEmail
-                                      select userToTest;
+                                      select testResultEntity;
 
-                UserTestResultEntity resultObject = userToTestField.First();
+                UserTestResultEntity? resultObject = await userTestResult.FirstAsync();
 
-                if (WriteResultToDB(ref resultObject, result))
-                {
-                    return resultObject;
-                }
-                else throw new Exception("Writing to DB was canceled");
+                resultObject.Result = result;
+
+                await SaveAsync();
+
+                return resultObject;
             }
             catch (Exception ex)
             {
@@ -119,17 +106,10 @@ namespace IKnowCoding.DAL.Repositories.Tests
             }
         }
 
-        private int CalculatePoints(AnswerVariantEntity[] userAnswers, AnswerVariantEntity[] rightAnswers)
+        private int CalculatePoints(AnswerVariantEntity[] userAnswers)
         {
-            int result = 0;
-
-            foreach (AnswerVariantEntity rightAnswer in rightAnswers)
-            {
-                if (userAnswers.Where(a => a.QuestionId == rightAnswer.QuestionId && a.Id == rightAnswer.Id).Count() > 0)
-                {
-                    result++;
-                }
-            }
+            int result = userAnswers
+                .IntersectBy(_context.Answers.Select(a => a.Id), a => a.Id).Count();
 
             return result;
         }
@@ -153,6 +133,11 @@ namespace IKnowCoding.DAL.Repositories.Tests
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        public Task<int> SaveAsync()
+        {
+            return _context.SaveChangesAsync();
         }
 
         private bool disposed = false;

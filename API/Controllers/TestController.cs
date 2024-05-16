@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using AutoMapper;
 using IKnowCoding.DAL.UnitsOfWork;
 using IKnowCoding.API.Models.DTO.Tests;
+using IKnowCoding.DAL.Models.Entities.Relationships;
 
 namespace EnglishTesterServer.Controllers
 {
@@ -81,7 +82,9 @@ namespace EnglishTesterServer.Controllers
                 return Results.NoContent();
             }
 
-            return Results.Json(_mapper.Map<TestDto>(userTests));
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestDto[]>(userTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+
+            return Results.Text(json, "text/plain");
         }
 
         /// <summary>
@@ -133,14 +136,26 @@ namespace EnglishTesterServer.Controllers
         /// <response code="200" link="">Returns result (number)</response>
         [AllowAnonymous]
         [HttpPost("/api/tests/check")]
-        public IResult OnPostCheckTestByid([FromBody] AnswersForTheTestCheck testData)
+        public async Task<IResult> CheckTest([FromBody] AnswersForTheTestCheck testData)
         {
             try
             {
-                int result = _unitOfWork.TestRepository.CheckTestById(testData.userEmail, testData.testId, testData.answers).Result;
-                _unitOfWork.Save();
+                UserTestResultEntity testResult = await _unitOfWork.TestRepository.CheckTestById(testData.userEmail, testData.testId, testData.answers);
 
+                if (testResult is null)
+                {
+                    throw new NullReferenceException();
+                }
+
+                int result = testResult.Result;
+
+                _unitOfWork.Save();
                 return Results.Json(result);
+            }
+            catch (NullReferenceException nullEx)
+            {
+                Console.WriteLine(nullEx.Message);
+                return Results.NoContent();
             }
             catch (Exception ex)
             {
