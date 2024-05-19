@@ -55,8 +55,8 @@ namespace API.Migrations
                     lastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    is_admin = table.Column<bool>(type: "bit", nullable: false),
-                    feedback_id = table.Column<int>(type: "int", nullable: false)
+                    feedback_id = table.Column<int>(type: "int", nullable: false),
+                    user_settings_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,6 +134,30 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserSettings",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    access_token = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    access_token_expire_time = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    refresh_token = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    refresh_token_expire_time = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    is_admin = table.Column<bool>(type: "bit", nullable: false),
+                    user_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserSettings", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_UserSettings_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Answers",
                 columns: table => new
                 {
@@ -159,11 +183,11 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "source", "text", "title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(9773), "", "site.com", "The best testing website", "Best" },
-                    { 2, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(72), "", "site.com", "Nice site", "Nice" },
-                    { 3, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(73), "", "site.com", "Strong olympiad", "Olimpiad" },
-                    { 4, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(73), "", "site.com", "~70 points of 100", "Universities" },
-                    { 5, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(74), "", "site.com", "All estimation is based on the Europe system", "European estimation" }
+                    { 1, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6809), "", "site.com", "The best testing website", "Best" },
+                    { 2, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7091), "", "site.com", "Nice site", "Nice" },
+                    { 3, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092), "", "site.com", "Strong olympiad", "Olimpiad" },
+                    { 4, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092), "", "site.com", "~70 points of 100", "Universities" },
+                    { 5, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7093), "", "site.com", "All estimation is based on the Europe system", "European estimation" }
                 });
 
             migrationBuilder.InsertData(
@@ -179,14 +203,14 @@ namespace API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "id", "email", "feedback_id", "firstName", "is_admin", "lastName", "password" },
+                columns: new[] { "id", "email", "feedback_id", "firstName", "lastName", "password", "user_settings_id" },
                 values: new object[,]
                 {
-                    { 1, "valik@gmail.com", 0, "Valentyn", false, "Riabinchak", "11111111" },
-                    { 2, "vasylyna@gmail.com", 0, "Vasylyna", false, "Leheta", "22222222" },
-                    { 3, "igor@gmail.com", 0, "Igor", false, "Zaitsev", "33333333" },
-                    { 4, "tom@gmail.com", 0, "Tom", false, "Bot", "44444444" },
-                    { 5, "admin@gmail.com", 0, "Mr. Admin", false, "Secret Administator", "secretKey911#" }
+                    { 1, "valik@gmail.com", 0, "Valentyn", "Riabinchak", "11111111", 0 },
+                    { 2, "vasylyna@gmail.com", 0, "Vasylyna", "Leheta", "22222222", 0 },
+                    { 3, "igor@gmail.com", 0, "Igor", "Zaitsev", "33333333", 0 },
+                    { 4, "tom@gmail.com", 0, "Tom", "Bot", "44444444", 0 },
+                    { 5, "admin@gmail.com", 0, "Mr. Admin", "Secret Administator", "secretKey911#", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -194,11 +218,11 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "text", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(764), "", "Very nice", 1 },
-                    { 2, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1047), "", "Very nice", 2 },
-                    { 3, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1049), "", "Very nice", 3 },
-                    { 4, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1050), "", "Very nice", 4 },
-                    { 5, new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1050), "", "Very nice", 5 }
+                    { 1, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7795), "", "Very nice", 1 },
+                    { 2, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8236), "", "Very nice", 2 },
+                    { 3, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237), "", "Very nice", 3 },
+                    { 4, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237), "", "Very nice", 4 },
+                    { 5, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8238), "", "Very nice", 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -214,13 +238,25 @@ namespace API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "UserSettings",
+                columns: new[] { "id", "access_token", "access_token_expire_time", "is_admin", "refresh_token", "refresh_token_expire_time", "user_id" },
+                values: new object[,]
+                {
+                    { 1, null, null, true, null, null, 1 },
+                    { 2, null, null, false, null, null, 2 },
+                    { 3, null, null, false, null, null, 3 },
+                    { 4, null, null, false, null, null, 4 },
+                    { 5, null, null, false, null, null, 5 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "rel_user_test_result",
                 columns: new[] { "id", "access_time", "finished", "finished_time", "result", "test_id", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8195), false, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8359), 0, 1, 1 },
-                    { 2, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8897), false, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8897), 0, 2, 1 },
-                    { 3, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8899), false, new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8899), 0, 3, 2 }
+                    { 1, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5298), false, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5455), 5, 1, 1 },
+                    { 2, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001), false, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001), 5, 2, 1 },
+                    { 3, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6002), false, new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6003), 0, 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -271,6 +307,12 @@ namespace API.Migrations
                 name: "IX_rel_user_test_result_user_id",
                 table: "rel_user_test_result",
                 column: "user_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserSettings_user_id",
+                table: "UserSettings",
+                column: "user_id",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -287,6 +329,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "rel_user_test_result");
+
+            migrationBuilder.DropTable(
+                name: "UserSettings");
 
             migrationBuilder.DropTable(
                 name: "Questions");

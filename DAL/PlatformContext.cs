@@ -5,6 +5,7 @@ using IKnowCoding.DAL.Models.Entities.Relationships;
 using Microsoft.EntityFrameworkCore;
 using IKnowCoding.DAL;
 using DAL.Providers;
+using DAL.Models.Entities.User;
 
 namespace IKnowCoding.DAL
 {
@@ -12,6 +13,8 @@ namespace IKnowCoding.DAL
     public class PlatformContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; } = null!;
+
+        public DbSet<UserSettingsEntity> UserSettings { get; set; } = null!;
         public DbSet<TestEntity> Tests { get; set; } = null!;
         public DbSet<QuestionEntity> Questions { get; set; } = null!;
         public DbSet<AnswerVariantEntity> Answers { get; set; } = null!;
@@ -43,13 +46,19 @@ namespace IKnowCoding.DAL
             builder.Entity<QuestionEntity>()
                 .HasMany(q => q.Answers)
                 .WithOne(a => a.Question)
-                .HasForeignKey(a => a.QuestionId);
+                .HasForeignKey(a => a.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<UserTestResultEntity>()
                 .HasOne(r => r.User)
                 .WithMany(u => u.TestResultEntities)
                 .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<UserSettingsEntity>()
+                .HasOne(s => s.User)
+                .WithOne(u => u.UserSettings)
+                .HasForeignKey<UserSettingsEntity>(u => u.UserId);
 
             builder.Entity<UserTestResultEntity>()
                 .HasOne(r => r.Test)
@@ -64,6 +73,9 @@ namespace IKnowCoding.DAL
             // Test DATA
             builder.Entity<UserEntity>()
                 .HasData(GenerateTestDataToDB.Users);
+
+            builder.Entity<UserSettingsEntity>()
+                .HasData(GenerateTestDataToDB.UserSettings);
 
             builder.Entity<TestEntity>()
                 .HasData(GenerateTestDataToDB.Tests);
