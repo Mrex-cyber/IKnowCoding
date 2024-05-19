@@ -1,4 +1,5 @@
-﻿using IKnowCoding.API.Models.DTO.MainPage;
+﻿using DAL.Models.Entities.User;
+using IKnowCoding.API.Models.DTO.MainPage;
 using IKnowCoding.DAL.Models.DTO.Main_Page;
 using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.Models.Entities.Relationships;
@@ -13,6 +14,14 @@ namespace DAL.Providers
             new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333"),
             new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444"),
             new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#"),
+        };
+
+        public static IEnumerable<UserSettingsEntity> UserSettings = new UserSettingsEntity[] {
+            new UserSettingsEntity(1, true, 1),
+            new UserSettingsEntity(2, false, 2),
+            new UserSettingsEntity(3, false, 3),
+            new UserSettingsEntity(4, false, 4),
+            new UserSettingsEntity(5, false, 5),
         };
 
         public static IEnumerable<TestEntity> Tests = new TestEntity[] {
@@ -54,8 +63,8 @@ namespace DAL.Providers
         };
 
         public static IEnumerable<UserTestResultEntity> UserTestResults = new UserTestResultEntity[] {
-            new UserTestResultEntity(1, 1, 1),
-            new UserTestResultEntity(2, 1, 2),
+            new UserTestResultEntity(1, 1, 1) { Result = 5 },
+            new UserTestResultEntity(2, 1, 2) { Result = 5 },
             new UserTestResultEntity(3, 2, 3)
         };
 

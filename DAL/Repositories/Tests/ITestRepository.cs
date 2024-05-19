@@ -7,6 +7,6 @@ namespace IKnowCoding.DAL.Repositories.Tests
     {
 
         IEnumerable<TestEntity> GetUserTests(string userEmail);
-        UserTestResultEntity? CheckTestById(string userEmail, int testId, AnswerVariantEntity[] answers);
+        Task<UserTestResultEntity> CheckTestById(string userEmail, int testId, AnswerVariantEntity[] answers);
     }
 }

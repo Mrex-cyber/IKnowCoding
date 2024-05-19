@@ -53,7 +53,21 @@ export class UserAuthResourceService {
     location.reload();
   }
 
+  public readLocalStorageUserData(){
+    const userSettings: IUserSettings = {
+      email: localStorage.getItem('email') ?? '',
+      token: localStorage.getItem('access_token') ?? '',
+      isAdmin: localStorage.getItem('isAdmin') == 'true'
+    }
+
+    this._authOptions.next(userSettings);
+  }
+
   public updateAuthOptions(newAuthOptions: IUserSettings) {
+    localStorage.setItem('email', this._authOptions.value.email)
+    localStorage.setItem('access_token', this._authOptions.value.token)
+    localStorage.setItem('isAdmin', this._authOptions.value.isAdmin.toString())
+
     this._authOptions.next(newAuthOptions);
   }
 

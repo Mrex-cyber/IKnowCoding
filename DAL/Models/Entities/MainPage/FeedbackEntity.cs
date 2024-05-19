@@ -1,5 +1,5 @@
 ﻿using DAL.Models;
-using IKnowCoding.DAL.Models.Entities;
+using DAL.Models.Entities.User;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 

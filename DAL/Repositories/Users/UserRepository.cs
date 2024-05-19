@@ -1,6 +1,7 @@
 ﻿
+using DAL.Models.Entities.User;
 using IKnowCoding.DAL.Models;
-using IKnowCoding.DAL.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace IKnowCoding.DAL.Repositories.Users
 {
@@ -63,7 +64,7 @@ namespace IKnowCoding.DAL.Repositories.Users
             GC.SuppressFinalize(this);
         }
 
-        public UserEntity GetModelByCredentials(UserCredentialsModel credentials)
+        public UserEntity GetEntityByCredentials(UserCredentialsModel credentials)
         {
             UserEntity user = _context.Users
                 .Where(u => 
@@ -72,6 +73,27 @@ namespace IKnowCoding.DAL.Repositories.Users
                 .Single();
 
             return user;
+        }
+
+        public UserSettingsEntity GetUserSettingsByUserId(int userId)
+        {
+            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(u => u.UserId == userId);
+
+            return userSettingsEntity;
+        }
+
+        public UserSettingsEntity GetUserSettingsByRefreshToken(string refreshToken)
+        {
+            UserSettingsEntity userSettingsEntity = _context.UserSettings
+                .Include(s => s.User)
+                .First(u => u.RefreshToken == refreshToken);
+
+            return userSettingsEntity;
+        }
+
+        public async Task UpdateUserSettings(UserSettingsEntity userSettings)
+        {
+            _context.Update(userSettings);
         }
     }
 }

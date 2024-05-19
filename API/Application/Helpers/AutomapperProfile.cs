@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using API.Models.DTO.User;
+using AutoMapper;
+using DAL.Models.Entities.User;
 using IKnowCoding.API.Models;
 using IKnowCoding.API.Models.DTO.Answers;
 using IKnowCoding.API.Models.DTO.MainPage;
@@ -6,6 +8,7 @@ using IKnowCoding.API.Models.DTO.Questions;
 using IKnowCoding.API.Models.DTO.Tests;
 using IKnowCoding.DAL.Models.DTO.Main_Page;
 using IKnowCoding.DAL.Models.Entities;
+using IKnowCoding.DAL.Models.Entities.Relationships;
 
 namespace API.Application.Helpers
 {
@@ -14,6 +17,7 @@ namespace API.Application.Helpers
         public AutomapperProfile()
         {
             CreateMap<TestEntity, TestDto>()
+                .ForMember(e => e.Result, x => x.MapFrom(x => x.TestResultEntities.FirstOrDefault(r => r.TestId == x.Id).Result))
                 .ReverseMap();
 
             CreateMap<QuestionEntity, QuestionDto>()
@@ -21,7 +25,6 @@ namespace API.Application.Helpers
                 .ReverseMap();
 
             CreateMap<AnswerVariantEntity, AnswerVariantDto>()
-                .ForMember(e => e.QuestionId, x => x.MapFrom(x => x.QuestionId))
                 .ReverseMap();
 
             CreateMap<AchievementEntity, AchievementDto>()
@@ -29,6 +32,10 @@ namespace API.Application.Helpers
 
             CreateMap<FeedbackEntity, FeedbackDto > ()
                 .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + x.User.LastName))
+                .ReverseMap();
+
+            CreateMap<UserSettingsEntity, UserSettingsDto>()
+                .ForMember(e => e.Email, x => x.MapFrom(x => x.User.Email))
                 .ReverseMap();
         }
     }

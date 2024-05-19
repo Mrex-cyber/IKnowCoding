@@ -22,6 +22,173 @@ namespace API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DAL.Models.Entities.User.UserEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("email");
+
+                    b.Property<int>("FeedbackId")
+                        .HasColumnType("int")
+                        .HasColumnName("feedback_id");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("firstName");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("lastName");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("password");
+
+                    b.Property<int>("UserSettingsId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_settings_id");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "valik@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Valentyn",
+                            LastName = "Riabinchak",
+                            Password = "11111111",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "vasylyna@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Vasylyna",
+                            LastName = "Leheta",
+                            Password = "22222222",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "igor@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Igor",
+                            LastName = "Zaitsev",
+                            Password = "33333333",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "tom@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Tom",
+                            LastName = "Bot",
+                            Password = "44444444",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "admin@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Mr. Admin",
+                            LastName = "Secret Administator",
+                            Password = "secretKey911#",
+                            UserSettingsId = 0
+                        });
+                });
+
+            modelBuilder.Entity("DAL.Models.Entities.User.UserSettingsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("access_token");
+
+                    b.Property<DateTime?>("AccessTokenExpireTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("access_token_expire_time");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit")
+                        .HasColumnName("is_admin");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("refresh_token");
+
+                    b.Property<DateTime?>("RefreshTokenExpireTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("refresh_token_expire_time");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserSettings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsAdmin = true,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsAdmin = false,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsAdmin = false,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsAdmin = false,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsAdmin = false,
+                            UserId = 5
+                        });
+                });
+
             modelBuilder.Entity("IKnowCoding.API.Models.DTO.MainPage.FeedbackEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -60,7 +227,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(764),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7795),
                             ImagePath = "",
                             Text = "Very nice",
                             UserId = 1
@@ -68,7 +235,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1047),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8236),
                             ImagePath = "",
                             Text = "Very nice",
                             UserId = 2
@@ -76,7 +243,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1049),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237),
                             ImagePath = "",
                             Text = "Very nice",
                             UserId = 3
@@ -84,7 +251,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1050),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237),
                             ImagePath = "",
                             Text = "Very nice",
                             UserId = 4
@@ -92,7 +259,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(1050),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8238),
                             ImagePath = "",
                             Text = "Very nice",
                             UserId = 5
@@ -140,7 +307,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(9773),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6809),
                             ImagePath = "",
                             Source = "site.com",
                             Text = "The best testing website",
@@ -149,7 +316,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(72),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7091),
                             ImagePath = "",
                             Source = "site.com",
                             Text = "Nice site",
@@ -158,7 +325,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(73),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092),
                             ImagePath = "",
                             Source = "site.com",
                             Text = "Strong olympiad",
@@ -167,7 +334,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(73),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092),
                             ImagePath = "",
                             Source = "site.com",
                             Text = "~70 points of 100",
@@ -176,7 +343,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2024, 5, 12, 12, 25, 46, 5, DateTimeKind.Utc).AddTicks(74),
+                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7093),
                             ImagePath = "",
                             Source = "site.com",
                             Text = "All estimation is based on the Europe system",
@@ -429,29 +596,29 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            AccessTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8195),
+                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5298),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8359),
-                            Result = 0,
+                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5455),
+                            Result = 5,
                             TestId = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            AccessTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8897),
+                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8897),
-                            Result = 0,
+                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001),
+                            Result = 5,
                             TestId = 2,
                             UserId = 1
                         },
                         new
                         {
                             Id = 3,
-                            AccessTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8899),
+                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6002),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 12, 12, 25, 46, 4, DateTimeKind.Utc).AddTicks(8899),
+                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6003),
                             Result = 0,
                             TestId = 3,
                             UserId = 2
@@ -516,103 +683,20 @@ namespace API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("IKnowCoding.DAL.Models.Entities.UserEntity", b =>
+            modelBuilder.Entity("DAL.Models.Entities.User.UserSettingsEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                    b.HasOne("DAL.Models.Entities.User.UserEntity", "User")
+                        .WithOne("UserSettings")
+                        .HasForeignKey("DAL.Models.Entities.User.UserSettingsEntity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("email");
-
-                    b.Property<int>("FeedbackId")
-                        .HasColumnType("int")
-                        .HasColumnName("feedback_id");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("firstName");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit")
-                        .HasColumnName("is_admin");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("lastName");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("password");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "valik@gmail.com",
-                            FeedbackId = 0,
-                            FirstName = "Valentyn",
-                            IsAdmin = false,
-                            LastName = "Riabinchak",
-                            Password = "11111111"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "vasylyna@gmail.com",
-                            FeedbackId = 0,
-                            FirstName = "Vasylyna",
-                            IsAdmin = false,
-                            LastName = "Leheta",
-                            Password = "22222222"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "igor@gmail.com",
-                            FeedbackId = 0,
-                            FirstName = "Igor",
-                            IsAdmin = false,
-                            LastName = "Zaitsev",
-                            Password = "33333333"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Email = "tom@gmail.com",
-                            FeedbackId = 0,
-                            FirstName = "Tom",
-                            IsAdmin = false,
-                            LastName = "Bot",
-                            Password = "44444444"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Email = "admin@gmail.com",
-                            FeedbackId = 0,
-                            FirstName = "Mr. Admin",
-                            IsAdmin = false,
-                            LastName = "Secret Administator",
-                            Password = "secretKey911#"
-                        });
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("IKnowCoding.API.Models.DTO.MainPage.FeedbackEntity", b =>
                 {
-                    b.HasOne("IKnowCoding.DAL.Models.Entities.UserEntity", "User")
+                    b.HasOne("DAL.Models.Entities.User.UserEntity", "User")
                         .WithOne("Feedback")
                         .HasForeignKey("IKnowCoding.API.Models.DTO.MainPage.FeedbackEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -651,7 +735,7 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("IKnowCoding.DAL.Models.Entities.UserEntity", "User")
+                    b.HasOne("DAL.Models.Entities.User.UserEntity", "User")
                         .WithMany("TestResultEntities")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -662,6 +746,17 @@ namespace API.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DAL.Models.Entities.User.UserEntity", b =>
+                {
+                    b.Navigation("Feedback")
+                        .IsRequired();
+
+                    b.Navigation("TestResultEntities");
+
+                    b.Navigation("UserSettings")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("IKnowCoding.DAL.Models.Entities.QuestionEntity", b =>
                 {
                     b.Navigation("Answers");
@@ -670,14 +765,6 @@ namespace API.Migrations
             modelBuilder.Entity("IKnowCoding.DAL.Models.Entities.TestEntity", b =>
                 {
                     b.Navigation("Questions");
-
-                    b.Navigation("TestResultEntities");
-                });
-
-            modelBuilder.Entity("IKnowCoding.DAL.Models.Entities.UserEntity", b =>
-                {
-                    b.Navigation("Feedback")
-                        .IsRequired();
 
                     b.Navigation("TestResultEntities");
                 });

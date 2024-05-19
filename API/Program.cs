@@ -47,11 +47,14 @@ public class Program
                     ValidAudience = AuthOptions.AUDIENCE,
                     IssuerSigningKey = AuthOptions.GetSecurityKey()
                 };
+<<<<<<< HEAD
             })
             .AddGoogle(options =>
             {
                 options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
                 options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+=======
+>>>>>>> dev
             });
 
         builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
