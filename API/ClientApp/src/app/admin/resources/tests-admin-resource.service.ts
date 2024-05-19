@@ -11,9 +11,9 @@ import { IUserSettings } from 'src/app/user-auth/models/IUserSettings';
 })
 export class TestsAdminResourceService {
 
-  private testsUrl: string = "http://localhost:5016/api";
+  private testsUrl: string = "https://localhost:7214/api";
 
-  public defaultAuthOptions: IUserSettings = {token: '', email: '', isAdmin: false};
+  public defaultAuthOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
