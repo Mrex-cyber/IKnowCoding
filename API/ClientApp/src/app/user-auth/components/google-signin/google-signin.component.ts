@@ -32,6 +32,7 @@ export class GoogleSigninComponent implements AfterViewInit {
     google.accounts.id.initialize({
       client_id: '47749442808-1b6mn80ppo0in57jbu2rp8fhcq8o658i.apps.googleusercontent.com',
       callback: this.onSuccess,
+      onFailure: this.onFailure
     });
 
     google.accounts.id.renderButton(

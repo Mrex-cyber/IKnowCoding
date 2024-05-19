@@ -30,7 +30,6 @@ import { ContactsContainerComponent } from './main/containers/contacts-container
 import { AddingTestComponent } from './admin/components/adding/adding-test/adding-test.component';
 
 import { GoogleSigninComponent } from './user-auth/components/google-signin/google-signin.component';
-//import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -68,22 +67,7 @@ import { GoogleSigninComponent } from './user-auth/components/google-signin/goog
     ReactiveFormsModule,
 
     MainPageModule,
-//    SocialLoginModule
   ],
   bootstrap: [AppComponent],
-  // providers: [
-  //   {
-  //     provide: 'SocialAuthServiceConfig',
-  //     useValue: {
-  //       autoLogin: false,
-  //       providers: [
-  //         {
-  //           id: GoogleLoginProvider.PROVIDER_ID,
-  //           provider: new GoogleLoginProvider('47749442808-1b6mn80ppo0in57jbu2rp8fhcq8o658i.apps.googleusercontent.com')
-  //         }
-  //       ]
-  //     } as SocialAuthServiceConfig,
-  //   }
-  // ]
 })
 export class AppModule { }
