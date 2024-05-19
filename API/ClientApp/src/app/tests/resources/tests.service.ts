@@ -10,7 +10,7 @@ import { IUserSettings } from 'src/app/user-auth/models/IUserSettings';
   providedIn: 'root'
 })
 export class TestsResourceService {
-  private testsUrl: string = "http://localhost:5016/api";
+  private testsUrl: string = "https://localhost:7214/api";
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
@@ -25,13 +25,13 @@ export class TestsResourceService {
   }
 
   public getUserTests(authOptions: IUserSettings): Observable<ITest[]> {
-    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.token});
+    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.access_token});
 
     return this.client.post<ITest[]>(this.testsUrl + "/tests" , JSON.stringify(authOptions.email), this.httpOptions);
   }
 
   public postTestResultWithId(authOptions: IUserSettings, testId: number, answers: IAnswer[]): Observable<number> {
-    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.token});
+    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.access_token});
 
     return this.client.post<number>(this.testsUrl + "/tests/check" , JSON.stringify({userEmail: authOptions.email, testId, answers}), this.httpOptions);
   }

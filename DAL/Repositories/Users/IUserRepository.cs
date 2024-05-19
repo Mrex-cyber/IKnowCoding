@@ -1,10 +1,10 @@
-﻿using IKnowCoding.DAL.Models;
-using IKnowCoding.DAL.Models.Entities;
+﻿using DAL.Models.Entities.User;
+using IKnowCoding.DAL.Models;
 
 namespace IKnowCoding.DAL.Repositories.Users
 {
     public interface IUserRepository : ICrud<UserEntity>, IDisposable
     {
-        UserEntity GetModelByCredentials(UserCredentialsModel credentials);
+        UserEntity GetEntityByCredentials(UserCredentialsModel credentials);
     }
 }

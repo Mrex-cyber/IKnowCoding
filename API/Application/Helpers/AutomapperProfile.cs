@@ -1,5 +1,6 @@
 ﻿using API.Models.DTO.User;
 using AutoMapper;
+using DAL.Models.Entities.User;
 using IKnowCoding.API.Models;
 using IKnowCoding.API.Models.DTO.Answers;
 using IKnowCoding.API.Models.DTO.MainPage;
@@ -33,7 +34,8 @@ namespace API.Application.Helpers
                 .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + x.User.LastName))
                 .ReverseMap();
 
-            CreateMap<UserEntity, UserSettingsDto>()
+            CreateMap<UserSettingsEntity, UserSettingsDto>()
+                .ForMember(e => e.Email, x => x.MapFrom(x => x.User.Email))
                 .ReverseMap();
         }
     }

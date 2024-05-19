@@ -12,6 +12,9 @@
       "i18n":{
         "sourceLocale": "en-US",
         "locales": {
+          "en": {
+            "translation": "src/locale/messages.xlf"
+          },
           "ru": {
             "translation": "src/locale/messages.ru.xlf"
           },
@@ -44,6 +47,9 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "localize": ["en"]
+            },
             "ua": {
               "localize": ["ua"]
             },
@@ -84,6 +90,9 @@
             },
             "ru": {
               "browserTarget": "english-tester-spa:build:production,ru"
+            },
+            "en": {
+              "browserTarget": "english-tester-spa:build:production,en"
             },
             "production": {
               "browserTarget": "english-tester-spa:build:production"

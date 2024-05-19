@@ -1,0 +1,31 @@
+<div id="g_id_onload"
+     data-client_id="47749442808-1b6mn80ppo0in57jbu2rp8fhcq8o658i.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="http://localhosst:4200"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+     Google
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+
+<!-- <script>
+     function decodeJWTToken(token){
+       return JSON.parse(atob(token.split(".")[1]))
+     }
+     function handleOauthResponse(response){
+       const responsePayload = decodeJWTToken(response.credential)
+       console.log(responsePayload)
+       sessionStorage.setItem('loggedinUser',JSON.stringify(responsePayload))
+       window.location('https://localhost:4200') 
+       //Changed the above URL where you want user to be redirected
+     }
+</script> -->

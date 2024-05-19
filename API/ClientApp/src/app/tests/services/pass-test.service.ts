@@ -15,7 +15,7 @@ export class PassTestService implements OnInit, OnDestroy{
   public lastTestResult: number = -1;
 
   private _subscriptions: Subscription[] = [];
-  private _userCredentials: IUserSettings = {token: "", email: "", isAdmin: false };
+  private _userCredentials: IUserSettings = {access_token: '', refresh_token: '', email: "", isAdmin: false };
 
   constructor(
     private dialog: MatDialog,

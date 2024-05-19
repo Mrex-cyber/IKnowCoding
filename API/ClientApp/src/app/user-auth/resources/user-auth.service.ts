@@ -8,9 +8,9 @@ import { IUserSettings } from '../models/IUserSettings';
   providedIn: 'root'
 })
 export class UserAuthResourceService {
-  private testsUrl: string = "http://localhost:5016/api";
+  private testsUrl: string = "https://localhost:7214/api";
 
-  public defaultAuthOptions: IUserSettings = {token: '', email: '', isAdmin: false};
+  public defaultAuthOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
@@ -36,6 +36,12 @@ export class UserAuthResourceService {
     return this.authOptions$;
   }
 
+  public userSignInWithGoogle(token: string): void {
+    const responsePayload = JSON.parse(atob(token.split(".")[1]));
+    console.log("RESPONSE");
+    console.log(responsePayload);
+  }
+
   public userRegister(credentials: IUserCredentials): Observable<string> {
     this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"});
     return this.client.post<string>(this.testsUrl + "/user/signup", {firstName: credentials.firstName, lastName: credentials.lastName, email: credentials.email, password: credentials.password});
@@ -47,7 +53,23 @@ export class UserAuthResourceService {
     location.reload();
   }
 
+  public readLocalStorageUserData(){
+    const userSettings: IUserSettings = {
+      email: localStorage.getItem('email') ?? '',
+      access_token: localStorage.getItem('access_token') ?? '',
+      refresh_token: localStorage.getItem('access_token') ?? '',
+      isAdmin: localStorage.getItem('isAdmin') == 'true'
+    }
+
+    this._authOptions.next(userSettings);
+  }
+
   public updateAuthOptions(newAuthOptions: IUserSettings) {
+    localStorage.setItem('email', this._authOptions.value.email)
+    localStorage.setItem('access_token', this._authOptions.value.access_token)
+    localStorage.setItem('refresh_token', this._authOptions.value.refresh_token)
+    localStorage.setItem('isAdmin', this._authOptions.value.isAdmin.toString())
+
     this._authOptions.next(newAuthOptions);
   }
 

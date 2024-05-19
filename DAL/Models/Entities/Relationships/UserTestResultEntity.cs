@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DAL.Models.Entities.User;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

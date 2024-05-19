@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 
-namespace IKnowCoding.DAL.Models.Entities
+namespace DAL.Models.Entities.User
 {
     public class UserEntity : BaseEntity
     {
@@ -26,17 +26,20 @@ namespace IKnowCoding.DAL.Models.Entities
         [Column("password")]
         public string Password { get; set; }
 
-        [Column("is_admin")]
-        public bool IsAdmin { get; set; }
-
         [ForeignKey(nameof(Feedback))]
         [Column("feedback_id")]
         public int FeedbackId { get; set; }
         public FeedbackEntity Feedback { get; set; } = null!;
 
+        [ForeignKey(nameof(UserSettings))]
+        [Column("user_settings_id")]
+        public int UserSettingsId { get; set; }
+        public UserSettingsEntity UserSettings { get; set; } = null!;
+
         public List<UserTestResultEntity> TestResultEntities { get; set; } = null!;
 
-        public UserEntity() {
+        public UserEntity()
+        {
             FirstName = "Anonimous";
             LastName = "Anonimous";
             Email = "None";

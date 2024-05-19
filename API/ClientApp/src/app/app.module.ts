@@ -29,6 +29,8 @@ import { DotnetCertificationComponent } from './blogs/components/dotnet-certific
 import { ContactsContainerComponent } from './main/containers/contacts-container/contacts-container.component';
 import { AddingTestComponent } from './admin/components/adding/adding-test/adding-test.component';
 
+import { GoogleSigninComponent } from './user-auth/components/google-signin/google-signin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import { AddingTestComponent } from './admin/components/adding/adding-test/addin
     BlogsContainerComponent,
     DotnetCertificationComponent,
     ContactsContainerComponent,
-    AddingTestComponent
+    AddingTestComponent,
+
+    GoogleSigninComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +66,8 @@ import { AddingTestComponent } from './admin/components/adding/adding-test/addin
     FormsModule,
     ReactiveFormsModule,
 
-    MainPageModule
+    MainPageModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

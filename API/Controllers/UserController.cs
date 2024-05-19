@@ -1,10 +1,22 @@
+﻿using EnglishTesterServer.DAL.UnitsOfWork;
+using Google.Apis.Auth.OAuth2;
+using IKnowCoding.DAL.Models.Entities;
+using IKnowCoding.DAL.Models.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
 ﻿using API.Models.DTO.User;
 using AutoMapper;
+using DAL.Models.Entities.User;
 using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.DAL.Models.Entities;
+using IKnowCoding.API.Models.DTO.Tests;
 using IKnowCoding.DAL.Models.Models;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
 namespace IKnowCoding.Controllers
 {
     public class UserController : Controller
@@ -48,14 +60,70 @@ namespace IKnowCoding.Controllers
         [HttpPost("/api/user/signin")]
         public async Task<IResult> SignIn([FromBody]DAL.Models.UserCredentialsModel credentials)
         {
-            UserEntity user = _unitOfWork.UserRepository.GetModelByCredentials(credentials);
+            UserEntity? userEntity;
+            UserSettingsEntity? userSettingsEntity;
 
-            UserSettingsDto userSettings = _mapper.Map<UserSettingsDto>(user);
+            if (!string.IsNullOrWhiteSpace(Request.Headers["refresh_token"]))
+            {
+                userSettingsEntity = _unitOfWork.UserRepository.GetUserSettingsByRefreshToken(Request.Headers["refresh_token"]!);
+            }
+            else
+            {
+                userEntity = _unitOfWork.UserRepository.GetEntityByCredentials(credentials);
 
-            userSettings.IsAdmin = true;
-            userSettings.Token = AuthTokenModel.MakeToken(userSettings.Email);
+                userSettingsEntity = _unitOfWork.UserRepository.GetUserSettingsByUserId(userEntity.Id);
+            }
 
-            return Results.Json(userSettings);
+            if (userSettingsEntity.AccessTokenExpireTime is null || userSettingsEntity.AccessTokenExpireTime < DateTime.UtcNow)
+            {
+                userSettingsEntity.AccessToken = AuthTokenModel.MakeToken(credentials.email);
+                userSettingsEntity.AccessTokenExpireTime = DateTime.UtcNow;
+            }
+
+            if (userSettingsEntity.RefreshTokenExpireTime is null || userSettingsEntity.RefreshTokenExpireTime < DateTime.UtcNow)
+            {
+                userSettingsEntity.RefreshToken = AuthTokenModel.MakeToken(credentials.email);
+                userSettingsEntity.RefreshTokenExpireTime = DateTime.UtcNow;
+            }
+
+            await _unitOfWork.UserRepository.UpdateUserSettings(userSettingsEntity);
+
+            UserSettingsDto userSettingsDto = _mapper.Map<UserSettingsDto>(userSettingsEntity);
+
+            string json = JsonConvert.SerializeObject(_mapper.Map<UserSettingsDto>(userSettingsDto), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+
+            return Results.Text(json, "text/plain");
+        }
+
+        /// <summary>
+        /// Signing in with Google
+        /// </summary>
+        /// <returns>User token and email</returns>
+        /// <remarks>
+        /// Sample request: 
+        /// 
+        ///     POST /api/user/signin
+        ///     {
+        ///         "firstName": null, 
+        ///         "lastName": null, 
+        ///         "email": "someemail@gmail.com", 
+        ///         "password": "key12345"
+        ///     }
+        ///     
+        /// </remarks>
+        /// <response code="200" link="">Returns tests for some user</response>
+        /// <response code="204">The user was not found</response>
+        /// <response code="400">Request is null</response>
+        /// <response code="409">Email or password are incorrect</response>
+        [HttpPost("/api/user/signin-google")]
+        public async Task<IResult> SignInGoogle([FromBody]DAL.Models.UserCredentialsModel credentials)
+        {
+            //var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            //var claims = result.Principal.Identities.FirstOrDefault().Claims.Select;
+            
+            return Results.Ok();
+            //return Results.Json(user);
         }
 
         /// <summary>
