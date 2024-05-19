@@ -52,7 +52,8 @@ export class UserAuthComponent implements OnInit{
         })
       ).subscribe(userData => {
         this.authService.updateAuthOptions({
-          token: userData.token,
+          access_token: userData.access_token,
+          refresh_token: userData.refresh_token,
           email: userData.email,
           isAdmin: userData.isAdmin
         });

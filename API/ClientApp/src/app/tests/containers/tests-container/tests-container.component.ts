@@ -27,7 +27,7 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   private ngUnsubscribeDialog = new Subject<void>();
 
-  private authOptions: IUserSettings = {token: '', email: '', isAdmin: false};
+  private authOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
 
   constructor(private testsService: TestsResourceService,
     private userAuthService: UserAuthResourceService,
@@ -59,7 +59,7 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
     interval(5000)
       .pipe(
         switchMap(() => {
-          if (this.authOptions.token == ''){
+          if (this.authOptions.access_token == ''){
             return this.testsService.getTests();
           }
           else {
