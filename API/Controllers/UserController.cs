@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using EnglishTesterServer.DAL.UnitsOfWork;
 using Google.Apis.Auth.OAuth2;
 using IKnowCoding.DAL.Models.Entities;
@@ -8,8 +7,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
-
-=======
 ﻿using API.Models.DTO.User;
 using AutoMapper;
 using DAL.Models.Entities.User;
@@ -19,7 +16,7 @@ using IKnowCoding.DAL.Models.Models;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
->>>>>>> dev
+
 namespace IKnowCoding.Controllers
 {
     public class UserController : Controller
