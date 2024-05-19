@@ -29,6 +29,9 @@ import { DotnetCertificationComponent } from './blogs/components/dotnet-certific
 import { ContactsContainerComponent } from './main/containers/contacts-container/contacts-container.component';
 import { AddingTestComponent } from './admin/components/adding/adding-test/adding-test.component';
 
+import { GoogleSigninComponent } from './user-auth/components/google-signin/google-signin.component';
+//import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,9 @@ import { AddingTestComponent } from './admin/components/adding/adding-test/addin
     BlogsContainerComponent,
     DotnetCertificationComponent,
     ContactsContainerComponent,
-    AddingTestComponent
+    AddingTestComponent,
+
+    GoogleSigninComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +67,23 @@ import { AddingTestComponent } from './admin/components/adding/adding-test/addin
     FormsModule,
     ReactiveFormsModule,
 
-    MainPageModule
+    MainPageModule,
+//    SocialLoginModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // providers: [
+  //   {
+  //     provide: 'SocialAuthServiceConfig',
+  //     useValue: {
+  //       autoLogin: false,
+  //       providers: [
+  //         {
+  //           id: GoogleLoginProvider.PROVIDER_ID,
+  //           provider: new GoogleLoginProvider('47749442808-1b6mn80ppo0in57jbu2rp8fhcq8o658i.apps.googleusercontent.com')
+  //         }
+  //       ]
+  //     } as SocialAuthServiceConfig,
+  //   }
+  // ]
 })
 export class AppModule { }

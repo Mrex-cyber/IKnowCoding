@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, tap, throwError } from 'rxjs';
+import { Subscription, catchError, tap, throwError } from 'rxjs';
 import { UserAuthDialogComponent } from '../../dialog-windows/user-auth-dialog/user-auth-dialog.component';
 import { UserRegistrationDialog } from '../../dialog-windows/user-register-dialog/user-register-dialog.component';
 import { IUserCredentials } from '../../models/IUserCredentials';
@@ -12,13 +12,25 @@ import { Router } from '@angular/router';
   templateUrl: './user-auth.component.html',
   styleUrls: ['./user-auth.component.css']
 })
-export class UserAuthComponent {
+export class UserAuthComponent implements OnInit{
   public authorized: boolean = false;
 
   constructor(
     private authService: UserAuthResourceService,
-    public dialog: MatDialog
-    ) { }
+    public dialog: MatDialog,
+  ) {
+  }
+  ngOnInit (): void {
+    // gapi.signin2.render('my-signin2', {
+    //   'scope': 'profile email',
+    //   'width': 240,
+    //   'height': 50,
+    //   'longtitle': true,
+    //   'theme': 'dark',
+    //   'onsuccess': () => console.log('Logged in'),
+    //   'onfailure': () => console.log("Error")
+    // });
+  }
 
   public userSignInSubmit(){
     const dialogRef = this.dialog.open(UserAuthDialogComponent, {

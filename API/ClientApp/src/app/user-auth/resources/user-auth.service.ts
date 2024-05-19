@@ -8,7 +8,7 @@ import { IUserSettings } from '../models/IUserSettings';
   providedIn: 'root'
 })
 export class UserAuthResourceService {
-  private testsUrl: string = "http://localhost:5016/api";
+  private testsUrl: string = "https://localhost:7214/api";
 
   public defaultAuthOptions: IUserSettings = {token: '', email: '', isAdmin: false};
 
@@ -34,6 +34,12 @@ export class UserAuthResourceService {
     .subscribe(result => this.updateAuthOptions(result));
 
     return this.authOptions$;
+  }
+
+  public userSignInWithGoogle(token: string): void {
+    const responsePayload = JSON.parse(atob(token.split(".")[1]));
+    console.log("RESPONSE");
+    console.log(responsePayload);
   }
 
   public userRegister(credentials: IUserCredentials): Observable<string> {
