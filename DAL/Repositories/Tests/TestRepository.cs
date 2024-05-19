@@ -1,4 +1,5 @@
-﻿using IKnowCoding.DAL.Models.Entities;
+﻿using DAL.Models.Entities.User;
+using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.Models.Entities.Relationships;
 using Microsoft.EntityFrameworkCore;
 

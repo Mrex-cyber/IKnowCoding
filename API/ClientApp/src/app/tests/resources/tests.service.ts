@@ -10,7 +10,7 @@ import { IUserSettings } from 'src/app/user-auth/models/IUserSettings';
   providedIn: 'root'
 })
 export class TestsResourceService {
-  private testsUrl: string = "http://localhost:5016/api";
+  private testsUrl: string = "https://localhost:7214/api";
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
