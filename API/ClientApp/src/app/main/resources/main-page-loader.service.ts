@@ -8,7 +8,7 @@ import { IFeedback } from 'src/app/tests/models/IFeedback';
   providedIn: 'root'
 })
 export class MainPageLoaderService {
-  private mainPageUrl: string = "http://localhost:5016/api";
+  private mainPageUrl: string = "https://localhost:7214/api";
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
