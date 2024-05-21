@@ -7,4 +7,5 @@ export interface ITest extends BaseModel {
   questions: IQuestion[];
   finished: boolean;
   result: number;
+  imagePath: string;
 }

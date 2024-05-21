@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using EnglishTesterServer.DAL.UnitsOfWork;
+using IKnowCoding.API.Models.DTO.MainPage;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EnglishTesterServer.Controllers
+namespace IKnowCoding.Controllers
 {
     [ApiController]
     public class MainPageController : ControllerBase
@@ -56,7 +57,9 @@ namespace EnglishTesterServer.Controllers
         [HttpGet("api/main/feedbacks")]
         public IResult OnGetFeedbacks()
         {
-            return Results.Json(_unitOfWork.MainPageRepository.GetFeedbacks());
+            IEnumerable<FeedbackEntity> feedbackEntities = _unitOfWork.MainPageRepository.GetFeedbacks();
+
+            return Results.Json(_mapper.Map<FeedbackDto[]>(feedbackEntities));
         }
     }
 }

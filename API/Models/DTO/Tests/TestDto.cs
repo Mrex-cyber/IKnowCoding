@@ -19,12 +19,16 @@ namespace IKnowCoding.API.Models.DTO.Tests
         [JsonProperty(PropertyName = "result")]
         public int Result { get; set; }
 
+        [JsonProperty(PropertyName = "imagePath")]
+        public string ImagePath { get; set; }
+
         public TestDto() { }
-        public TestDto(int id, string title, string description)
+        public TestDto(int id, string title, string description, string imagePath)
         {
             Id = id;
             Title = title;
             Description = description;
+            ImagePath = imagePath;
         }
     }
 }

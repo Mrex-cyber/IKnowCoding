@@ -24,7 +24,7 @@ namespace IKnowCoding.DAL
 
         public PlatformContext()
         {
-            // Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             //Database.EnsureCreated();
         }
 

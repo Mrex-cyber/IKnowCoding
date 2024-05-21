@@ -10,7 +10,7 @@ using IKnowCoding.DAL.UnitsOfWork;
 using IKnowCoding.API.Models.DTO.Tests;
 using IKnowCoding.DAL.Models.Entities.Relationships;
 
-namespace EnglishTesterServer.Controllers
+namespace IKnowCoding.Controllers
 {
     [Authorize]
     public class TestController : Controller

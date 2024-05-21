@@ -22,8 +22,6 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
 
   public selectedTest?: ITest;
 
-  public lastResult: string = "No result";
-
   private ngUnsubscribe = new Subject<void>();
   private ngUnsubscribeDialog = new Subject<void>();
 
@@ -46,7 +44,6 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
 
   public changeTestResult(newResult: number){
     this.selectedTest!.result = newResult;
-    this.lastResult = newResult.toString();
   }
 
   public onSelectTest(test: ITest): void {

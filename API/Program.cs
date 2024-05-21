@@ -10,6 +10,10 @@ using IKnowCoding.DAL.Repositories.Users;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using IKnowCoding.ErrorHandling.Handlers.Interfaces;
+using IKnowCoding.ErrorHandling.Interfaces;
+using IKnowCoding.ErrorHandling;
+using IKnowCoding.Filters;
 using System.Reflection;
 
 public class Program
@@ -31,6 +35,8 @@ public class Program
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWorkPlatform>();
+
+        builder.Services.AddScoped<IObjectsProvider<IExceptionControllerHandler>, ErrorHandlersProvider>();
 
         builder.Services.AddAuthorization();
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -97,7 +103,10 @@ public class Program
             });
         });
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers(config =>
+        {
+            config.Filters.Add<WebAPIExceptionFilterAttribute>();
+        });
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

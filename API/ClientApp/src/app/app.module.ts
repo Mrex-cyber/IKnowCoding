@@ -30,6 +30,7 @@ import { ContactsContainerComponent } from './main/containers/contacts-container
 import { AddingTestComponent } from './admin/components/adding/adding-test/adding-test.component';
 
 import { GoogleSigninComponent } from './user-auth/components/google-signin/google-signin.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { GoogleSigninComponent } from './user-auth/components/google-signin/goog
     GoogleSigninComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
