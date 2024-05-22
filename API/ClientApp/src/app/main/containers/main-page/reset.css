@@ -1,0 +1,27 @@
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  html{
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    font-family: system-ui, sans-serif;
+    font-size: 90%;
+    line-height: 1.35;
+    color: black;
+    background-color: #f8f6f4;
+  }

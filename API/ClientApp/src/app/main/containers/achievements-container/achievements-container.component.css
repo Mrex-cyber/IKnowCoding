@@ -2,15 +2,18 @@ h2 {
   display: block;
   margin: 5px;
   text-align: center;
+  font-weight: 300;
+  color: #E0AAFF;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .img-container {
-  border: solid 2px gray;
   background-position: center;
   height: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 8px;
 }
 
 .achievement-container {
@@ -23,7 +26,28 @@ h2 {
 .achievement-card {
   display: inline-block;
   width: 40%;
+  height: 50%;
   height: 300px;
   margin: 15px 2.5%;
-  border: solid 3px orange;
+  background-color: #5A189A;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
+}
+
+.achievement-card h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
+}
+
+.achievement-card p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
+}
+
+.achievement-card label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
 }
