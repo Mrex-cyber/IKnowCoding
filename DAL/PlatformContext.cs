@@ -28,6 +28,12 @@ namespace IKnowCoding.DAL
             //Database.EnsureCreated();
         }
 
+        public PlatformContext(DbContextOptions options):base(options)
+        {
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=IKnowCodingDB;Trusted_Connection=True;", builder =>
