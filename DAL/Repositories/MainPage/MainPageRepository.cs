@@ -1,6 +1,7 @@
 ﻿using IKnowCoding.API.Models.DTO.MainPage;
 using IKnowCoding.DAL.Models.DTO.Main_Page;
 using IKnowCoding.DAL.Repositories.MainPage;
+using Microsoft.EntityFrameworkCore;
 
 namespace IKnowCoding.DAL.Repositories.MainPage
 {
@@ -17,7 +18,9 @@ namespace IKnowCoding.DAL.Repositories.MainPage
         }
         public IEnumerable<FeedbackEntity> GetFeedbacks()
         {
-            return _context.Feedbacks;
+            return _context.Feedbacks
+                .Include(f => f.User)
+                .AsEnumerable();
         }
 
         private bool disposed = false;

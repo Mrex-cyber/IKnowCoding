@@ -4,7 +4,7 @@ using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EnglishTesterServer.Controllers
+namespace IKnowCoding.Controllers
 {
     public class AdminController : Controller
     {

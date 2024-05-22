@@ -1,0 +1,13 @@
+.main-image {
+    border: solid 2px gray;
+    background-position: center;
+    height: 50%;
+    width: 50%;
+    margin-left: 25%;
+    background-image: "../../../../assets/photos/mainImage.png";
+}
+
+.go-btn {
+    left: -100;
+    top: -100;
+}

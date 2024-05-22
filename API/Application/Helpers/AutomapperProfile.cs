@@ -30,8 +30,9 @@ namespace API.Application.Helpers
             CreateMap<AchievementEntity, AchievementDto>()
                 .ReverseMap();
 
-            CreateMap<FeedbackEntity, FeedbackDto > ()
-                .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + x.User.LastName))
+            CreateMap<FeedbackEntity, FeedbackDto> ()
+                .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + " " + x.User.LastName))
+                .ForMember(e => e.Date, x => x.MapFrom(x => x.Date))
                 .ReverseMap();
 
             CreateMap<UserSettingsEntity, UserSettingsDto>()

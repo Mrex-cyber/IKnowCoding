@@ -26,4 +26,20 @@ export class FeedbackContainerComponent implements OnInit, OnDestroy {
   private subscribeToApi(){
     this.feedbacksSubscription = this.mainPageLoader.getFeedbacks().subscribe(f => this.feedbacks = f);
   }
+
+  public scrollLeft() {
+    const carousel = document.getElementById('carousel-container')!;
+    carousel.scrollBy({
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+  
+  public scrollRight() {
+    const carousel = document.getElementById('carousel-container')!;
+    carousel.scrollBy({
+      left: 1000,
+      behavior: 'smooth'
+    });
+  }
 }
