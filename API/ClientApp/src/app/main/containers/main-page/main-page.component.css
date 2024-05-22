@@ -1,13 +1,40 @@
-.main-image {
-    border: solid 2px gray;
-    background-position: center;
-    height: 50%;
-    width: 50%;
-    margin-left: 25%;
-    background-image: "../../../../assets/photos/mainImage.png";
+@import "reset.css";
+
+.main-image-container {
+    border: solid 2px #FF6B00;
+    border-radius: 8px;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    border-radius: 8px;
+    position: relative;
 }
 
 .go-btn {
-    left: -100;
-    top: -100;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    background-color: #FF6B00;
+    color: #10002B;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: 55%;
+    margin-top: -7%;
+    height: 30px;
+    width: 130px;
+    margin-right: 20%;
+    position: absolute;
+
+}
+
+h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #E0AAFF;
+    text-align: center;
+    font-weight: 500;
 }

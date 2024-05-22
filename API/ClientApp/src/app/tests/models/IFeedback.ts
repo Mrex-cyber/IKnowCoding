@@ -2,7 +2,7 @@ import { BaseModel } from "./BaseModel";
 
 export interface IFeedback extends BaseModel {
   text: string;
-  imagePath: Date;
+  imagePath: string;
   date: string;
   fullName: string;
 }
