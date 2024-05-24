@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IKnowCoding.DAL.Models.Entities.Relationships
 {
-    [Table("rel_user_test_result")]
+    [Table("UserTestResults")]
     public class UserTestResultEntity : BaseEntity
     {
         [Required]

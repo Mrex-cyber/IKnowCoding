@@ -13,7 +13,6 @@ namespace IKnowCoding.DAL
     public class PlatformContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; } = null!;
-
         public DbSet<UserSettingsEntity> UserSettings { get; set; } = null!;
         public DbSet<TestEntity> Tests { get; set; } = null!;
         public DbSet<QuestionEntity> Questions { get; set; } = null!;
@@ -24,7 +23,13 @@ namespace IKnowCoding.DAL
 
         public PlatformContext()
         {
-            // Database.EnsureDeleted();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+        }
+
+        public PlatformContext(DbContextOptions options):base(options)
+        {
+            //Database.EnsureDeleted();
             //Database.EnsureCreated();
         }
 
@@ -38,6 +43,8 @@ namespace IKnowCoding.DAL
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.Entity<TestEntity>()
                 .HasMany(t => t.Questions)
                 .WithOne(q => q.Test)

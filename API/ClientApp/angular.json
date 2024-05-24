@@ -13,13 +13,13 @@
         "sourceLocale": "en-US",
         "locales": {
           "en": {
-            "translation": "src/locale/messages.xlf"
+            "translation": "src/locale/translation.xlf"
           },
           "ru": {
-            "translation": "src/locale/messages.ru.xlf"
+            "translation": "src/locale/translation.pl.xlf"
           },
           "ua": {
-            "translation": "src/locale/messages.ua.xlf"
+            "translation": "src/locale/translation.ua.xlf"
           }
         }
       },
@@ -54,7 +54,7 @@
               "localize": ["ua"]
             },
             "ru": {
-              "localize": ["ru"]
+              "localize": ["pl"]
             },
             "production": {
               "budgets": [
@@ -89,7 +89,7 @@
               "browserTarget": "english-tester-spa:build:production,ua"
             },
             "ru": {
-              "browserTarget": "english-tester-spa:build:production,ru"
+              "browserTarget": "english-tester-spa:build:production,pl"
             },
             "en": {
               "browserTarget": "english-tester-spa:build:production,en"

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IKnowCoding.API.Models.DTO.MainPage
 {
+    [Table("Feedbacks")]
     public class FeedbackEntity : BaseEntity
     {
         [Column("text")]

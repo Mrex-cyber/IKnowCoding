@@ -6,9 +6,11 @@ h2 {
 
 .img-container {
   border: solid 2px gray;
-  background-image: url("../../../../assets/photos/testing-photo.jpg");
   background-position: center;
   height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .achievement-container {

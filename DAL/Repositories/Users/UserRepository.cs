@@ -22,7 +22,7 @@ namespace IKnowCoding.DAL.Repositories.Users
 
         public IEnumerable<UserEntity> GetEntities()
         {
-            throw new NotImplementedException();
+            return _context.Users;
         }
 
         public UserEntity GetEntityById(int id)
@@ -62,6 +62,18 @@ namespace IKnowCoding.DAL.Repositories.Users
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public IEnumerable<UserEntity> GetTopTenUsers()
+        {
+            return _context.Users
+                .GroupJoin(_context.UserTestResults,
+                u => u.Id,
+                r => r.UserId,
+                (u, r) => new { User = u, Points = r.Sum(i => i.Result)}
+                )
+                .OrderByDescending(res => res.Points)
+                .Select(res => res.User);
         }
 
         public UserEntity GetEntityByCredentials(UserCredentialsModel credentials)

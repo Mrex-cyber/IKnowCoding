@@ -10,8 +10,10 @@
   grid-row-start: 1;
   grid-row-end: 3;
   border: solid 2px gray;
-  background-image: url("../../../../assets/photos/testing-photo.jpg");
   background-position: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .text-container {

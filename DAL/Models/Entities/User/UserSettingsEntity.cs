@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models.Entities.User
 {
+    [Table("UserSettings")]
     public class UserSettingsEntity : BaseEntity
     {
         [Column("access_token")]

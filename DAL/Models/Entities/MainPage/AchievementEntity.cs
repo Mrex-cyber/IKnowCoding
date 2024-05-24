@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IKnowCoding.DAL.Models.DTO.Main_Page
 {
+    [Table("Achievements")]
     public class AchievementEntity : BaseEntity
     {
         [Column("title")]

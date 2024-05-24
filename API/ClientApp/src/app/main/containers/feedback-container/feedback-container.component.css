@@ -7,9 +7,11 @@ h2 {
 
 .img-container {
   border: solid 2px gray;
-  background-image: url("../../../../assets/photos/testing-photo.jpg");
   background-position: center;
   height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .feedback-container {
@@ -54,4 +56,51 @@ h2 {
   height: 300px;
   margin: 15px 2.5%;
   border: solid 3px orange;
+}
+
+#carousel-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.carousel-item {
+  min-width: 200px;
+  margin: 0 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.scroll-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
 }

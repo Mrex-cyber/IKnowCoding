@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(PlatformContext))]
-    [Migration("20240519191211_InitialCreate")]
+    [Migration("20240523002537_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -230,41 +230,41 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7795),
-                            ImagePath = "",
-                            Text = "Very nice",
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(6087),
+                            ImagePath = "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+                            Text = "Досить корисний та захоплюючий сайт",
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8236),
-                            ImagePath = "",
-                            Text = "Very nice",
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(6725),
+                            ImagePath = "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            Text = "Мені подобається випробовувати свої навички",
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237),
-                            ImagePath = "",
-                            Text = "Very nice",
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(6727),
+                            ImagePath = "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg",
+                            Text = "Хотілося б більше тестів",
                             UserId = 3
                         },
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8237),
-                            ImagePath = "",
-                            Text = "Very nice",
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(6728),
+                            ImagePath = "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            Text = "Покращує вміння мислити нестандартно та оцінити свої знання",
                             UserId = 4
                         },
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(8238),
-                            ImagePath = "",
-                            Text = "Very nice",
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(6729),
+                            ImagePath = "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            Text = "Подобається дизайн сайту, допомагає зосередитися",
                             UserId = 5
                         });
                 });
@@ -310,47 +310,20 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6809),
-                            ImagePath = "",
-                            Source = "site.com",
-                            Text = "The best testing website",
-                            Title = "Best"
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(4074),
+                            ImagePath = "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg",
+                            Source = "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2",
+                            Text = "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів,[8] а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.",
+                            Title = "Перше місце серед стартапів освітньої сфери"
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7091),
-                            ImagePath = "",
-                            Source = "site.com",
-                            Text = "Nice site",
-                            Title = "Nice"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092),
-                            ImagePath = "",
-                            Source = "site.com",
-                            Text = "Strong olympiad",
-                            Title = "Olimpiad"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7092),
-                            ImagePath = "",
-                            Source = "site.com",
-                            Text = "~70 points of 100",
-                            Title = "Universities"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(7093),
-                            ImagePath = "",
-                            Source = "site.com",
-                            Text = "All estimation is based on the Europe system",
-                            Title = "European estimation"
+                            Date = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(4727),
+                            ImagePath = "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg",
+                            Source = "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/",
+                            Text = "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.",
+                            Title = "Найбільша кількість донатів на ЗСУ"
                         });
                 });
 
@@ -380,7 +353,7 @@ namespace API.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("AnswerVariants");
 
                     b.HasData(
                         new
@@ -593,35 +566,35 @@ namespace API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("rel_user_test_result");
+                    b.ToTable("UserTestResults");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5298),
+                            AccessTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(1040),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(5455),
-                            Result = 5,
+                            FinishedTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(1406),
+                            Result = 4,
                             TestId = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001),
+                            AccessTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(2231),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6001),
-                            Result = 5,
+                            FinishedTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(2232),
+                            Result = 4,
                             TestId = 2,
                             UserId = 1
                         },
                         new
                         {
                             Id = 3,
-                            AccessTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6002),
+                            AccessTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(2234),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 19, 19, 12, 11, 101, DateTimeKind.Utc).AddTicks(6003),
+                            FinishedTime = new DateTime(2024, 5, 23, 0, 25, 37, 374, DateTimeKind.Utc).AddTicks(2234),
                             Result = 0,
                             TestId = 3,
                             UserId = 2
@@ -642,6 +615,11 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("image_path");
+
                     b.Property<bool>("IsFree")
                         .HasColumnType("bit")
                         .HasColumnName("is_free");
@@ -660,6 +638,7 @@ namespace API.Migrations
                         {
                             Id = 1,
                             Description = "C# is a general purpose object-oriented programming language.",
+                            ImagePath = "https://miro.medium.com/v2/resize:fit:1400/1*_NVBTVdmjt3Qvq3CZOySXg.png",
                             IsFree = true,
                             Title = "C# Start"
                         },
@@ -667,13 +646,15 @@ namespace API.Migrations
                         {
                             Id = 2,
                             Description = "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.",
-                            IsFree = true,
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png",
+                            IsFree = false,
                             Title = "Java Start"
                         },
                         new
                         {
                             Id = 3,
                             Description = "JavaScript is a multi-paradigm programming language.",
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
                             IsFree = true,
                             Title = "JavaScript Start"
                         },
@@ -681,6 +662,7 @@ namespace API.Migrations
                         {
                             Id = 4,
                             Description = "C++ is a compiled, statically typed general-purpose programming language.",
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png",
                             IsFree = false,
                             Title = "C++ Start"
                         });

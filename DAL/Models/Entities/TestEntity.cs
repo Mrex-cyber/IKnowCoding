@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace IKnowCoding.DAL.Models.Entities
 {
+    [Table("Tests")]
     public class TestEntity : BaseEntity
     {
         [Column("title")]
@@ -19,6 +20,9 @@ namespace IKnowCoding.DAL.Models.Entities
         [Column("is_free")]
         public bool IsFree { get; set; }
 
+        [Column("image_path")]
+        public string ImagePath { get; set; }
+
         public List<UserTestResultEntity> TestResultEntities { get; set; } = null!;
 
         public ICollection<QuestionEntity> Questions { get; set; } = null!;
@@ -27,12 +31,13 @@ namespace IKnowCoding.DAL.Models.Entities
             Title = "None";
             Description = "None";
         }
-        public TestEntity(int id, string title, string description, bool isFree)
+        public TestEntity(int id, string title, string description, bool isFree, string imagePath)
         {
             Id = id;
             Title = title;
             Description = description;
             IsFree = isFree;
+            ImagePath = imagePath;
         }
     }
 }

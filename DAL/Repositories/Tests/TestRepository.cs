@@ -2,6 +2,7 @@
 using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.Models.Entities.Relationships;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace IKnowCoding.DAL.Repositories.Tests
 {
@@ -34,7 +35,7 @@ namespace IKnowCoding.DAL.Repositories.Tests
                 .Include(t => t.TestResultEntities)
                 .ToList();
 
-            return commonTests.Concat(userAccessedTests);
+            return commonTests.Concat(userAccessedTests).Distinct();
         }
 
         public bool AddEntity(TestEntity newTest)
