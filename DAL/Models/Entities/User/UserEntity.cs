@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 
 namespace DAL.Models.Entities.User
 {
+    [Table("Users")]
     public class UserEntity : BaseEntity
     {
         [Required]

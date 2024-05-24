@@ -70,7 +70,7 @@ public class Program
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "Tester API",
+                Title = "IKnowCoding",
                 Description = "An ASP.NET Core Web API for managing Tests items",
             });
 

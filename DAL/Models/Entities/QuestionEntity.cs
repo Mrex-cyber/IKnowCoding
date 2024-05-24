@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace IKnowCoding.DAL.Models.Entities
 {
+    [Table("Questions")]
     public class QuestionEntity : BaseEntity
     {
         [Column("text")]

@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace IKnowCoding.DAL.Models.Entities
 {
+    [Table("Tests")]
     public class TestEntity : BaseEntity
     {
         [Column("title")]
