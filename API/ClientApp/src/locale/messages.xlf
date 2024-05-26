@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5701618810648052610" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4902817035128594900" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9153508585400405262" datatype="html">
+        <source>Question <x id="INTERPOLATION" equiv-text="{{i + 1}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5151231646878649996" datatype="html">
+        <source> Answers <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li *ngFor=&quot;let answer of getAnswers(i).controls; let j = index&quot; [formGroupName]=&quot;j&quot;&gt;"/><x id="START_TAG_MAT_FORM_FIELD" ctype="x-mat_form_field" equiv-text="&lt;mat-form-field class=&quot;answer-field&quot;&gt;"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input matInput type=&quot;text&quot; formControlName=&quot;text&quot;&gt;"/><x id="START_TAG_MAT_ERROR" ctype="x-mat_error" equiv-text="&lt;mat-error *ngIf=&quot;getAnswers(i).controls[j].errors&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{getAnswers(i).controls[j].errors?.[&apos;text&apos;]}}"/><x id="CLOSE_TAG_MAT_ERROR" ctype="x-mat_error" equiv-text="&lt;/mat-error&gt;"/><x id="TAG_INPUT_1" ctype="x-input_1" equiv-text="&lt;input type=&quot;checkbox&quot; formControlName=&quot;isRight&quot;&gt;"/><x id="CLOSE_TAG_MAT_FORM_FIELD" ctype="x-mat_form_field" equiv-text="&lt;/mat-form-field&gt;"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">25,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9099308089986283216" datatype="html">
+        <source>Add answer to question <x id="INTERPOLATION" equiv-text="{{i + 1}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1287324381040263940" datatype="html">
+        <source>Add question</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/adding/adding-test/adding-test.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1130914636248035703" datatype="html">
+        <source>Achievements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/achievements-container/achievements-container.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9155608366859514313" datatype="html">
+        <source>Source</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/achievements-container/achievements-container.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1726363342938046830" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/contacts-container/contacts-container.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7091571651222742304" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/contacts-container/contacts-container.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5017249976618222169" datatype="html">
+        <source>Blogs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/contacts-container/contacts-container.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/components/main-routes/main-routes.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3687194426938367329" datatype="html">
+        <source>Partners</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/contacts-container/contacts-container.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="754422484225812101" datatype="html">
+        <source>Feedbacks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main/containers/feedback-container/feedback-container.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2821179408673282599" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/components/main-routes/main-routes.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3844920811361480358" datatype="html">
+        <source>Tests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/components/main-routes/main-routes.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5041354590769758251" datatype="html">
+        <source>Admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navigation/components/main-routes/main-routes.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3650982486270404110" datatype="html">
+        <source> Authorize </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-auth/components/user-auth/user-auth.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="840692109692540367" datatype="html">
+        <source>Sign In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-auth/components/user-auth/user-auth.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1466012768716286509" datatype="html">
+        <source>Sign Up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-auth/components/user-auth/user-auth.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5113165610004622651" datatype="html">
+        <source>Log Out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-auth/components/user-auth/user-auth.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4413159255977141309" datatype="html">
+        <source>Let's GO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\main\containers\main-page\main-page.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5084437264642239512" datatype="html">
+        <source>Let's GO!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src\app\tests\containers\test-card\test-card.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

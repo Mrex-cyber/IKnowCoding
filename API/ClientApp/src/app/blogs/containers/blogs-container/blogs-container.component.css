@@ -2,6 +2,8 @@ h2 {
   display: block;
   margin: 5px;
   text-align: center;
+  color: #E0AAFF;
+  font-weight: 500;
 }
 
 .blog-container {
@@ -9,6 +11,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
+  color: #E0AAFF;
 }
 
 .blog-card {
@@ -17,4 +20,8 @@ h2 {
   height: 300px;
   margin: 15px 2.5%;
   border: solid 3px orange;
+  border-radius: 12px 0 12px 0;
+  padding: 12px;
+  justify-content: space-around;
+  background-color: #1e0051;
 }

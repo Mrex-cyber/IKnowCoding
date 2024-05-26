@@ -2,6 +2,9 @@ h2 {
   display: block;
   margin: 5px;
   text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #E0AAFF;
+  font-size: xx-large;
 }
 
 .test-container {
@@ -16,7 +19,7 @@ h2 {
   width: 40%;
   height: 300px;
   margin: 15px 2.5%;
-  border: solid 3px orange;
+  border: solid 3px #5A189A;
 }
 
 .passing-test-container {
@@ -25,3 +28,4 @@ h2 {
   height: auto;
   margin: 5px 15px;
 }
+

@@ -1,8 +1,8 @@
-<div class="test-card-wrapper" matBadge="{{test.result}}" matBadgeColor="primary" matBadgeSize="large">
+<div class="test-card-wrapper" matBadge="{{test.result}}" matBadgeColor="accent" matBadgeSize="large">
   <div class="img-container" [ngStyle]="{'background-image': 'url(' + test.imagePath + ')'}"></div>
   <div class="text-container">
     <h2>{{test.title}}</h2>
     <p>{{test.description}}</p>
   </div>
-  <button id="test-btn" (click)="passTest()">Let's GO!</button>
+  <button class="main-btn" (click)="passTest()" i18n>Let's GO!</button>
 </div>

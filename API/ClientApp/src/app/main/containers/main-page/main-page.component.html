@@ -1,7 +1,9 @@
 <h1>T&PTeam</h1>
 <div>
-  <div class="main-image"></div>
-  <button class="go-btn" mat-button routerLink="/tests">Let's GO</button>
+  <div class="main-image-container">
+    <img class="main-image" src="../../../../assets/photos/mainPage.png" alt="main Image">
+  </div>
+  <button class="go-btn" mat-button (click)="goToTestsComponent" i18n>Let's GO</button>
 </div>
 
 <app-achievements-container></app-achievements-container>

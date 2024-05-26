@@ -2,28 +2,67 @@ h2 {
   display: block;
   margin: 5px;
   text-align: center;
+  font-weight: 300;
+  color: #E0AAFF;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.img-container {
-  border: solid 2px gray;
-  background-position: center;
-  height: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+.card-img {
+  width: 75%;
+  border-radius: 8px;
 }
 
 .achievement-container {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
-  height: auto;
+  height: max-content;
   text-align: center;
 }
 
 .achievement-card {
-  display: inline-block;
-  width: 40%;
-  height: 300px;
-  margin: 15px 2.5%;
-  border: solid 3px orange;
+  display: block;
+  width: 95%;
+  margin: 2.5%;
+  height: auto;
+  margin: 12px 2.5%;
+  background-color: #5A189A;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
+  border: 4px dotted orange;
+  border-radius: 15px 0px;
+}
+
+.achievement-card:nth-child(2n) {
+  grid-column: 2;
+}
+
+.achievement-card h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
+}
+
+.achievement-card p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
+}
+
+.achievement-card a {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
+.achievement-card a:hover {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: orange;
+}
+
+.achievement-card label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #E0AAFF;
 }

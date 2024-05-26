@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace IKnowCoding.API.Models.DTO.Tests
 {
-    public class TestDto : BaseDto
+    public class TestResponseDto : BaseDto
     {
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
@@ -14,7 +14,7 @@ namespace IKnowCoding.API.Models.DTO.Tests
         public string Description { get; set; }
 
         [JsonProperty(PropertyName = "questions")]
-        public QuestionDto[] Questions { get; set; }
+        public QuestionResponseDto[] Questions { get; set; }
 
         [JsonProperty(PropertyName = "result")]
         public int Result { get; set; }
@@ -22,8 +22,8 @@ namespace IKnowCoding.API.Models.DTO.Tests
         [JsonProperty(PropertyName = "imagePath")]
         public string ImagePath { get; set; }
 
-        public TestDto() { }
-        public TestDto(int id, string title, string description, string imagePath)
+        public TestResponseDto() { }
+        public TestResponseDto(int id, string title, string description, string imagePath)
         {
             Id = id;
             Title = title;

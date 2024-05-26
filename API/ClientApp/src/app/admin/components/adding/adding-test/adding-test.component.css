@@ -2,6 +2,7 @@
   display: inline-block;
   border: 2px solid green;
   margin: 5px;
+  padding: 25px;
 }
 
 .question-field {
@@ -12,6 +13,7 @@
   display: inline-block;
   border: 1px solid orange;
   margin: 5px;
+  padding: 25px;
 }
 
 .answers-container > li {
@@ -22,25 +24,36 @@
   margin: 5px;
 }
 
-button {
-  display: block;
-  width: 70%;
-  height: fit-content;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  margin-left: 15%;
-  font-size: 18px;
-  font-weight: bold;
-  color: blueviolet;
-  border: solid 2px blueviolet;
-  border-radius: 15px;
-
-  word-wrap: break-word;
-  background-color: orange;
+.adding-container {
+  margin: 15px;
+  text-align: center;
 }
 
-button:hover {
-  scale: 125%;
-  transform: translateX(20px);
+.adding-container * {
+  margin: 5px;
+}
+
+.main-btn {
+  display: inline-block;
+  padding: 15px;
+}
+
+.adding-container .add-answer-btn {
+  display: block;
+  width: 75%;
+  margin-left: 12.5%;
+}
+
+h3 {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #E0AAFF;
+  font-size: xx-large;
+}
+
+ol {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #E0AAFF;
+  font-size: x-large;
 }

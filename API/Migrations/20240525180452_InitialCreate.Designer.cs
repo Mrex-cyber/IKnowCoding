@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(PlatformContext))]
-    [Migration("20240521074409_TestEditing")]
-    partial class TestEditing
+    [Migration("20240525180452_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,6 +115,26 @@ namespace API.Migrations
                             FirstName = "Mr. Admin",
                             LastName = "Secret Administator",
                             Password = "secretKey911#",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "tom@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Tom",
+                            LastName = "Bot",
+                            Password = "55555555",
+                            UserSettingsId = 0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Email = "raf@gmail.com",
+                            FeedbackId = 0,
+                            FirstName = "Rafaella",
+                            LastName = "Diniz",
+                            Password = "rafaela12#",
                             UserSettingsId = 0
                         });
                 });
@@ -230,42 +250,58 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(5049),
-                            ImagePath = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cyberlink.com%2Fblog%2Fphoto-editing-best-software%2F322%2Ffree-photo-editing-app-ios-android&psig=AOvVaw0pa2tBQMFPyU3fgcQ3Zb98&ust=1716362899129000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIizhJ6cnoYDFQAAAAAdAAAAABAE",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(1710),
+                            ImagePath = "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
                             Text = "Досить корисний та захоплюючий сайт",
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(5345),
-                            ImagePath = "https://play.google.com/store/apps/details?id=vsin.t16_funny_photo&hl=ru",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2293),
+                            ImagePath = "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Мені подобається випробовувати свої навички",
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(5346),
-                            ImagePath = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cutout.pro%2Fru%2Fpassport-photo-maker&psig=AOvVaw0pa2tBQMFPyU3fgcQ3Zb98&ust=1716362899129000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIizhJ6cnoYDFQAAAAAdAAAAABAZ",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2294),
+                            ImagePath = "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg",
                             Text = "Хотілося б більше тестів",
                             UserId = 3
                         },
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(5347),
-                            ImagePath = "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fphoto&psig=AOvVaw0pa2tBQMFPyU3fgcQ3Zb98&ust=1716362899129000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIizhJ6cnoYDFQAAAAAdAAAAABAe",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2295),
+                            ImagePath = "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Покращує вміння мислити нестандартно та оцінити свої знання",
                             UserId = 4
                         },
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(5348),
-                            ImagePath = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fru.freepik.com%2Fphotos%2Fmale&psig=AOvVaw0pa2tBQMFPyU3fgcQ3Zb98&ust=1716362899129000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIizhJ6cnoYDFQAAAAAdAAAAABAn",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2296),
+                            ImagePath = "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Подобається дизайн сайту, допомагає зосередитися",
                             UserId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2297),
+                            ImagePath = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            Text = "Можна весело й корисно провести час",
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2298),
+                            ImagePath = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D",
+                            Text = "Гарний дизайн та хороша креативність",
+                            UserId = 7
                         });
                 });
 
@@ -310,16 +346,16 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(4047),
-                            ImagePath = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fuk.wikipedia.org%2Fwiki%2F%25D0%25A3%25D0%25BA%25D1%2580%25D0%25B0%25D1%2597%25D0%25BD%25D1%2581%25D1%258C%25D0%25BA%25D0%25B8%25D0%25B9_%25D1%2584%25D0%25BE%25D0%25BD%25D0%25B4_%25D1%2581%25D1%2582%25D0%25B0%25D1%2580%25D1%2582%25D0%25B0%25D0%25BF%25D1%2596%25D0%25B2&psig=AOvVaw27InKEIEqDSyorw2o1gWld&ust=1716363157758000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPjJoZSdnoYDFQAAAAAdAAAAABAE",
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(9656),
+                            ImagePath = "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg",
                             Source = "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2",
-                            Text = "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів,[8] а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.",
+                            Text = "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.",
                             Title = "Перше місце серед стартапів освітньої сфери"
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(4331),
+                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(384),
                             ImagePath = "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg",
                             Source = "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/",
                             Text = "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.",
@@ -359,114 +395,282 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            IsRight = true,
+                            IsRight = false,
                             QuestionId = 1,
-                            Text = "1"
+                            Text = "print (\"Hello World\");"
                         },
                         new
                         {
                             Id = 2,
-                            IsRight = false,
+                            IsRight = true,
                             QuestionId = 1,
-                            Text = "2"
+                            Text = "Console.WriteLine(\"Hello World\");"
                         },
                         new
                         {
                             Id = 3,
                             IsRight = false,
                             QuestionId = 1,
-                            Text = "3"
+                            Text = "cout << \"Hello World\";"
                         },
                         new
                         {
                             Id = 4,
                             IsRight = false,
                             QuestionId = 1,
-                            Text = "4"
+                            Text = "System.out.println(\"Hello World\");"
                         },
                         new
                         {
                             Id = 5,
-                            IsRight = false,
+                            IsRight = true,
                             QuestionId = 2,
-                            Text = "1"
+                            Text = "False"
                         },
                         new
                         {
                             Id = 6,
-                            IsRight = true,
+                            IsRight = false,
                             QuestionId = 2,
-                            Text = "2"
+                            Text = "True"
                         },
                         new
                         {
                             Id = 7,
                             IsRight = false,
-                            QuestionId = 2,
-                            Text = "3"
+                            QuestionId = 3,
+                            Text = "# This is a comment"
                         },
                         new
                         {
                             Id = 8,
                             IsRight = false,
-                            QuestionId = 2,
-                            Text = "4"
+                            QuestionId = 3,
+                            Text = "/* This is a comment"
                         },
                         new
                         {
                             Id = 9,
-                            IsRight = false,
+                            IsRight = true,
                             QuestionId = 3,
-                            Text = "1"
+                            Text = "// This is a comment"
                         },
                         new
                         {
                             Id = 10,
                             IsRight = false,
-                            QuestionId = 3,
-                            Text = "2"
+                            QuestionId = 4,
+                            Text = "Txt"
                         },
                         new
                         {
                             Id = 11,
-                            IsRight = true,
-                            QuestionId = 3,
-                            Text = "3"
+                            IsRight = false,
+                            QuestionId = 4,
+                            Text = "str"
                         },
                         new
                         {
                             Id = 12,
                             IsRight = false,
-                            QuestionId = 3,
-                            Text = "4"
+                            QuestionId = 4,
+                            Text = "myString"
                         },
                         new
                         {
                             Id = 13,
                             IsRight = true,
                             QuestionId = 4,
-                            Text = "1"
+                            Text = "string"
                         },
                         new
                         {
                             Id = 14,
-                            IsRight = false,
-                            QuestionId = 4,
-                            Text = "2"
+                            IsRight = true,
+                            QuestionId = 5,
+                            Text = "int x = 5;"
                         },
                         new
                         {
                             Id = 15,
-                            IsRight = true,
+                            IsRight = false,
                             QuestionId = 5,
-                            Text = "1"
+                            Text = "num x = 5"
                         },
                         new
                         {
                             Id = 16,
                             IsRight = false,
                             QuestionId = 5,
-                            Text = "2"
+                            Text = "x = 5;"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            IsRight = false,
+                            QuestionId = 3,
+                            Text = "double x = 5;"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            IsRight = true,
+                            QuestionId = 6,
+                            Text = "double x = 2.8D;"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            IsRight = false,
+                            QuestionId = 6,
+                            Text = "byte x = 2.8"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            IsRight = false,
+                            QuestionId = 6,
+                            Text = "int x = 2.8;"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            IsRight = false,
+                            QuestionId = 6,
+                            Text = "int x = 2.8D;"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            IsRight = false,
+                            QuestionId = 7,
+                            Text = "<js>"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            IsRight = true,
+                            QuestionId = 7,
+                            Text = "<script>"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            IsRight = false,
+                            QuestionId = 7,
+                            Text = "<scripting>"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            IsRight = false,
+                            QuestionId = 7,
+                            Text = "<javascript>"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            IsRight = false,
+                            QuestionId = 8,
+                            Text = "The <body> section"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            IsRight = true,
+                            QuestionId = 8,
+                            Text = "Both the <head> section and the <body> section are correct"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            IsRight = false,
+                            QuestionId = 8,
+                            Text = "The <head> section"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            IsRight = true,
+                            QuestionId = 9,
+                            Text = "<script src=\"xxx.js\">"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            IsRight = false,
+                            QuestionId = 9,
+                            Text = "<script href=\"xxx.js\">"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            IsRight = false,
+                            QuestionId = 10,
+                            Text = "<script name=\"xxx.js\">"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            IsRight = false,
+                            QuestionId = 10,
+                            Text = "True"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            IsRight = true,
+                            QuestionId = 10,
+                            Text = "False"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            IsRight = false,
+                            QuestionId = 10,
+                            Text = "alertBox(\"Hello World\");"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            IsRight = false,
+                            QuestionId = 11,
+                            Text = "msgBox(\"Hello World\");"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            IsRight = false,
+                            QuestionId = 11,
+                            Text = "msg(\"Hello World\");"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            IsRight = true,
+                            QuestionId = 11,
+                            Text = "alert(\"Hello World\");"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            IsRight = false,
+                            QuestionId = 11,
+                            Text = "function = myFunction()"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            IsRight = false,
+                            QuestionId = 12,
+                            Text = "function:myFunction()"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            IsRight = true,
+                            QuestionId = 12,
+                            Text = "function myFunction()"
                         });
                 });
 
@@ -499,31 +703,73 @@ namespace API.Migrations
                         {
                             Id = 1,
                             TestId = 1,
-                            Text = "Choose 1"
+                            Text = "What is a correct syntax to output \"Hello World\" in C#?"
                         },
                         new
                         {
                             Id = 2,
                             TestId = 1,
-                            Text = "Choose 2"
+                            Text = "C# is an alias of C++"
                         },
                         new
                         {
                             Id = 3,
                             TestId = 1,
-                            Text = "Choose 3"
+                            Text = "How do you insert COMMENTS in C# code?"
                         },
                         new
                         {
                             Id = 4,
-                            TestId = 2,
-                            Text = "Choose 1"
+                            TestId = 1,
+                            Text = "Which data type is used to create a variable that should store text?"
                         },
                         new
                         {
                             Id = 5,
+                            TestId = 1,
+                            Text = "How do you create a variable with the numeric value 5?"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            TestId = 1,
+                            Text = "How do you create a variable with the floating number 2.8?"
+                        },
+                        new
+                        {
+                            Id = 7,
                             TestId = 3,
-                            Text = "Choose 1"
+                            Text = "Inside which HTML element do we put the JavaScript?"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            TestId = 3,
+                            Text = "Where is the correct place to insert a JavaScript?"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            TestId = 3,
+                            Text = "What is the correct syntax for referring to an external script called \"xxx.js\"?"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            TestId = 3,
+                            Text = "The external JavaScript file must contain the <script> tag."
+                        },
+                        new
+                        {
+                            Id = 11,
+                            TestId = 3,
+                            Text = "How do you write \"Hello World\" in an alert box?"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            TestId = 3,
+                            Text = "How do you create a function in JavaScript?"
                         });
                 });
 
@@ -572,9 +818,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            AccessTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(2541),
+                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7182),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(2788),
+                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7420),
                             Result = 4,
                             TestId = 1,
                             UserId = 1
@@ -582,9 +828,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            AccessTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(3207),
+                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8268),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(3208),
+                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8270),
                             Result = 4,
                             TestId = 2,
                             UserId = 1
@@ -592,9 +838,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-                            AccessTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(3209),
+                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 21, 7, 44, 8, 149, DateTimeKind.Utc).AddTicks(3210),
+                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272),
                             Result = 0,
                             TestId = 3,
                             UserId = 2
@@ -638,7 +884,7 @@ namespace API.Migrations
                         {
                             Id = 1,
                             Description = "C# is a general purpose object-oriented programming language.",
-                            ImagePath = "https://www.google.com/search?q=C%23&sca_esv=43eb03caa67a0f6e&sca_upv=1&sxsrf=ADLYWIJoqKcw6OTVqHou97WgFSpkqmEQbQ:1716277232890&udm=2&source=iu&ictx=1&vet=1&fir=gZQbcdnsHuxc5M%252CSV5viJQ8DtG9OM%252C_%253BqXUkZmd5lFt_MM%252CiNAPn4lC_T_yMM%252C_%253B2Kmaj5PqBmHWrM%252CBeiW2K2u2fvmZM%252C_%253B8-pBrif-5rpyAM%252CF0mAR88WWVgAQM%252C_%253BdXdOQnz9uXv_sM%252C1KVWf25OylUnwM%252C_%253BDxVJxWX96jfIGM%252C-wqahLbR1n0AIM%252C_&usg=AI4_-kSyhjQIexqGmsu1u6BIHBCenLziQw&sa=X&ved=2ahUKEwj_srX2np6GAxVPBdsEHS2NC9gQ_h16BAhNEAE#vhid=qXUkZmd5lFt_MM&vssid=mosaic",
+                            ImagePath = "https://miro.medium.com/v2/resize:fit:1400/1*_NVBTVdmjt3Qvq3CZOySXg.png",
                             IsFree = true,
                             Title = "C# Start"
                         },
@@ -646,7 +892,7 @@ namespace API.Migrations
                         {
                             Id = 2,
                             Description = "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.",
-                            ImagePath = "https://www.google.com/search?q=Java&sca_esv=43eb03caa67a0f6e&sca_upv=1&sxsrf=ADLYWIJ1D9HtUKd6VM5DlelJL4pbRdMvZw:1716277244217&udm=2&source=iu&ictx=1&vet=1&fir=NN61QH37-CcFQM%252CEOIUePLXw300MM%252C_%253BtKNLYSWQnxFEQM%252CIW2FF-kZzRCBcM%252C_%253BvNrB6Xgsh-qD9M%252CgZKYe3cfhIvrfM%252C_%253BysxriJRfDlA6SM%252CfaXP3aHwxEvWwM%252C_%253BNnht0gHh8NGrmM%252CToB8tIqOU4fqPM%252C_%253BopnzypUWs4p2zM%252CmVrDzJavYcWs_M%252C_%253B-AJlmno_2oQ8IM%252CFNngVTtazmcAsM%252C_&usg=AI4_-kTrpKG14iLrKJqIeKF6fVhJYKdbzw&sa=X&ved=2ahUKEwjo0-j7np6GAxW2R_EDHf1TD9kQ_h16BAhWEAE#vhid=tKNLYSWQnxFEQM&vssid=mosaic",
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png",
                             IsFree = true,
                             Title = "Java Start"
                         },
@@ -654,7 +900,7 @@ namespace API.Migrations
                         {
                             Id = 3,
                             Description = "JavaScript is a multi-paradigm programming language.",
-                            ImagePath = "https://www.google.com/search?q=JavaScript&sca_esv=43eb03caa67a0f6e&sca_upv=1&sxsrf=ADLYWIJKvliyznF3RYkw0aaMd8frI51ynw:1716277256928&udm=2&source=iu&ictx=1&vet=1&fir=xJB_tNCymTHzpM%252CCkXirMXvIZwNmM%252C%252Fm%252F02p97%253BYQWDxJeX1LWg4M%252CW5aoOx-wZUSIWM%252C_%253BvcCHgmp2Y4AytM%252CMuUh9a0ML8qQ1M%252C_%253BeTe3Io_lGgha-M%252CJHG7BGUwqN5TmM%252C_%253B7oCMorh4dEqvEM%252CXcBvAFxUP5RQAM%252C_&usg=AI4_-kTPLmX_5Q_jXNvu9UxccqO4zRNY-A&sa=X&ved=2ahUKEwjBtfCBn56GAxX4X_EDHduRAjAQ_B16BAhREAE#vhid=xJB_tNCymTHzpM&vssid=mosaic",
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
                             IsFree = true,
                             Title = "JavaScript Start"
                         },
@@ -662,7 +908,7 @@ namespace API.Migrations
                         {
                             Id = 4,
                             Description = "C++ is a compiled, statically typed general-purpose programming language.",
-                            ImagePath = "https://www.google.com/search?q=C%2B%2B&sca_esv=43eb03caa67a0f6e&sca_upv=1&sxsrf=ADLYWIJ3Qx43xPY84d0vEBIgWFToM0BDrw:1716277269526&udm=2&source=iu&ictx=1&vet=1&fir=SQ2M_m2NkVA4LM%252CbnoQF5njVnaw-M%252C%252Fm%252F0jgqg%253B18ihDXkeP5MxSM%252CvC7WIwlIoTbDcM%252C_%253BVLRUwrRK2sNv_M%252Ch2hbD-7nOjcJtM%252C_%253BBTwg5lwPuILAVM%252ChZZqlswFnAK-BM%252C_%253BCpytDU_hs09aPM%252CkIuVc11MwmCb1M%252C_%253BU6aIxu2O7h3Z8M%252CLW6HjFI5driPYM%252C_&usg=AI4_-kS1pt1q7E3h7JTp6WAENC7-vNR6Eg&sa=X&ved=2ahUKEwiQtPGHn56GAxXaBdsEHQe4AJIQ_B16BAhREAE#vhid=SQ2M_m2NkVA4LM&vssid=mosaic",
+                            ImagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png",
                             IsFree = false,
                             Title = "C++ Start"
                         });

@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { FormArray, FormsModule, ReactiveFormsModule, FormGroupName } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,7 +23,6 @@ import { TestsContainerComponent } from './tests/containers/tests-container/test
 import { TestCardComponent } from './tests/containers/test-card/test-card.component';
 import { BlogsContainerComponent } from './blogs/containers/blogs-container/blogs-container.component';
 import { LocalizationComponent } from './main/localization/localization.component';
-import { BeginnerContainerComponent } from './beginners/containers/beginner-container/beginner-container.component';
 import { MainPageModule } from './main/containers/main-page/main-page.module';
 import { MainRoutesComponent } from './navigation/components/main-routes/main-routes.component';
 import { DotnetCertificationComponent } from './blogs/components/dotnet-certification/dotnet-certification.component';
@@ -41,7 +41,6 @@ import { CommonModule } from '@angular/common';
     TestCardComponent,
     BlogsContainerComponent,
     LocalizationComponent,
-    BeginnerContainerComponent,
     MainRoutesComponent,
     BlogsContainerComponent,
     DotnetCertificationComponent,
@@ -65,6 +64,8 @@ import { CommonModule } from '@angular/common';
     MatBadgeModule,
     FormsModule,
     MatIconModule,
+    MatRadioModule,
+    
     FormsModule,
     ReactiveFormsModule,
 

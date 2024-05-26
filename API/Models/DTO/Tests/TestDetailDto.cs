@@ -13,7 +13,7 @@ namespace IKnowCoding.API.Models.DTO.Tests
         public string Description { get; set; }
 
         [JsonProperty(PropertyName = "questions")]
-        public QuestionDto[] Questions { get; set; }
+        public QuestionResponseDto[] Questions { get; set; }
 
         public TestDetailDto() { }
         public TestDetailDto(int id, string title, string description)

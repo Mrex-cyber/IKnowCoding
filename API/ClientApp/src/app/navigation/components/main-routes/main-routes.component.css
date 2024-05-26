@@ -14,7 +14,8 @@
   height: 100%;
   transform: translateX(-100%);
   transition: transform 100ms ease;
-  background-color: orange;
+  background-color: #E0AAFF;
+  opacity: 75%;
   border-radius: 0px 15px 15px 0px;
   z-index: 2;
 }
@@ -31,13 +32,16 @@
   display: block;
   font-size: 24px;
   font-weight: bold;
-  color: blueviolet;
-  border: solid 2px blueviolet;
+  color: #10002B;
+  border: solid 4px #10002B;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 400;
+  opacity: 100%;
   border-radius: 15px;
   margin-top: 15px;
   padding: 0auto;
   word-wrap: break-word;
-  background-color: orange;
+  background-color: #E0AAFF;
 }
 
 .main-navigation > button:hover {

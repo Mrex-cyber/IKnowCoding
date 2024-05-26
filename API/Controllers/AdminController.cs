@@ -1,8 +1,12 @@
-﻿using AutoMapper;
+﻿using API.Models.DTO.Answers;
+using AutoMapper;
 using EnglishTesterServer.DAL.UnitsOfWork;
+using IKnowCoding.API.Models.DTO.Tests;
 using IKnowCoding.DAL.Models.Entities;
 using IKnowCoding.DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace IKnowCoding.Controllers
 {
@@ -39,6 +43,7 @@ namespace IKnowCoding.Controllers
         ///         answers: [
         ///             {
         ///                 text: string
+        ///                 isRight: false
         ///             }
         ///         ]
         ///     }
@@ -47,9 +52,11 @@ namespace IKnowCoding.Controllers
         /// <response code="200" link="">Added test</response>
         /// <response code="204">If the test not found</response>
         [HttpPost("/api/tests/new")]
-        public bool OnPostNewTest([FromBody]TestEntity newTest)
+        public bool OnPostNewTest([FromBody] TestRequestDto newTest)
         {
-            return _unitOfWork.TestRepository.AddEntity(newTest);
+            TestEntity testEntity = _mapper.Map<TestEntity>(newTest);
+
+            return _unitOfWork.TestRepository.AddEntity(testEntity);
         }
     }
 }
