@@ -1,12 +1,12 @@
 <div class="adding-container">
   <form [formGroup]="newTest">
     <mat-form-field>
-      <mat-label>Title</mat-label>
+      <mat-label i18n>Title</mat-label>
       <input matInput type="text" formControlName="title"/>
       <mat-error *ngIf="newTest.controls['title'].errors">{{newTest.controls['title'].errors['text']}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Description</mat-label>
+      <mat-label i18n>Description</mat-label>
       <input matInput type="text" formControlName="description"/>
       <mat-error *ngIf="newTest.controls['description'].errors">{{newTest.controls['description'].errors['text']}}</mat-error>
     </mat-form-field>
@@ -14,7 +14,7 @@
     <ng-container>
       <ol formArrayName="questions">
         <li class="questions-card" *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
-          <h3>Question {{i + 1}}</h3>
+          <h3 i18n>Question {{i + 1}}</h3>
           <mat-form-field class="question-field">
             <mat-label>Text</mat-label>
             <input matInput type="text" formControlName="text"/>
@@ -22,21 +22,21 @@
           </mat-form-field>
           <br>
 
-          <ol class="answers-container" formArrayName="answers">
+          <ol class="answers-container" formArrayName="answers" i18n>
             Answers
             <li *ngFor="let answer of getAnswers(i).controls; let j = index" [formGroupName]="j">
               <mat-form-field class="answer-field">
                 <input matInput type="text" formControlName="text">
                 <mat-error *ngIf="getAnswers(i).controls[j].errors">{{getAnswers(i).controls[j].errors?.['text']}}</mat-error>
+                <input type="checkbox" formControlName="isRight">
               </mat-form-field>
             </li><br>
           </ol>
-
-          <button (click)="addAnswer(i)">Add answer to question {{i + 1}}</button>
+          <button class="main-btn add-answer-btn" (click)="addAnswer(i)" i18n>Add answer to question {{i + 1}}</button>
         </li>
       </ol>
-      <button (click)="addQuestion()">Add question</button>
+      <button class="main-btn" (click)="addQuestion()" i18n>Add question</button>
     </ng-container>
-    <button type="button" (click)="onSubmitTest()">Submit</button>
+    <button class="main-btn" type="button" (click)="onSubmitTest()" i18n>Submit</button>
   </form>
 </div>

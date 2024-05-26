@@ -1,9 +1,11 @@
 <div class="feedback-container" matBadgeColor="primary" matBadgeSize="large">
-  <button class="btn-left scroll-button left"  (click)="scrollLeft"><-</button>
-    <h2>Feedbacks</h2>
-    <button class="btn-right scroll-button right" (click)="scrollRight">-></button>  
+  
+  <img class="btn-left scroll-button" src="../../../../assets/photos/1.png" alt="left button" (click)="scrollLeft()">
+  <h2 class="main-feedbacks" i18n>Feedbacks</h2>
+  <img class="btn-right scroll-button" src="../../../../assets/photos/419-4196902_right-and-left-arrows-square-button-comments-arrow.png" alt="right button" (click)="scrollRight()">
+
   <div id="carousel-container">    
-    <div id="carousel">
+    <div id="carousel" #carousel>
       <div *ngFor="let feedback of feedbacks" class="feedback-card carousel-item">
         <div [ngStyle]="{
           'background-image': 'url(' + feedback.imagePath + ')'}" class="img-container" ></div>

@@ -49,7 +49,8 @@ export class AddingTestFormService {
 
     answersFormArray.push(
       new FormGroup({
-        text: new FormControl('', [Validators.required, this.angValidator])
+        text: new FormControl('', [Validators.required, this.angValidator]),
+        isRight: new FormControl(false, [Validators.required, this.angValidator])
       })
     )
   }
@@ -63,7 +64,8 @@ export class AddingTestFormService {
           text: new FormControl('', [Validators.required, this.angValidator]),
           answers: new FormArray<FormGroup>([
             new FormGroup({
-              text: new FormControl('', [Validators.required, this.angValidator])
+              text: new FormControl('', [Validators.required, this.angValidator]),
+              isRight: new FormControl(false)
             })
           ])
         })

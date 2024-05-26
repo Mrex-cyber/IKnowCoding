@@ -14,11 +14,9 @@
   <nav [ngClass]="{
     'main-navigation': true,
     'main-navigation-open': menuIsOpen }">
-    <button mat-button routerLink="/main">Home</button>
-    <button mat-button routerLink="/tests">Tests</button>
-    <button mat-button routerLink="/beginners">For Beginners</button>
-    <button mat-button routerLink="/blogs">Blogs</button>
-    <button mat-button routerLink="/admin">Admin</button>
+    <button mat-button routerLink="/main" i18n>Home</button>
+    <button mat-button routerLink="/tests" i18n>Tests</button>
+    <button mat-button routerLink="/admin" i18n>Admin</button>
   </nav>
 
   <router-outlet></router-outlet>

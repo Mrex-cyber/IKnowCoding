@@ -1,4 +1,5 @@
-﻿using API.Models.DTO.User;
+﻿using API.Models.DTO.Answers;
+using API.Models.DTO.User;
 using AutoMapper;
 using DAL.Models.Entities.User;
 using IKnowCoding.API.Models;
@@ -16,16 +17,35 @@ namespace API.Application.Helpers
     {
         public AutomapperProfile()
         {
-            CreateMap<TestEntity, TestDto>()
+            CreateMap<TestEntity, TestResponseDto>()
                 .ForMember(e => e.Result, x => x.MapFrom(x => x.TestResultEntities.FirstOrDefault(r => r.TestId == x.Id).Result))
                 .ReverseMap();
 
-            CreateMap<QuestionEntity, QuestionDto>()
+            CreateMap<TestRequestDto, TestEntity>()
+                .ReverseMap();
+
+            CreateMap<TestRequestDto, TestResponseDto>();
+
+
+            CreateMap<QuestionEntity, QuestionRequestDto>()
                 .ForMember(e => e.Answers, x => x.MapFrom(x => x.Answers))
                 .ReverseMap();
 
-            CreateMap<AnswerVariantEntity, AnswerVariantDto>()
+            CreateMap<QuestionEntity, QuestionResponseDto>()
+                .ForMember(e => e.Answers, x => x.MapFrom(x => x.Answers))
                 .ReverseMap();
+
+            CreateMap<QuestionResponseDto, QuestionRequestDto>();
+
+
+            CreateMap<AnswerVariantEntity, AnswerVariantRequestDto>()
+               .ReverseMap();
+
+            CreateMap<AnswerVariantEntity, AnswerVariantResponseDto>()
+                .ReverseMap();
+
+            CreateMap<AnswerVariantRequestDto, AnswerVariantResponseDto>();
+
 
             CreateMap<AchievementEntity, AchievementDto>()
                 .ReverseMap();
@@ -34,6 +54,7 @@ namespace API.Application.Helpers
                 .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + " " + x.User.LastName))
                 .ForMember(e => e.Date, x => x.MapFrom(x => x.Date))
                 .ReverseMap();
+
 
             CreateMap<UserSettingsEntity, UserSettingsDto>()
                 .ForMember(e => e.Email, x => x.MapFrom(x => x.User.Email))

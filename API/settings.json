@@ -1,3 +1,5 @@
 {
-  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=IKnowCodingDB;Trusted_Connection=True;"
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=IKnowCodingDB;Trusted_Connection=True;",
+  "AccessTokenLifeTime": 4310000,
+  "RefreshTokenLifeTime": 259200000
 }

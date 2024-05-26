@@ -21,18 +21,8 @@
   grid-column: 2;
   width: auto;
   height: 100%;
+  color: #E0AAFF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#test-btn {
-  grid-row: 2;
-  grid-column: 2;
-  margin: 0px 10px 2px 10px;
-  background-color: orange;
-  border-radius: 5px;
-}
 
-#test-btn:hover {
-  background-color: greenyellow;
-  scale: 1.05;
-  transition: all 500ms;
-}

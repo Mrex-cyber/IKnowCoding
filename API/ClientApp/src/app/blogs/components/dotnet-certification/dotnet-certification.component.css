@@ -7,9 +7,11 @@
 
 a {
   font-size: large;
-  color: black;
+  color: #f4e2ff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: solid;
-  border-radius: 15px;
-  border: dotted 2px deepskyblue;
+  border-radius: 12px;
+  border: dotted 2px rgb(43, 114, 138);
   padding: 5px 10px;
 }
+

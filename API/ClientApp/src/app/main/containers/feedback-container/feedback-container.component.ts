@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IFeedback } from 'src/app/tests/models/IFeedback';
 import { MainPageLoaderService } from '../../resources/main-page-loader.service';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./feedback-container.component.css']
 })
 export class FeedbackContainerComponent implements OnInit, OnDestroy {
+  @ViewChild('carousel', { static: true }) carousel!: ElementRef;
+
   public feedbacks: IFeedback[] = [];
 
   private feedbacksSubscription!: Subscription;
@@ -28,17 +30,15 @@ export class FeedbackContainerComponent implements OnInit, OnDestroy {
   }
 
   public scrollLeft() {
-    const carousel = document.getElementById('carousel-container')!;
-    carousel.scrollBy({
-      left: 0,
+    this.carousel.nativeElement.scrollBy({
+      left: -150,
       behavior: 'smooth'
     });
   }
-  
+
   public scrollRight() {
-    const carousel = document.getElementById('carousel-container')!;
-    carousel.scrollBy({
-      left: 1000,
+    this.carousel.nativeElement.scrollBy({
+      left: 150,
       behavior: 'smooth'
     });
   }

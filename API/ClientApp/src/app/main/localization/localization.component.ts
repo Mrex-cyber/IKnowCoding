@@ -10,7 +10,7 @@ export class LocalizationComponent {
   public languages = [
     { code: 'en-US', label: 'English' },
     { code: 'ua', label: 'Українська' },
-    { code: 'ru', label: 'Русский' }
+    { code: 'pl', label: 'Polski' }
   ]
 
   constructor(private router: Router) { }

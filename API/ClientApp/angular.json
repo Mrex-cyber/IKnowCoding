@@ -13,13 +13,13 @@
         "sourceLocale": "en-US",
         "locales": {
           "en": {
-            "translation": "src/locale/translation.xlf"
+            "translation": "src/locale/messages.xlf"
           },
           "ru": {
-            "translation": "src/locale/translation.pl.xlf"
+            "translation": "src/locale/messages.pl.xlf"
           },
           "ua": {
-            "translation": "src/locale/translation.ua.xlf"
+            "translation": "src/locale/messages.ua.xlf"
           }
         }
       },
@@ -88,7 +88,7 @@
             "ua": {
               "browserTarget": "english-tester-spa:build:production,ua"
             },
-            "ru": {
+            "pl": {
               "browserTarget": "english-tester-spa:build:production,pl"
             },
             "en": {
