@@ -83,7 +83,9 @@ export class UserAuthComponent implements OnInit{
   }
 
   public logOut(){
-    this.authorized = false;
-    this.authService.logOut();
+    if (this.authorized){
+      this.authorized = false;
+      this.authService.logOut();
+    }    
   }
 }

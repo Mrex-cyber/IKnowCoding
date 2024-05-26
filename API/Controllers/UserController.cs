@@ -76,14 +76,14 @@ namespace IKnowCoding.Controllers
 
             if (userSettingsEntity.AccessTokenExpireTime is null || userSettingsEntity.AccessTokenExpireTime < DateTime.UtcNow)
             {
-                userSettingsEntity.AccessToken = AuthTokenModel.MakeToken(credentials.email);
-                userSettingsEntity.AccessTokenExpireTime = DateTime.UtcNow;
+                userSettingsEntity.AccessToken = AuthTokenModel.MakeAccessToken(credentials.email);
+                userSettingsEntity.AccessTokenExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(0.5));
             }
 
             if (userSettingsEntity.RefreshTokenExpireTime is null || userSettingsEntity.RefreshTokenExpireTime < DateTime.UtcNow)
             {
-                userSettingsEntity.RefreshToken = AuthTokenModel.MakeToken(credentials.email);
-                userSettingsEntity.RefreshTokenExpireTime = DateTime.UtcNow;
+                userSettingsEntity.RefreshToken = AuthTokenModel.MakeRefreshToken(credentials.email);
+                userSettingsEntity.RefreshTokenExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(3));
             }
 
             await _unitOfWork.UserRepository.UpdateUserSettings(userSettingsEntity);

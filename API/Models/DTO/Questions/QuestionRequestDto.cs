@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace IKnowCoding.API.Models.DTO.Questions
 {
-    public class QuestionDto : BaseDto
+    public class QuestionResponseDto : BaseDto
     {
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
 
         [JsonProperty(PropertyName = "answers")]
-        public AnswerVariantDto[] Answers { get; set; }
+        public AnswerVariantResponseDto[] Answers { get; set; }
 
-        public QuestionDto() { }
-        public QuestionDto(int id, string text)
+        public QuestionResponseDto() { }
+        public QuestionResponseDto(int id, string text)
         {
             Id = id;
             Text = text;

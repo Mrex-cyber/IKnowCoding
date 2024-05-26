@@ -6,8 +6,13 @@ h2 {
   width: 100%;
 }
 
+.main-feedbacks {
+  color: #E0AAFF;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 400;
+}
+
 .img-container {
-  border: solid 2px gray;
   background-position: center;
   height: 50%;
   background-position: center;
@@ -21,40 +26,13 @@ h2 {
   height: auto;
   text-align: center;
   grid-template-columns: 1fr 8fr 1fr;
-}
-
-.btn-left {
-  grid-column: 1;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 32px;
-  background-color: orange;
-  padding: 15px;
-  border-radius: 100%;
-}
-
-.btn-left:hover {
-  background-color: purple;
-}
-
-.btn-right {
-  grid-column: 3;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 32px;
-  background-color: orange;
-  padding: 15px;
-  border-radius: 100%;
-}
-
-.btn-right:hover {
-  background-color: purple;
+  position: relative;
 }
 
 .feedback-card {
   display: inline-block;
   width: 20%;
-  height: 300px;
+  height: 400px;
   margin: 15px 2.5%;
   border: solid 3px orange;
 }
@@ -66,12 +44,13 @@ h2 {
   width: 80%;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 50px;
 }
 
 #carousel {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  overflow: hidden;
   width: 100%;
   padding: 10px 0;
 }
@@ -86,22 +65,22 @@ h2 {
   border-radius: 10px;
 }
 
-.scroll-button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+img {
+  background-color: rgb(251, 251, 251);
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  border: 1px solid rgb(251, 251, 251);
+}
+
+.btn-left {
+  left: 50px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
 }
 
-.scroll-button.left {
-  left: 0;
-}
-
-.scroll-button.right {
-  right: 0;
+.btn-right {
+  position: absolute;
+  right: 50px;
+  top: 50%;
 }

@@ -5,7 +5,7 @@ import { UserAuthResourceService } from 'src/app/user-auth/resources/user-auth.s
 import { IUserSettings } from 'src/app/user-auth/models/IUserSettings';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PassingTestComponent } from '../../components/passing-test/passing-test.component';
-import { Subject, filter, interval, startWith, switchMap, takeUntil } from 'rxjs';
+import { Subject, catchError, delay, filter, interval, of, retryWhen, startWith, switchMap, takeUntil, tap } from 'rxjs';
 import { IQuestion } from '../../models/IQuestion';
 import { MatButtonModule } from '@angular/material/button';
 import { PassTestService } from '../../services/pass-test.service';
@@ -55,19 +55,36 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
   public getTestsPolling(): void {
     interval(5000)
       .pipe(
+        startWith(0),
         switchMap(() => {
           if (this.authOptions.access_token == ''){
-            return this.testsService.getTests();
+            return this.testsService.getTests().pipe(
+              catchError(err => {
+                console.error('Error fetching tests:', err);
+                return of([]);
+              })
+            );
           }
           else {
-            return this.testsService.getUserTests(this.authOptions);
+            return this.testsService.getUserTests(this.authOptions).pipe(
+              catchError(err => {
+                console.error('Error fetching user tests:', err);
+                return of([]);
+              })
+            );
           };
         }),
         startWith([]),
         filter(tests => tests.length > 0),
-        takeUntil(this.ngUnsubscribe)
+        takeUntil(this.ngUnsubscribe),
+        retryWhen(errors => errors.pipe(
+          tap(error => console.error("Retrying after error: ", error)),
+          delay(5000)
+        ))
       )
-      .subscribe(tests => this.tests = tests);
+      .subscribe(tests => this.tests = tests,
+        error => console.error('Unexpected error:', error)
+      );
   };
 
   public onChangeAuthOptions(){

@@ -1,3 +1,3 @@
 <select (change)="changeLanguage($event)" class="mat-selector" [selectedIndex]="1">
-  <option *ngFor="let language of languages" [value]="language.code" >{{language.code.toUpperCase()}}</option>
+  <option *ngFor="let language of languages" [value]="language.code" >{{language.label.toUpperCase()}}</option>
 </select>

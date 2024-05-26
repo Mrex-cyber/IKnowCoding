@@ -53,7 +53,7 @@ namespace IKnowCoding.Controllers
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
 
             return Results.Text(json, "text/plain");
         }
@@ -82,7 +82,7 @@ namespace IKnowCoding.Controllers
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestDto[]>(userTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(userTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
             return Results.Text(json, "text/plain");
         }
