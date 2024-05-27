@@ -9,10 +9,13 @@ using AutoMapper;
 using IKnowCoding.DAL.UnitsOfWork;
 using IKnowCoding.API.Models.DTO.Tests;
 using IKnowCoding.DAL.Models.Entities.Relationships;
+using API.Filters;
+using IKnowCoding.Filters;
 
 namespace IKnowCoding.Controllers
 {
     [Authorize]
+    [ValidateModel]
     public class TestController : Controller
     {
         private UnitOfWorkPlatform _unitOfWork;
