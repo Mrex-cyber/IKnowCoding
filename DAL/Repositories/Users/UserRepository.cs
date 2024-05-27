@@ -105,6 +105,7 @@ namespace IKnowCoding.DAL.Repositories.Users
 
         public async Task UpdateUserSettings(UserSettingsEntity userSettings)
         {
+            _context.Attach(userSettings);
             _context.Update(userSettings);
         }
     }

@@ -40,7 +40,7 @@ export class PassingTestComponent implements OnInit {
   }
 
   public submitForm(){
-    this.dialogRef.close(this.selectedValues);
+    this.dialogRef.close(this.selectedValues.filter(v => v !== null && v !== undefined));
   }
 
   public ngNoClick(): void {

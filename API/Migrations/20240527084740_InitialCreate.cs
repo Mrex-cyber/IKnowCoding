@@ -184,8 +184,8 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "source", "text", "title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(9656), "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "Перше місце серед стартапів освітньої сфери" },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(384), "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg", "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/", "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.", "Найбільша кількість донатів на ЗСУ" }
+                    { 1, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(1395), "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "Перше місце серед стартапів освітньої сфери" },
+                    { 2, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(1675), "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg", "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/", "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.", "Найбільша кількість донатів на ЗСУ" }
                 });
 
             migrationBuilder.InsertData(
@@ -194,8 +194,8 @@ namespace API.Migrations
                 values: new object[,]
                 {
                     { 1, "C# is a general purpose object-oriented programming language.", "https://miro.medium.com/v2/resize:fit:1400/1*_NVBTVdmjt3Qvq3CZOySXg.png", true, "C# Start" },
-                    { 2, "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png", true, "Java Start" },
-                    { 3, "JavaScript is a multi-paradigm programming language.", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png", true, "JavaScript Start" },
+                    { 2, "JavaScript is a multi-paradigm programming language.", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png", true, "JavaScript Start" },
+                    { 3, "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png", true, "Java Start" },
                     { 4, "C++ is a compiled, statically typed general-purpose programming language.", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png", false, "C++ Start" }
                 });
 
@@ -218,13 +218,13 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "text", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(1710), "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg", "Досить корисний та захоплюючий сайт", 1 },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2293), "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Мені подобається випробовувати свої навички", 2 },
-                    { 3, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2294), "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg", "Хотілося б більше тестів", 3 },
-                    { 4, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2295), "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Покращує вміння мислити нестандартно та оцінити свої знання", 4 },
-                    { 5, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2296), "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Подобається дизайн сайту, допомагає зосередитися", 5 },
-                    { 6, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2297), "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Можна весело й корисно провести час", 6 },
-                    { 7, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2298), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D", "Гарний дизайн та хороша креативність", 7 }
+                    { 1, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2322), "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg", "Досить корисний та захоплюючий сайт", 1 },
+                    { 2, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2589), "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Мені подобається випробовувати свої навички", 2 },
+                    { 3, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2590), "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg", "Хотілося б більше тестів", 3 },
+                    { 4, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2590), "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Покращує вміння мислити нестандартно та оцінити свої знання", 4 },
+                    { 5, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2591), "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Подобається дизайн сайту, допомагає зосередитися", 5 },
+                    { 6, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2591), "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Можна весело й корисно провести час", 6 },
+                    { 7, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2592), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D", "Гарний дизайн та хороша креативність", 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -238,12 +238,12 @@ namespace API.Migrations
                     { 4, 1, "Which data type is used to create a variable that should store text?" },
                     { 5, 1, "How do you create a variable with the numeric value 5?" },
                     { 6, 1, "How do you create a variable with the floating number 2.8?" },
-                    { 7, 3, "Inside which HTML element do we put the JavaScript?" },
-                    { 8, 3, "Where is the correct place to insert a JavaScript?" },
-                    { 9, 3, "What is the correct syntax for referring to an external script called \"xxx.js\"?" },
-                    { 10, 3, "The external JavaScript file must contain the <script> tag." },
-                    { 11, 3, "How do you write \"Hello World\" in an alert box?" },
-                    { 12, 3, "How do you create a function in JavaScript?" }
+                    { 7, 2, "Inside which HTML element do we put the JavaScript?" },
+                    { 8, 2, "Where is the correct place to insert a JavaScript?" },
+                    { 9, 2, "What is the correct syntax for referring to an external script called \"xxx.js\"?" },
+                    { 10, 2, "The external JavaScript file must contain the <script> tag." },
+                    { 11, 2, "How do you write \"Hello World\" in an alert box?" },
+                    { 12, 2, "How do you create a function in JavaScript?" }
                 });
 
             migrationBuilder.InsertData(
@@ -263,9 +263,9 @@ namespace API.Migrations
                 columns: new[] { "id", "access_time", "finished", "finished_time", "result", "test_id", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7182), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7420), 4, 1, 1 },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8268), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8270), 4, 2, 1 },
-                    { 3, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272), 0, 3, 2 }
+                    { 1, new DateTime(2024, 5, 27, 8, 47, 40, 306, DateTimeKind.Utc).AddTicks(9899), false, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(59), 6, 1, 1 },
+                    { 2, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(478), false, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(479), 4, 2, 1 },
+                    { 3, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(480), false, new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(480), 1, 1, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -303,14 +303,14 @@ namespace API.Migrations
                     { 28, false, 8, "The <head> section" },
                     { 29, true, 9, "<script src=\"xxx.js\">" },
                     { 30, false, 9, "<script href=\"xxx.js\">" },
-                    { 31, false, 10, "<script name=\"xxx.js\">" },
+                    { 31, false, 9, "<script name=\"xxx.js\">" },
                     { 32, false, 10, "True" },
                     { 33, true, 10, "False" },
-                    { 34, false, 10, "alertBox(\"Hello World\");" },
+                    { 34, false, 11, "alertBox(\"Hello World\");" },
                     { 35, false, 11, "msgBox(\"Hello World\");" },
                     { 36, false, 11, "msg(\"Hello World\");" },
                     { 37, true, 11, "alert(\"Hello World\");" },
-                    { 38, false, 11, "function = myFunction()" },
+                    { 38, false, 12, "function = myFunction()" },
                     { 39, false, 12, "function:myFunction()" },
                     { 40, true, 12, "function myFunction()" }
                 });

@@ -29,8 +29,8 @@ namespace DAL.Providers
 
         public static IEnumerable<TestEntity> Tests = new TestEntity[] {
             new TestEntity(1, "C# Start", "C# is a general purpose object-oriented programming language.", true, "https://miro.medium.com/v2/resize:fit:1400/1*_NVBTVdmjt3Qvq3CZOySXg.png"),
-            new TestEntity(2, "Java Start", "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", true, "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png"),
-            new TestEntity(3, "JavaScript Start", "JavaScript is a multi-paradigm programming language.", true, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"),
+            new TestEntity(3, "Java Start", "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", true, "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png"),
+            new TestEntity(2, "JavaScript Start", "JavaScript is a multi-paradigm programming language.", true, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"),
             new TestEntity(4, "C++ Start", "C++ is a compiled, statically typed general-purpose programming language.", false, "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"),
         };
 
@@ -42,12 +42,12 @@ namespace DAL.Providers
             new QuestionEntity(5, 1, "How do you create a variable with the numeric value 5?"),
             new QuestionEntity(6, 1, "How do you create a variable with the floating number 2.8?"),
 
-            new QuestionEntity(7, 3, "Inside which HTML element do we put the JavaScript?"),
-            new QuestionEntity(8, 3, "Where is the correct place to insert a JavaScript?"),
-            new QuestionEntity(9, 3, "What is the correct syntax for referring to an external script called \"xxx.js\"?"),
-            new QuestionEntity(10, 3, "The external JavaScript file must contain the <script> tag."),
-            new QuestionEntity(11, 3, "How do you write \"Hello World\" in an alert box?"),
-            new QuestionEntity(12, 3, "How do you create a function in JavaScript?"),
+            new QuestionEntity(7, 2, "Inside which HTML element do we put the JavaScript?"),
+            new QuestionEntity(8, 2, "Where is the correct place to insert a JavaScript?"),
+            new QuestionEntity(9, 2, "What is the correct syntax for referring to an external script called \"xxx.js\"?"),
+            new QuestionEntity(10, 2, "The external JavaScript file must contain the <script> tag."),
+            new QuestionEntity(11, 2, "How do you write \"Hello World\" in an alert box?"),
+            new QuestionEntity(12, 2, "How do you create a function in JavaScript?"),
         };
 
         public static IEnumerable<AnswerVariantEntity> Answers = new AnswerVariantEntity[] {
@@ -89,25 +89,25 @@ namespace DAL.Providers
 
             new AnswerVariantEntity(29, 9, "<script src=\"xxx.js\">", true),
             new AnswerVariantEntity(30, 9, "<script href=\"xxx.js\">", false),
-            new AnswerVariantEntity(31, 10, "<script name=\"xxx.js\">", false),
+            new AnswerVariantEntity(31, 9, "<script name=\"xxx.js\">", false),
 
             new AnswerVariantEntity(32, 10, "True", false),
             new AnswerVariantEntity(33, 10, "False", true),
 
-            new AnswerVariantEntity(34, 10, "alertBox(\"Hello World\");", false),
+            new AnswerVariantEntity(34, 11, "alertBox(\"Hello World\");", false),
             new AnswerVariantEntity(35, 11, "msgBox(\"Hello World\");", false),
             new AnswerVariantEntity(36, 11, "msg(\"Hello World\");", false),
             new AnswerVariantEntity(37, 11, "alert(\"Hello World\");", true),
 
-            new AnswerVariantEntity(38, 11, "function = myFunction()", false),
+            new AnswerVariantEntity(38, 12, "function = myFunction()", false),
             new AnswerVariantEntity(39, 12, "function:myFunction()", false),
             new AnswerVariantEntity(40, 12, "function myFunction()", true),
         };
 
         public static IEnumerable<UserTestResultEntity> UserTestResults = new UserTestResultEntity[] {
-            new UserTestResultEntity(1, 1, 1) { Result = 4 },
+            new UserTestResultEntity(1, 1, 1) { Result = 6 },
             new UserTestResultEntity(2, 1, 2) { Result = 4 },
-            new UserTestResultEntity(3, 2, 3)
+            new UserTestResultEntity(3, 2, 1) { Result = 1 }
         };
 
         public static IEnumerable<AchievementEntity> Achievements = new AchievementEntity[] {

@@ -35,19 +35,29 @@ namespace IKnowCoding.DAL.Repositories.Tests
                 .Include(t => t.TestResultEntities)
                 .ToList();
 
-            return commonTests.Concat(userAccessedTests).Distinct();
+            var allTests = commonTests.Concat(userAccessedTests).Distinct().ToList();
+
+            return allTests;
         }
 
         public bool AddEntity(TestEntity newTest)
         {
             try
             {
-                _context.Add(newTest);
+                newTest.IsFree = true;
+                newTest.ImagePath ??= "";
+
+                _context.Tests.Add(newTest);
+                _context.Questions.AddRange(newTest.Questions);
+                _context.Answers.AddRange(newTest.Questions.SelectMany(q => q.Answers));                
+
+                _context.SaveChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                throw ex;
                 return false;
             }
         }
@@ -86,16 +96,28 @@ namespace IKnowCoding.DAL.Repositories.Tests
         {
             try
             {
-                var userTestResult = from testResultEntity in _context.UserTestResults
+                UserTestResultEntity? resultObject = await (from testResultEntity in _context.UserTestResults
                                       join users in _context.Users
                                          on testResultEntity.UserId equals users.Id
                                       where testResultEntity.TestId == testId
                                          && users.Email == userEmail
-                                      select testResultEntity;
+                                      select testResultEntity).FirstOrDefaultAsync();
 
-                UserTestResultEntity? resultObject = await userTestResult.FirstAsync();
 
-                resultObject.Result = result;
+                if (resultObject != null)
+                {
+                    resultObject.Result = result;
+                    _context.Attach(resultObject);
+                    _context.Update(resultObject);
+                }
+                else
+                {
+                    UserEntity user = _context.Users.FirstOrDefault(u => u.Email == userEmail)!;
+                    resultObject = new UserTestResultEntity(0, user.Id, testId);
+                    resultObject.Result = result;
+
+                    _context.UserTestResults.Add(resultObject);
+                }
 
                 await SaveAsync();
 
@@ -111,6 +133,7 @@ namespace IKnowCoding.DAL.Repositories.Tests
         private int CalculatePoints(AnswerVariantEntity[] userAnswers)
         {
             int result = userAnswers
+                .Where(a => a is not null)
                 .IntersectBy(_context.Answers.Select(a => a.Id), a => a.Id).Count();
 
             return result;

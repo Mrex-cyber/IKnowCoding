@@ -63,7 +63,7 @@ namespace TradeMarket.Tests.IntegrationTests
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
             var actual = JsonConvert.DeserializeObject<IEnumerable<AchievementDto>>(stringResponse).ToList();
 
-            Assert.That(actual, Is.EqualTo(expected).Using(new TestEqualityComparer()), message: "GetByIdAsync method works incorrect");
+            Assert.That(actual.OrderBy(a => a.Id), Is.EqualTo(expected.OrderBy(a => a.Id)).Using(new TestEqualityComparer()), message: "GetByIdAsync method works incorrect");
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace TradeMarket.Tests.IntegrationTests
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
             var actual = JsonConvert.DeserializeObject<IEnumerable<FeedbackDto>>(stringResponse).ToList();
 
-            Assert.That(actual, Is.EqualTo(expected).Using(new TestEqualityComparer()), message: "GetByIdAsync method works incorrect");
+            Assert.That(actual.OrderBy(f => f.Id), Is.EqualTo(expected.OrderBy(f => f.Id)).Using(new TestEqualityComparer()), message: "GetByIdAsync method works incorrect");
         }
 
         [TestCase("Valentyn Riabinchak")]
@@ -119,13 +119,15 @@ namespace TradeMarket.Tests.IntegrationTests
                 new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333"),
                 new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444"),
                 new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#"),
+                new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555"),
+                new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#"),
             };
         }
 
         public static AchievementEntity[] GetAchievements()
         {
             return new AchievementEntity[] {
-                new AchievementEntity(1, "Перше місце серед стартапів освітньої сфери", "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів,[8] а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2"),
+                new AchievementEntity(1, "Перше місце серед стартапів освітньої сфери", "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2"),
                 new AchievementEntity(2, "Найбільша кількість донатів на ЗСУ", "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg", "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.", "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/")
             };
         }
@@ -138,6 +140,8 @@ namespace TradeMarket.Tests.IntegrationTests
                 new FeedbackEntity(3, "Хотілося б більше тестів", "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg", 3),
                 new FeedbackEntity(4, "Покращує вміння мислити нестандартно та оцінити свої знання", "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 4),
                 new FeedbackEntity(5, "Подобається дизайн сайту, допомагає зосередитися", "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 5),
+                new FeedbackEntity(6, "Можна весело й корисно провести час", "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 6),
+                new FeedbackEntity(7, "Гарний дизайн та хороша креативність", "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D", 7),
             };
         }
 
