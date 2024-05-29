@@ -12,11 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(PlatformContext))]
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-    [Migration("20240527084740_InitialCreate")]
-========
-    [Migration("20240527134054_InitialCreate")]
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+    [Migration("20240529085804_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -119,47 +115,27 @@ namespace API.Migrations
                             FirstName = "Mr. Admin",
                             LastName = "Secret Administator",
                             Password = "secretKey911#",
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            UserSettingsId = 0
-========
                             SettingsId = 5
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                         },
                         new
                         {
                             Id = 6,
                             Email = "tom@gmail.com",
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            FeedbackId = 0,
-                            FirstName = "Tom",
-                            LastName = "Bot",
-                            Password = "55555555",
-                            UserSettingsId = 0
-========
                             FeedbackId = 6,
                             FirstName = "Tom",
                             LastName = "Bot",
                             Password = "55555555",
                             SettingsId = 6
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                         },
                         new
                         {
                             Id = 7,
                             Email = "raf@gmail.com",
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            FeedbackId = 0,
-                            FirstName = "Rafaella",
-                            LastName = "Diniz",
-                            Password = "rafaela12#",
-                            UserSettingsId = 0
-========
                             FeedbackId = 7,
                             FirstName = "Rafaella",
                             LastName = "Diniz",
                             Password = "rafaela12#",
                             SettingsId = 7
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                         });
                 });
 
@@ -274,11 +250,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2322),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3178),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8127),
                             ImagePath = "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
                             Text = "Досить корисний та захоплюючий сайт",
                             UserId = 1
@@ -286,11 +258,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2589),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3441),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8438),
                             ImagePath = "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Мені подобається випробовувати свої навички",
                             UserId = 2
@@ -298,11 +266,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2590),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3442),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8439),
                             ImagePath = "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg",
                             Text = "Хотілося б більше тестів",
                             UserId = 3
@@ -310,11 +274,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 4,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2590),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8440),
                             ImagePath = "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Покращує вміння мислити нестандартно та оцінити свої знання",
                             UserId = 4
@@ -322,11 +282,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 5,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2591),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8440),
                             ImagePath = "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Подобається дизайн сайту, допомагає зосередитися",
                             UserId = 5
@@ -334,11 +290,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 6,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2591),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8441),
                             ImagePath = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Можна весело й корисно провести час",
                             UserId = 6
@@ -346,11 +298,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 7,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(2592),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(8442),
                             ImagePath = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D",
                             Text = "Гарний дизайн та хороша креативність",
                             UserId = 7
@@ -398,11 +346,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(1395),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2257),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(7075),
                             ImagePath = "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg",
                             Source = "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2",
                             Text = "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.",
@@ -411,11 +355,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            Date = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(1675),
-========
-                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2536),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            Date = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(7407),
                             ImagePath = "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg",
                             Source = "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/",
                             Text = "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.",
@@ -666,11 +606,7 @@ namespace API.Migrations
                         {
                             Id = 31,
                             IsRight = false,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            QuestionId = 9,
-========
                             QuestionId = 10,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "<script name=\"xxx.js\">"
                         },
                         new
@@ -691,11 +627,7 @@ namespace API.Migrations
                         {
                             Id = 34,
                             IsRight = false,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            QuestionId = 11,
-========
                             QuestionId = 10,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "alertBox(\"Hello World\");"
                         },
                         new
@@ -723,11 +655,7 @@ namespace API.Migrations
                         {
                             Id = 38,
                             IsRight = false,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            QuestionId = 12,
-========
                             QuestionId = 11,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "function = myFunction()"
                         },
                         new
@@ -810,61 +738,37 @@ namespace API.Migrations
                         new
                         {
                             Id = 7,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "Inside which HTML element do we put the JavaScript?"
                         },
                         new
                         {
                             Id = 8,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "Where is the correct place to insert a JavaScript?"
                         },
                         new
                         {
                             Id = 9,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "What is the correct syntax for referring to an external script called \"xxx.js\"?"
                         },
                         new
                         {
                             Id = 10,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "The external JavaScript file must contain the <script> tag."
                         },
                         new
                         {
                             Id = 11,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "How do you write \"Hello World\" in an alert box?"
                         },
                         new
                         {
                             Id = 12,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            TestId = 2,
-========
                             TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             Text = "How do you create a function in JavaScript?"
                         });
                 });
@@ -914,32 +818,19 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            AccessTime = new DateTime(2024, 5, 27, 8, 47, 40, 306, DateTimeKind.Utc).AddTicks(9899),
+                            AccessTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5397),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(59),
+                            FinishedTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5559),
                             Result = 6,
-========
-                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(672),
-                            Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(874),
-                            Result = 4,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             TestId = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            AccessTime = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(478),
+                            AccessTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5996),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(479),
-========
-                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1436),
-                            Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1437),
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
+                            FinishedTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5996),
                             Result = 4,
                             TestId = 2,
                             UserId = 1
@@ -947,19 +838,11 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-<<<<<<<< HEAD:API/Migrations/20240527084740_InitialCreate.Designer.cs
-                            AccessTime = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(480),
+                            AccessTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5998),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 8, 47, 40, 307, DateTimeKind.Utc).AddTicks(480),
+                            FinishedTime = new DateTime(2024, 5, 29, 8, 58, 3, 60, DateTimeKind.Utc).AddTicks(5998),
                             Result = 1,
                             TestId = 1,
-========
-                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438),
-                            Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438),
-                            Result = 0,
-                            TestId = 3,
->>>>>>>> feature/unit-tests:API/Migrations/20240527134054_InitialCreate.Designer.cs
                             UserId = 2
                         });
                 });
@@ -1007,15 +890,15 @@ namespace API.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 2,
                             Description = "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.",
                             ImagePath = "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png",
-                            IsFree = true,
+                            IsFree = false,
                             Title = "Java Start"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Description = "JavaScript is a multi-paradigm programming language.",
                             ImagePath = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
                             IsFree = true,
