@@ -55,9 +55,9 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("password");
 
-                    b.Property<int>("UserSettingsId")
+                    b.Property<int>("SettingsId")
                         .HasColumnType("int")
-                        .HasColumnName("user_settings_id");
+                        .HasColumnName("settings_id");
 
                     b.HasKey("Id");
 
@@ -68,71 +68,71 @@ namespace API.Migrations
                         {
                             Id = 1,
                             Email = "valik@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 1,
                             FirstName = "Valentyn",
                             LastName = "Riabinchak",
                             Password = "11111111",
-                            UserSettingsId = 0
+                            SettingsId = 1
                         },
                         new
                         {
                             Id = 2,
                             Email = "vasylyna@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 2,
                             FirstName = "Vasylyna",
                             LastName = "Leheta",
                             Password = "22222222",
-                            UserSettingsId = 0
+                            SettingsId = 2
                         },
                         new
                         {
                             Id = 3,
                             Email = "igor@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 3,
                             FirstName = "Igor",
                             LastName = "Zaitsev",
                             Password = "33333333",
-                            UserSettingsId = 0
+                            SettingsId = 3
                         },
                         new
                         {
                             Id = 4,
                             Email = "tom@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 4,
                             FirstName = "Tom",
                             LastName = "Bot",
                             Password = "44444444",
-                            UserSettingsId = 0
+                            SettingsId = 4
                         },
                         new
                         {
                             Id = 5,
                             Email = "admin@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 5,
                             FirstName = "Mr. Admin",
                             LastName = "Secret Administator",
                             Password = "secretKey911#",
-                            UserSettingsId = 0
+                            SettingsId = 5
                         },
                         new
                         {
                             Id = 6,
                             Email = "tom@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 6,
                             FirstName = "Tom",
                             LastName = "Bot",
                             Password = "55555555",
-                            UserSettingsId = 0
+                            SettingsId = 6
                         },
                         new
                         {
                             Id = 7,
                             Email = "raf@gmail.com",
-                            FeedbackId = 0,
+                            FeedbackId = 7,
                             FirstName = "Rafaella",
                             LastName = "Diniz",
                             Password = "rafaela12#",
-                            UserSettingsId = 0
+                            SettingsId = 7
                         });
                 });
 
@@ -247,7 +247,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(1710),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3178),
                             ImagePath = "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
                             Text = "Досить корисний та захоплюючий сайт",
                             UserId = 1
@@ -255,7 +255,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2293),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3441),
                             ImagePath = "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Мені подобається випробовувати свої навички",
                             UserId = 2
@@ -263,7 +263,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2294),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3442),
                             ImagePath = "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg",
                             Text = "Хотілося б більше тестів",
                             UserId = 3
@@ -271,7 +271,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 4,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2295),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443),
                             ImagePath = "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Покращує вміння мислити нестандартно та оцінити свої знання",
                             UserId = 4
@@ -279,7 +279,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 5,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2296),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443),
                             ImagePath = "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Подобається дизайн сайту, допомагає зосередитися",
                             UserId = 5
@@ -287,7 +287,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 6,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2297),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444),
                             ImagePath = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             Text = "Можна весело й корисно провести час",
                             UserId = 6
@@ -295,7 +295,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 7,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2298),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444),
                             ImagePath = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D",
                             Text = "Гарний дизайн та хороша креативність",
                             UserId = 7
@@ -343,7 +343,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(9656),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2257),
                             ImagePath = "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg",
                             Source = "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2",
                             Text = "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.",
@@ -352,7 +352,7 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(384),
+                            Date = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2536),
                             ImagePath = "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg",
                             Source = "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/",
                             Text = "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.",
@@ -815,9 +815,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 1,
-                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7182),
+                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(672),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7420),
+                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(874),
                             Result = 4,
                             TestId = 1,
                             UserId = 1
@@ -825,9 +825,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 2,
-                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8268),
+                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1436),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8270),
+                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1437),
                             Result = 4,
                             TestId = 2,
                             UserId = 1
@@ -835,9 +835,9 @@ namespace API.Migrations
                         new
                         {
                             Id = 3,
-                            AccessTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272),
+                            AccessTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438),
                             Finished = false,
-                            FinishedTime = new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272),
+                            FinishedTime = new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438),
                             Result = 0,
                             TestId = 3,
                             UserId = 2
@@ -914,7 +914,7 @@ namespace API.Migrations
             modelBuilder.Entity("DAL.Models.Entities.User.UserSettingsEntity", b =>
                 {
                     b.HasOne("DAL.Models.Entities.User.UserEntity", "User")
-                        .WithOne("UserSettings")
+                        .WithOne("Settings")
                         .HasForeignKey("DAL.Models.Entities.User.UserSettingsEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -979,10 +979,10 @@ namespace API.Migrations
                     b.Navigation("Feedback")
                         .IsRequired();
 
-                    b.Navigation("TestResultEntities");
-
-                    b.Navigation("UserSettings")
+                    b.Navigation("Settings")
                         .IsRequired();
+
+                    b.Navigation("TestResultEntities");
                 });
 
             modelBuilder.Entity("IKnowCoding.DAL.Models.Entities.QuestionEntity", b =>

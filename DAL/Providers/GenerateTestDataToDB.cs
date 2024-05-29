@@ -10,13 +10,13 @@ namespace DAL.Providers
     public static class GenerateTestDataToDB
     {
         public static IEnumerable<UserEntity> Users = new UserEntity[] {
-            new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111"),
-            new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222"),
-            new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333"),
-            new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444"),
-            new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#"),
-            new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555"),
-            new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#"),
+            new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111", 1, 1),
+            new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222", 2, 2),
+            new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333", 3, 3),
+            new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444", 4, 4),
+            new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#", 5, 5),
+            new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555", 6, 6),
+            new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#", 7, 7),
         };
 
         public static IEnumerable<UserSettingsEntity> UserSettings = new UserSettingsEntity[] {

@@ -57,7 +57,7 @@ namespace API.Migrations
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     feedback_id = table.Column<int>(type: "int", nullable: false),
-                    user_settings_id = table.Column<int>(type: "int", nullable: false)
+                    settings_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -184,8 +184,8 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "source", "text", "title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(9656), "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "Перше місце серед стартапів освітньої сфери" },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(384), "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg", "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/", "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.", "Найбільша кількість донатів на ЗСУ" }
+                    { 1, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2257), "https://startup-ukraine.foundation/wp-content/uploads/photo_5325816626395855791_y-1.jpg", "https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%84%D0%BE%D0%BD%D0%B4_%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF%D1%96%D0%B2", "Загалом, до початку війни Фонд проінвестував понад 250 українських стартапів на суму більш як $6,4 млн. Було проведено 37 пітч-днів за участі 413 стартапів, а кількість поданих заявок на участь у грантових програмах Фонду перевищила 4,5 тис.", "Перше місце серед стартапів освітньої сфери" },
+                    { 2, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(2536), "https://marketer.ua/wp-content/uploads/2018/01/ua-it-ua.jpg", "https://marketer.ua/ua/top-10-achievements-of-ukrainians-in-the-world-it/", "Створено фонд, який за допомогою цього сайту організовує змагання на проходженні тестів.", "Найбільша кількість донатів на ЗСУ" }
                 });
 
             migrationBuilder.InsertData(
@@ -201,16 +201,16 @@ namespace API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "id", "email", "feedback_id", "firstName", "lastName", "password", "user_settings_id" },
+                columns: new[] { "id", "email", "feedback_id", "firstName", "lastName", "password", "settings_id" },
                 values: new object[,]
                 {
-                    { 1, "valik@gmail.com", 0, "Valentyn", "Riabinchak", "11111111", 0 },
-                    { 2, "vasylyna@gmail.com", 0, "Vasylyna", "Leheta", "22222222", 0 },
-                    { 3, "igor@gmail.com", 0, "Igor", "Zaitsev", "33333333", 0 },
-                    { 4, "tom@gmail.com", 0, "Tom", "Bot", "44444444", 0 },
-                    { 5, "admin@gmail.com", 0, "Mr. Admin", "Secret Administator", "secretKey911#", 0 },
-                    { 6, "tom@gmail.com", 0, "Tom", "Bot", "55555555", 0 },
-                    { 7, "raf@gmail.com", 0, "Rafaella", "Diniz", "rafaela12#", 0 }
+                    { 1, "valik@gmail.com", 1, "Valentyn", "Riabinchak", "11111111", 1 },
+                    { 2, "vasylyna@gmail.com", 2, "Vasylyna", "Leheta", "22222222", 2 },
+                    { 3, "igor@gmail.com", 3, "Igor", "Zaitsev", "33333333", 3 },
+                    { 4, "tom@gmail.com", 4, "Tom", "Bot", "44444444", 4 },
+                    { 5, "admin@gmail.com", 5, "Mr. Admin", "Secret Administator", "secretKey911#", 5 },
+                    { 6, "tom@gmail.com", 6, "Tom", "Bot", "55555555", 6 },
+                    { 7, "raf@gmail.com", 7, "Rafaella", "Diniz", "rafaela12#", 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -218,13 +218,13 @@ namespace API.Migrations
                 columns: new[] { "id", "date", "image_path", "text", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(1710), "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg", "Досить корисний та захоплюючий сайт", 1 },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2293), "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Мені подобається випробовувати свої навички", 2 },
-                    { 3, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2294), "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg", "Хотілося б більше тестів", 3 },
-                    { 4, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2295), "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Покращує вміння мислити нестандартно та оцінити свої знання", 4 },
-                    { 5, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2296), "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Подобається дизайн сайту, допомагає зосередитися", 5 },
-                    { 6, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2297), "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Можна весело й корисно провести час", 6 },
-                    { 7, new DateTime(2024, 5, 25, 18, 4, 51, 471, DateTimeKind.Utc).AddTicks(2298), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D", "Гарний дизайн та хороша креативність", 7 }
+                    { 1, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3178), "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg", "Досить корисний та захоплюючий сайт", 1 },
+                    { 2, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3441), "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Мені подобається випробовувати свої навички", 2 },
+                    { 3, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3442), "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg", "Хотілося б більше тестів", 3 },
+                    { 4, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443), "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Покращує вміння мислити нестандартно та оцінити свої знання", 4 },
+                    { 5, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3443), "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Подобається дизайн сайту, допомагає зосередитися", 5 },
+                    { 6, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444), "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Можна весело й корисно провести час", 6 },
+                    { 7, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(3444), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D", "Гарний дизайн та хороша креативність", 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -263,9 +263,9 @@ namespace API.Migrations
                 columns: new[] { "id", "access_time", "finished", "finished_time", "result", "test_id", "user_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7182), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(7420), 4, 1, 1 },
-                    { 2, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8268), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8270), 4, 2, 1 },
-                    { 3, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272), false, new DateTime(2024, 5, 25, 18, 4, 51, 470, DateTimeKind.Utc).AddTicks(8272), 0, 3, 2 }
+                    { 1, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(672), false, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(874), 4, 1, 1 },
+                    { 2, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1436), false, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1437), 4, 2, 1 },
+                    { 3, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438), false, new DateTime(2024, 5, 27, 13, 40, 53, 880, DateTimeKind.Utc).AddTicks(1438), 0, 3, 2 }
                 });
 
             migrationBuilder.InsertData(

@@ -34,9 +34,9 @@ namespace TradeMarket.Tests.DataTests
 
             var testRepository = new TestRepository(context);
 
-            var products = testRepository.GetEntities();
+            var tests = testRepository.GetEntities();
 
-            Assert.That(products, Is.EqualTo(GetFullTests()).Using(new TestEqualityComparer()), message: "GetAllAsync method works incorrect");
+            Assert.That(tests.OrderBy(p => p.Id).AsEnumerable(), Is.EqualTo(GetFullTests().OrderBy(p => p.Id).AsEnumerable()).Using(new TestEqualityComparer()), message: "GetAllAsync method works incorrect");
         }
 
         public static IEnumerable<TestEntity> GetTests()
