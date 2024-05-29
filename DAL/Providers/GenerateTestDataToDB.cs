@@ -10,6 +10,7 @@ namespace DAL.Providers
     public static class GenerateTestDataToDB
     {
         public static IEnumerable<UserEntity> Users = new UserEntity[] {
+<<<<<<< HEAD
             new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111"),
             new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222"),
             new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333"),
@@ -17,6 +18,15 @@ namespace DAL.Providers
             new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#"),
             new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555"),
             new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#"),
+=======
+            new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111", 1, 1),
+            new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222", 2, 2),
+            new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333", 3, 3),
+            new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444", 4, 4),
+            new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#", 5, 5),
+            new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555", 6, 6),
+            new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#", 7, 7),
+>>>>>>> feature/unit-tests
         };
 
         public static IEnumerable<UserSettingsEntity> UserSettings = new UserSettingsEntity[] {
@@ -29,8 +39,13 @@ namespace DAL.Providers
 
         public static IEnumerable<TestEntity> Tests = new TestEntity[] {
             new TestEntity(1, "C# Start", "C# is a general purpose object-oriented programming language.", true, "https://miro.medium.com/v2/resize:fit:1400/1*_NVBTVdmjt3Qvq3CZOySXg.png"),
+<<<<<<< HEAD
             new TestEntity(3, "Java Start", "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", true, "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png"),
             new TestEntity(2, "JavaScript Start", "JavaScript is a multi-paradigm programming language.", true, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"),
+=======
+            new TestEntity(2, "Java Start", "Java is a strongly typed, object-oriented, general-purpose programming language developed by Sun Microsystems.", false, "https://upload.wikimedia.org/wikipedia/ru/thumb/3/39/Java_logo.svg/1200px-Java_logo.svg.png"),
+            new TestEntity(3, "JavaScript Start", "JavaScript is a multi-paradigm programming language.", true, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"),
+>>>>>>> feature/unit-tests
             new TestEntity(4, "C++ Start", "C++ is a compiled, statically typed general-purpose programming language.", false, "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"),
         };
 
@@ -42,12 +57,21 @@ namespace DAL.Providers
             new QuestionEntity(5, 1, "How do you create a variable with the numeric value 5?"),
             new QuestionEntity(6, 1, "How do you create a variable with the floating number 2.8?"),
 
+<<<<<<< HEAD
             new QuestionEntity(7, 2, "Inside which HTML element do we put the JavaScript?"),
             new QuestionEntity(8, 2, "Where is the correct place to insert a JavaScript?"),
             new QuestionEntity(9, 2, "What is the correct syntax for referring to an external script called \"xxx.js\"?"),
             new QuestionEntity(10, 2, "The external JavaScript file must contain the <script> tag."),
             new QuestionEntity(11, 2, "How do you write \"Hello World\" in an alert box?"),
             new QuestionEntity(12, 2, "How do you create a function in JavaScript?"),
+=======
+            new QuestionEntity(7, 3, "Inside which HTML element do we put the JavaScript?"),
+            new QuestionEntity(8, 3, "Where is the correct place to insert a JavaScript?"),
+            new QuestionEntity(9, 3, "What is the correct syntax for referring to an external script called \"xxx.js\"?"),
+            new QuestionEntity(10, 3, "The external JavaScript file must contain the <script> tag."),
+            new QuestionEntity(11, 3, "How do you write \"Hello World\" in an alert box?"),
+            new QuestionEntity(12, 3, "How do you create a function in JavaScript?"),
+>>>>>>> feature/unit-tests
         };
 
         public static IEnumerable<AnswerVariantEntity> Answers = new AnswerVariantEntity[] {
@@ -89,17 +113,29 @@ namespace DAL.Providers
 
             new AnswerVariantEntity(29, 9, "<script src=\"xxx.js\">", true),
             new AnswerVariantEntity(30, 9, "<script href=\"xxx.js\">", false),
+<<<<<<< HEAD
             new AnswerVariantEntity(31, 9, "<script name=\"xxx.js\">", false),
+=======
+            new AnswerVariantEntity(31, 10, "<script name=\"xxx.js\">", false),
+>>>>>>> feature/unit-tests
 
             new AnswerVariantEntity(32, 10, "True", false),
             new AnswerVariantEntity(33, 10, "False", true),
 
+<<<<<<< HEAD
             new AnswerVariantEntity(34, 11, "alertBox(\"Hello World\");", false),
+=======
+            new AnswerVariantEntity(34, 10, "alertBox(\"Hello World\");", false),
+>>>>>>> feature/unit-tests
             new AnswerVariantEntity(35, 11, "msgBox(\"Hello World\");", false),
             new AnswerVariantEntity(36, 11, "msg(\"Hello World\");", false),
             new AnswerVariantEntity(37, 11, "alert(\"Hello World\");", true),
 
+<<<<<<< HEAD
             new AnswerVariantEntity(38, 12, "function = myFunction()", false),
+=======
+            new AnswerVariantEntity(38, 11, "function = myFunction()", false),
+>>>>>>> feature/unit-tests
             new AnswerVariantEntity(39, 12, "function:myFunction()", false),
             new AnswerVariantEntity(40, 12, "function myFunction()", true),
         };

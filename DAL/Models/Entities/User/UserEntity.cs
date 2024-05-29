@@ -31,10 +31,10 @@ namespace DAL.Models.Entities.User
         public int FeedbackId { get; set; }
         public FeedbackEntity Feedback { get; set; } = null!;
 
-        [ForeignKey(nameof(UserSettings))]
-        [Column("user_settings_id")]
-        public int UserSettingsId { get; set; }
-        public UserSettingsEntity UserSettings { get; set; } = null!;
+        [ForeignKey(nameof(Settings))]
+        [Column("settings_id")]
+        public int SettingsId { get; set; }
+        public UserSettingsEntity Settings { get; set; } = null!;
 
         public List<UserTestResultEntity> TestResultEntities { get; set; } = null!;
 
@@ -45,13 +45,15 @@ namespace DAL.Models.Entities.User
             Email = "None";
             Password = "None";
         }
-        public UserEntity(int id, string firstName, string lastName, string email, string password)
+        public UserEntity(int id, string firstName, string lastName, string email, string password, int feedbackId, int settingsId)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Password = password;
+            FeedbackId = feedbackId;
+            SettingsId = settingsId;
         }
     }
 }

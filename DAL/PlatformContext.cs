@@ -63,7 +63,7 @@ namespace IKnowCoding.DAL
 
             builder.Entity<UserSettingsEntity>()
                 .HasOne(s => s.User)
-                .WithOne(u => u.UserSettings)
+                .WithOne(u => u.Settings)
                 .HasForeignKey<UserSettingsEntity>(u => u.UserId);
 
             builder.Entity<UserTestResultEntity>()
