@@ -69,9 +69,9 @@ namespace TradeMarket.Tests.IntegrationTests
         public async Task MainPageController_GetFeedbacks_Returns_All()
         {
             //arrange
-            var expected = _mapper.Map<FeedbackDto[]>(GetFeedbacksWithUsers()).ToList();
-
-            var expectedDtos = _mapper.Map<FeedbackDto[]>(expectedEntities).OrderBy(f => f.Id).ToArray();
+            var expected = _mapper.Map<FeedbackDto[]>(GetFeedbacksWithUsers())
+                .OrderBy(f => f.FullName)
+                .ToList();
 
             //act
             var httpResponse = await _client.GetAsync(RequestUri + "feedbacks");
@@ -79,9 +79,12 @@ namespace TradeMarket.Tests.IntegrationTests
             //assert
             httpResponse.EnsureSuccessStatusCode();
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
-            var actual = JsonConvert.DeserializeObject<FeedbackDto[]>(stringResponse);
+            var actual = JsonConvert.DeserializeObject<FeedbackDto[]>(stringResponse)
+                .OrderBy(f => f.FullName)
+                .ToArray();
 
-            Assert.That(actual, Is.EqualTo(expected).Using(new FeedbackComparer()), message: "GetByIdAsync method works incorrect");
+            Assert.That(actual, Is.EqualTo(expected)
+                .Using(new FeedbackComparer()), message: "Feedbacks are incorrect");
         }
 
         [TestCase("Valentyn Riabinchak")]
@@ -91,7 +94,8 @@ namespace TradeMarket.Tests.IntegrationTests
         {
             //arrange
             var expected = _mapper.Map<FeedbackDto[]>(GetFeedbacksWithUsers())
-                .Where(f => f.FullName == expectedName).ToList();
+                .Where(f => f.FullName == expectedName)
+                .ToList();
 
             // act
             var httpResponse = await _client.GetAsync(RequestUri + "feedbacks");
@@ -99,9 +103,12 @@ namespace TradeMarket.Tests.IntegrationTests
             //assert
             httpResponse.EnsureSuccessStatusCode();
             var stringResponse = await httpResponse.Content.ReadAsStringAsync();
-            var actual = JsonConvert.DeserializeObject<IEnumerable<FeedbackDto>>(stringResponse).Where(f => f.FullName == expectedName).ToList();
+            var actual = JsonConvert.DeserializeObject<IEnumerable<FeedbackDto>>(stringResponse)
+                .Where(f => f.FullName == expectedName)
+                .ToList();
 
-            Assert.That(actual, Is.EqualTo(expected).Using(new FeedbackComparer()), message: "GetByIdAsync method works incorrect");
+            Assert.That(actual, Is.EqualTo(expected)
+                .Using(new FeedbackComparer()), message: "GetByIdAsync method works incorrect");
 
         }
 
@@ -149,10 +156,12 @@ namespace TradeMarket.Tests.IntegrationTests
 
         public FeedbackEntity[] GetFeedbacksWithUsers()
         {
-            return (from f in GetFeedbacks()
-                join u in GetUsers()
-                    on f.Id equals u.FeedbackId
-                select f).Distinct().ToArray();
+            return GetFeedbacks().Select(f =>
+            {
+                f.User = GetUsers().First(u => u.Id == f.UserId);
+
+                return f;
+            }).ToArray();
         }
     }
 }
