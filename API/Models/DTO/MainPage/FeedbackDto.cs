@@ -1,8 +1,6 @@
-﻿using API.Models.DTO;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace IKnowCoding.API.Models.DTO.MainPage
+namespace API.Models.DTO.MainPage
 {
     public class FeedbackDto : BaseDto
     {

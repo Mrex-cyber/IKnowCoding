@@ -1,14 +1,10 @@
-﻿using API.Models.DTO.Answers;
+﻿using API.Models.DTO.Tests;
 using AutoMapper;
-using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.API.Models.DTO.Tests;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.UnitsOfWork;
+using DAL.Models.Entities.Tests;
+using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
-namespace IKnowCoding.Controllers
+namespace API.Controllers
 {
     public class AdminController : Controller
     {

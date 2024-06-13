@@ -1,12 +1,5 @@
-﻿using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using IKnowCoding.DAL.Models.Entities;
-using System;
-using System.Collections.Generic;
+﻿using API.Models.DTO.MainPage;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlatformTests.TestHelpers
 {

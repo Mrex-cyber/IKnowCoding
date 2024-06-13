@@ -1,6 +1,4 @@
-﻿using Microsoft.Identity.Client;
-
-namespace IKnowCoding.DAL.Repositories
+﻿namespace DAL.Repositories
 {
     public interface ICrud<T>
     {

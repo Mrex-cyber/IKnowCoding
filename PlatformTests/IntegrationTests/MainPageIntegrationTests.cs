@@ -1,31 +1,13 @@
-﻿
-using API.Application.Helpers;
+﻿using API.Models.DTO.MainPage;
 using AutoMapper;
+using DAL.Models.Entities.MainPage;
 using DAL.Models.Entities.User;
 using FluentAssertions;
-using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.Auth;
-using IKnowCoding.DAL;
-using IKnowCoding.DAL.Models;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using IKnowCoding.DAL.Models.Entities;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using NUnit.Framework;
 using NUnit.Framework.Internal;
 using PlatformTests.TestHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
-using SystemTests.IntegrationTests;
 
-namespace TradeMarket.Tests.IntegrationTests
+namespace PlatformTests.IntegrationTests
 {
     public class MainPageIntegrationTests
     {
@@ -122,13 +104,13 @@ namespace TradeMarket.Tests.IntegrationTests
         public UserEntity[] GetUsers()
         {
             return new UserEntity[] {
-                new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111", 1, 1),
-                new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222", 2, 2),
-                new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333", 3, 3),
-                new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444", 4, 4),
-                new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#", 5, 5),
-                new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555", 6, 6),
-                new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#", 7, 7),
+                //new UserEntity(1, "Valentyn", "Riabinchak", "valik@gmail.com", "11111111", 1, 1),
+                //new UserEntity(2, "Vasylyna", "Leheta", "vasylyna@gmail.com", "22222222", 2, 2),
+                //new UserEntity(3, "Igor", "Zaitsev", "igor@gmail.com", "33333333", 3, 3),
+                //new UserEntity(4, "Tom", "Bot", "tom@gmail.com", "44444444", 4, 4),
+                //new UserEntity(5, "Mr. Admin", "Secret Administator", "admin@gmail.com", "secretKey911#", 5, 5),
+                //new UserEntity(6, "Tom", "Bot", "tom@gmail.com", "55555555", 6, 6),
+                //new UserEntity(7, "Rafaella", "Diniz", "raf@gmail.com", "rafaela12#", 7, 7),
             };
         }
 

@@ -1,7 +1,6 @@
-﻿using API.Models.DTO;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace IKnowCoding.API.Models.DTO.Answers
+namespace API.Models.DTO.Answers
 {
     public class AnswerVariantResponseDto : BaseDto
     {

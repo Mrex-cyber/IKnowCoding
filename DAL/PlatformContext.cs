@@ -1,25 +1,30 @@
-﻿using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Models.Entities.Relationships;
-using Microsoft.EntityFrameworkCore;
-using IKnowCoding.DAL;
-using DAL.Providers;
+﻿using DAL.Models.Entities.MainPage;
+using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.Tests;
 using DAL.Models.Entities.User;
+using DAL.Providers;
+using Microsoft.EntityFrameworkCore;
 
-namespace IKnowCoding.DAL
+namespace DAL
 {
 #pragma warning disable CS1591
     public class PlatformContext : DbContext
     {
+        public DbSet<PersonEntity> People { get; set; } = null!;
         public DbSet<UserEntity> Users { get; set; } = null!;
 
+        public DbSet<TeamAdministrator> Admins { get; set; } = null!;
+        public DbSet<TeamEntity> Teams { get; set; } = null!;
+        public DbSet<UserTeamConnectionEntity> UserTeamConnections { get; set; } = null!;
+
         public DbSet<UserSettingsEntity> UserSettings { get; set; } = null!;
+        public DbSet<FeedbackEntity> Feedbacks { get; set; } = null!;
+
         public DbSet<TestEntity> Tests { get; set; } = null!;
         public DbSet<QuestionEntity> Questions { get; set; } = null!;
         public DbSet<AnswerVariantEntity> Answers { get; set; } = null!;
         public DbSet<UserTestResultEntity> UserTestResults { get; set; } = null!;
-        public DbSet<FeedbackEntity> Feedbacks { get; set; } = null!;
+
         public DbSet<AchievementEntity> Achievements { get; set; } = null!;
 
         public PlatformContext()
@@ -28,7 +33,7 @@ namespace IKnowCoding.DAL
             //Database.EnsureCreated();
         }
 
-        public PlatformContext(DbContextOptions options):base(options)
+        public PlatformContext(DbContextOptions options) : base(options)
         {
             //Database.EnsureDeleted();
             //Database.EnsureCreated();
@@ -44,6 +49,25 @@ namespace IKnowCoding.DAL
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<TeamAdministrator>()
+                .HasOne(a => a.User)
+                .WithOne();
+
+            builder.Entity<TeamEntity>()
+                .HasOne(t => t.Admin)
+                .WithMany(a => a.Teams)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<UserTeamConnectionEntity>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Teams)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<UserTeamConnectionEntity>()
+                .HasOne(c => c.Team)
+                .WithMany(t => t.Users)
+                .OnDelete(DeleteBehavior.NoAction);
+
             builder.Entity<TestEntity>()
                 .HasMany(t => t.Questions)
                 .WithOne(q => q.Test)
@@ -65,6 +89,11 @@ namespace IKnowCoding.DAL
                 .HasOne(s => s.User)
                 .WithOne(u => u.Settings)
                 .HasForeignKey<UserSettingsEntity>(u => u.UserId);
+
+            builder.Entity<PersonEntity>()
+                .HasOne(p => p.User)
+                .WithOne(u => u.Person)
+                .HasForeignKey<PersonEntity>(p => p.UserId);
 
             builder.Entity<UserTestResultEntity>()
                 .HasOne(r => r.Test)

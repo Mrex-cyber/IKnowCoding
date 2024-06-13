@@ -1,15 +1,12 @@
 ﻿using API.Models.DTO.Answers;
+using API.Models.DTO.MainPage;
+using API.Models.DTO.Questions;
+using API.Models.DTO.Tests;
 using API.Models.DTO.User;
 using AutoMapper;
+using DAL.Models.Entities.MainPage;
+using DAL.Models.Entities.Tests;
 using DAL.Models.Entities.User;
-using IKnowCoding.API.Models;
-using IKnowCoding.API.Models.DTO.Answers;
-using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.API.Models.DTO.Questions;
-using IKnowCoding.API.Models.DTO.Tests;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Models.Entities.Relationships;
 
 namespace API.Application.Helpers
 {
@@ -50,8 +47,8 @@ namespace API.Application.Helpers
             CreateMap<AchievementEntity, AchievementDto>()
                 .ReverseMap();
 
-            CreateMap<FeedbackEntity, FeedbackDto> ()
-                .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.FirstName + " " + x.User.LastName))
+            CreateMap<FeedbackEntity, FeedbackDto>()
+                .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.Person.FirstName + " " + x.User.Person.LastName))
                 .ForMember(e => e.Date, x => x.MapFrom(x => x.Date))
                 .ReverseMap();
 

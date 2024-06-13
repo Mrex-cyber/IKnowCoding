@@ -1,13 +1,9 @@
-﻿using DAL.Models;
-using IKnowCoding.DAL.Models.Entities.Relationships;
-using System.Collections;
-using System.ComponentModel.DataAnnotations;
+﻿using DAL.Models.Entities.Relationships;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using System.Text.Json.Serialization;
 
-namespace IKnowCoding.DAL.Models.Entities
+namespace DAL.Models.Entities.Tests
 {
+    [Table("obj_tests")]
     public class TestEntity : BaseEntity
     {
         [Column("title")]
@@ -22,14 +18,10 @@ namespace IKnowCoding.DAL.Models.Entities
         [Column("image_path")]
         public string ImagePath { get; set; }
 
-        public List<UserTestResultEntity> TestResultEntities { get; set; } = null!;
+        public ICollection<UserTestResultEntity> TestResultEntities { get; set; } = null!;
 
         public ICollection<QuestionEntity> Questions { get; set; } = null!;
 
-        public TestEntity() {
-            Title = "None";
-            Description = "None";
-        }
         public TestEntity(int id, string title, string description, bool isFree, string imagePath)
         {
             Id = id;

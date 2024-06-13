@@ -1,7 +1,7 @@
-﻿using DAL.Models.Entities.User;
-using IKnowCoding.DAL.Models;
+﻿using DAL.Models;
+using DAL.Models.Entities.User;
 
-namespace IKnowCoding.DAL.Repositories.Users
+namespace DAL.Repositories.Users
 {
     public interface IUserRepository : ICrud<UserEntity>, IDisposable
     {

@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.UnitsOfWork;
-using Microsoft.AspNetCore.Http;
+﻿using API.Models.DTO.MainPage;
+using AutoMapper;
+using DAL.Models.Entities.MainPage;
+using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IKnowCoding.Controllers
+namespace API.Controllers
 {
     [ApiController]
     public class MainPageController : ControllerBase

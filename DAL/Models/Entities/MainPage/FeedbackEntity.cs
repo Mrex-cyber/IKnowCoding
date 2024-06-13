@@ -1,10 +1,10 @@
-﻿using DAL.Models;
-using DAL.Models.Entities.User;
+﻿using DAL.Models.Entities.User;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IKnowCoding.API.Models.DTO.MainPage
+namespace DAL.Models.Entities.MainPage
 {
+    [Table("obj_feedbacks")]
     public class FeedbackEntity : BaseEntity
     {
         [Column("text")]
@@ -20,11 +20,6 @@ namespace IKnowCoding.API.Models.DTO.MainPage
         [Column("user_id")]
         public int UserId { get; set; }
         public UserEntity User { get; set; } = null!;
-
-        public FeedbackEntity() {
-            Text = "None";
-            ImagePath = "None";
-        }
 
         public FeedbackEntity(int id, string text, string imagePath, int userId)
         {

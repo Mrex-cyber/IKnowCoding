@@ -1,4 +1,4 @@
-﻿namespace IKnowCoding.Application.Validators
+﻿namespace API.Application.Validators
 {
     public class UserValidator
     {

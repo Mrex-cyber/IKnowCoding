@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
-namespace IKnowCoding.DAL.Models.Program
+namespace API.Models.Program
 {
     public class Settings
     {

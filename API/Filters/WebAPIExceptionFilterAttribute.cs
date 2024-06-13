@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using IKnowCoding.ErrorHandling.Handlers.Interfaces;
-using IKnowCoding.ErrorHandling.Interfaces;
+﻿using API.ErrorHandling.Handlers.Interfaces;
+using API.ErrorHandling.Interfaces;
+using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace IKnowCoding.Filters
+namespace API.Filters
 {
     public class WebAPIExceptionFilterAttribute : ExceptionFilterAttribute
     {

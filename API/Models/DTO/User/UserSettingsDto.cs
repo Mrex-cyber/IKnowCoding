@@ -1,6 +1,4 @@
-﻿using IKnowCoding.API.Models.DTO.Questions;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.DTO.User

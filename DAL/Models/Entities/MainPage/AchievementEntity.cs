@@ -1,8 +1,8 @@
-﻿using DAL.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IKnowCoding.DAL.Models.DTO.Main_Page
+namespace DAL.Models.Entities.MainPage
 {
+    [Table("obj_achievements")]
     public class AchievementEntity : BaseEntity
     {
         [Column("title")]
@@ -20,7 +20,8 @@ namespace IKnowCoding.DAL.Models.DTO.Main_Page
         [Column("source")]
         public string Source { get; set; }
 
-        public AchievementEntity() {
+        public AchievementEntity()
+        {
             Title = "None";
             ImagePath = "None";
             Text = "None";

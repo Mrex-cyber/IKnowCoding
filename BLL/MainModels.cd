@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DAL.Models.BaseModel">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.MainPage.AchievementModel">
+    <Position X="5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAIAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\MainPage\AchievementModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.MainPage.FeedbackModel">
+    <Position X="2.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAIgAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\MainPage\FeedbackModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.Relationships.UserTeamConnectionEntity">
+    <Position X="14" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Relationships\UserTeamConnectionEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.Relationships.UserTestResultModel">
+    <Position X="4.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAAAAABAAAAQAAAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Relationships\UserTestResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.Tests.AnswerVariantModel">
+    <Position X="11" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACEAAAAA=</HashCode>
+      <FileName>Models\Tests\AnswerVariantModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.Tests.QuestionModel">
+    <Position X="7.25" Y="5.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Models\Tests\QuestionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.Tests.TestModel">
+    <Position X="7" Y="3" Width="3" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAEAAAAAAAIQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tests\TestModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.User.PersonModel">
+    <Position X="14.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\User\PersonModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.User.TeamModel">
+    <Position X="10.5" Y="0.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\TeamModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.User.UserSettingsModel">
+    <Position X="10.75" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAQAAAQAAAAAACAAAAGAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\UserSettingsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.User.UserModel">
+    <Position X="14.25" Y="5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACAAAAAAAAACACAAAAAAAAACgAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

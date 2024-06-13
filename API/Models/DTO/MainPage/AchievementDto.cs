@@ -1,7 +1,6 @@
-﻿using API.Models.DTO;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace IKnowCoding.DAL.Models.DTO.Main_Page
+namespace API.Models.DTO.MainPage
 {
     public class AchievementDto : BaseDto
     {

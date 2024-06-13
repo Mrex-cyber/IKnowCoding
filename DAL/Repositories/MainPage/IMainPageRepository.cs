@@ -1,9 +1,8 @@
 ﻿
 
-using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
+using DAL.Models.Entities.MainPage;
 
-namespace IKnowCoding.DAL.Repositories.MainPage
+namespace DAL.Repositories.MainPage
 {
     public interface IMainPageRepository : IDisposable
     {

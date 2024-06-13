@@ -1,9 +1,7 @@
-﻿using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.Models.DTO.Main_Page;
-using IKnowCoding.DAL.Repositories.MainPage;
+﻿using DAL.Models.Entities.MainPage;
 using Microsoft.EntityFrameworkCore;
 
-namespace IKnowCoding.DAL.Repositories.MainPage
+namespace DAL.Repositories.MainPage
 {
     public class MainPageRepository : IMainPageRepository, IDisposable
     {

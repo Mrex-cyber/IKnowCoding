@@ -1,10 +1,5 @@
-﻿using IKnowCoding.DAL.Models.Entities;
-using System;
-using System.Collections.Generic;
+﻿using DAL.Models.Entities.Tests;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlatformTests.TestHelpers
 {

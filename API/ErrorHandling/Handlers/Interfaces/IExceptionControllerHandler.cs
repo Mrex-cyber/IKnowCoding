@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace IKnowCoding.ErrorHandling.Handlers.Interfaces
+namespace API.ErrorHandling.Handlers.Interfaces
 {
     public interface IExceptionControllerHandler
     {

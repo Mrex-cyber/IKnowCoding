@@ -1,11 +1,7 @@
-﻿using IKnowCoding.ErrorHandling.Exceptions;
-using IKnowCoding.ErrorHandling.Handlers;
-using IKnowCoding.ErrorHandling.Handlers.Interfaces;
-using IKnowCoding.ErrorHandling.Interfaces;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
+﻿using API.ErrorHandling.Handlers.Interfaces;
+using API.ErrorHandling.Interfaces;
 
-namespace IKnowCoding.ErrorHandling
+namespace API.ErrorHandling
 {
     public class ErrorHandlersProvider : IObjectsProvider<IExceptionControllerHandler>
     {
