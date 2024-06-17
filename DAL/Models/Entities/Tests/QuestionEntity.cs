@@ -1,11 +1,8 @@
-﻿using DAL.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IKnowCoding.DAL.Models.Entities
+namespace DAL.Models.Entities.Tests
 {
+    [Table("obj_questions")]
     public class QuestionEntity : BaseEntity
     {
         [Column("text")]
@@ -18,12 +15,9 @@ namespace IKnowCoding.DAL.Models.Entities
 
         public ICollection<AnswerVariantEntity> Answers { get; set; } = null!;
 
-        public QuestionEntity() {
-            Text = "None";
-        }
         public QuestionEntity(int id, int testId, string text)
+            : base(id)
         {
-            Id = id;
             TestId = testId;
             Text = text;
         }

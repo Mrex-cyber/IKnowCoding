@@ -1,7 +1,7 @@
-﻿using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Models.Entities.Relationships;
+﻿using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.Tests;
 
-namespace IKnowCoding.DAL.Repositories.Tests
+namespace DAL.Repositories.Tests
 {
     public interface ITestRepository : ICrud<TestEntity>, IDisposable
     {

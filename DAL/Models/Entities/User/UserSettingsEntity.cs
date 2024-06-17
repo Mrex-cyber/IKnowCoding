@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models.Entities.User
 {
+    [Table("obj_user_settings")]
     public class UserSettingsEntity : BaseEntity
     {
         [Column("access_token")]
@@ -37,7 +33,7 @@ namespace DAL.Models.Entities.User
             UserId = userId;
         }
 
-        public UserSettingsEntity(int id, string accessToken, string refreshToken, bool isAdmin, int userId) 
+        public UserSettingsEntity(int id, string accessToken, string refreshToken, bool isAdmin, int userId)
             : this(id, isAdmin, userId)
         {
             AccessToken = accessToken;

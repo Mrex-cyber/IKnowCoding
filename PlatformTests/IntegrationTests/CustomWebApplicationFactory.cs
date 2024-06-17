@@ -1,15 +1,12 @@
-﻿using IKnowCoding.DAL;
+﻿using API.Application.Helpers;
+using AutoMapper;
+using DAL;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using AutoMapper;
-using API.Application.Helpers;
 
-namespace SystemTests.IntegrationTests
+namespace PlatformTests.IntegrationTests
 {
     internal class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {

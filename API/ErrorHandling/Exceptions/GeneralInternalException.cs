@@ -1,14 +1,12 @@
-﻿using System;
-
-namespace IKnowCoding.ErrorHandling.Exceptions
+﻿namespace API.ErrorHandling.Exceptions
 {
     public class GeneralInternalException : Exception
     {
-        public GeneralInternalException():
+        public GeneralInternalException() :
             base("Something went wrong")
         { }
 
-        public GeneralInternalException(string message):
+        public GeneralInternalException(string message) :
             base(message)
         { }
     }

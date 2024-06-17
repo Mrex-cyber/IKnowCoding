@@ -1,10 +1,9 @@
-﻿using DAL.Models.Entities.User;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Models.Entities.Relationships;
+﻿using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.Tests;
+using DAL.Models.Entities.User;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
-namespace IKnowCoding.DAL.Repositories.Tests
+namespace DAL.Repositories.Tests
 {
     public class TestRepository : ITestRepository, IDisposable
     {
@@ -49,7 +48,7 @@ namespace IKnowCoding.DAL.Repositories.Tests
 
                 _context.Tests.Add(newTest);
                 _context.Questions.AddRange(newTest.Questions);
-                _context.Answers.AddRange(newTest.Questions.SelectMany(q => q.Answers));                
+                _context.Answers.AddRange(newTest.Questions.SelectMany(q => q.Answers));
 
                 _context.SaveChanges();
                 return true;
@@ -85,23 +84,23 @@ namespace IKnowCoding.DAL.Repositories.Tests
             int[] userAnswersIds = userAnswers.Select(a => a.Id).ToArray();
 
             AnswerVariantEntity[] rightAnswers = await _context.Answers
-                .Where(a => a.IsRight 
+                .Where(a => a.IsRight
                     && userAnswersIds.Contains(a.Id))
                 .ToArrayAsync();
 
             return rightAnswers;
-        }        
+        }
 
         private async Task<UserTestResultEntity> GetResultAndSave(string userEmail, int testId, int result)
         {
             try
             {
                 UserTestResultEntity? resultObject = await (from testResultEntity in _context.UserTestResults
-                                      join users in _context.Users
-                                         on testResultEntity.UserId equals users.Id
-                                      where testResultEntity.TestId == testId
-                                         && users.Email == userEmail
-                                      select testResultEntity).FirstOrDefaultAsync();
+                                                            join users in _context.Users
+                                                               on testResultEntity.UserId equals users.Id
+                                                            where testResultEntity.TestId == testId
+                                                               && users.Email == userEmail
+                                                            select testResultEntity).FirstOrDefaultAsync();
 
 
                 if (resultObject != null)
@@ -182,6 +181,6 @@ namespace IKnowCoding.DAL.Repositories.Tests
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }        
+        }
     }
 }

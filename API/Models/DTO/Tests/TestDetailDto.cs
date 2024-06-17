@@ -1,8 +1,7 @@
-﻿using API.Models.DTO;
-using IKnowCoding.API.Models.DTO.Questions;
+﻿using API.Models.DTO.Questions;
 using Newtonsoft.Json;
 
-namespace IKnowCoding.API.Models.DTO.Tests
+namespace API.Models.DTO.Tests
 {
     public class TestDetailDto : BaseDto
     {

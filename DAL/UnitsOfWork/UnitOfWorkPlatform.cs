@@ -1,10 +1,8 @@
-﻿using IKnowCoding.DAL;
-using IKnowCoding.DAL.Repositories.MainPage;
-using IKnowCoding.DAL.Repositories.Tests;
-using IKnowCoding.DAL.Repositories.Users;
-using IKnowCoding.DAL.UnitsOfWork;
+﻿using DAL.Repositories.MainPage;
+using DAL.Repositories.Tests;
+using DAL.Repositories.Users;
 
-namespace EnglishTesterServer.DAL.UnitsOfWork
+namespace DAL.UnitsOfWork
 {
     public class UnitOfWorkPlatform : IUnitOfWork
     {
@@ -18,24 +16,24 @@ namespace EnglishTesterServer.DAL.UnitsOfWork
         {
             get
             {
-                if (this._userRepository == null)
+                if (_userRepository == null)
                 {
-                    this._userRepository = new UserRepository(context);
+                    _userRepository = new UserRepository(context);
                 }
 
-                return this._userRepository;
+                return _userRepository;
             }
         }
         public TestRepository TestRepository
         {
             get
             {
-                if (this._testRepository == null)
+                if (_testRepository == null)
                 {
-                    this._testRepository = new TestRepository(context);
+                    _testRepository = new TestRepository(context);
                 }
-                
-                return this._testRepository;
+
+                return _testRepository;
             }
         }
 
@@ -43,11 +41,11 @@ namespace EnglishTesterServer.DAL.UnitsOfWork
         {
             get
             {
-                if (this._mainPageRepository == null)
+                if (_mainPageRepository == null)
                 {
-                    this._mainPageRepository = new MainPageRepository(context);
+                    _mainPageRepository = new MainPageRepository(context);
                 }
-                return this._mainPageRepository;
+                return _mainPageRepository;
             }
         }
 
@@ -59,7 +57,7 @@ namespace EnglishTesterServer.DAL.UnitsOfWork
         private bool disposed = false;
         public void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
@@ -69,7 +67,7 @@ namespace EnglishTesterServer.DAL.UnitsOfWork
         }
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

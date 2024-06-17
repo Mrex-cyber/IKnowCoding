@@ -1,19 +1,18 @@
 ﻿using API.Application.Helpers;
+using API.Auth;
+using API.ErrorHandling;
+using API.ErrorHandling.Handlers.Interfaces;
+using API.ErrorHandling.Interfaces;
+using API.Filters;
+using API.Models.Program;
 using AutoMapper;
-using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.Auth;
-using IKnowCoding.DAL;
-using IKnowCoding.DAL.Models.Program;
-using IKnowCoding.DAL.Repositories.MainPage;
-using IKnowCoding.DAL.Repositories.Tests;
-using IKnowCoding.DAL.Repositories.Users;
-using IKnowCoding.DAL.UnitsOfWork;
+using DAL;
+using DAL.Repositories.MainPage;
+using DAL.Repositories.Tests;
+using DAL.Repositories.Users;
+using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
-using IKnowCoding.ErrorHandling.Handlers.Interfaces;
-using IKnowCoding.ErrorHandling.Interfaces;
-using IKnowCoding.ErrorHandling;
-using IKnowCoding.Filters;
 using System.Reflection;
 
 public class Program

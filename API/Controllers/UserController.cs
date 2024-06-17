@@ -1,23 +1,12 @@
-﻿using EnglishTesterServer.DAL.UnitsOfWork;
-using Google.Apis.Auth.OAuth2;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Models.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
-﻿using API.Models.DTO.User;
+﻿using API.Auth;
+using API.Models.DTO.User;
 using AutoMapper;
 using DAL.Models.Entities.User;
-using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.API.Models.DTO.Tests;
-using IKnowCoding.DAL.Models.Models;
-using IKnowCoding.DAL.UnitsOfWork;
+using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace IKnowCoding.Controllers
+namespace API.Controllers
 {
     public class UserController : Controller
     {
@@ -58,7 +47,7 @@ namespace IKnowCoding.Controllers
         /// <response code="400">Request is null</response>
         /// <response code="409">Email or password are incorrect</response>
         [HttpPost("/api/user/signin")]
-        public async Task<IResult> SignIn([FromBody]DAL.Models.UserCredentialsModel credentials)
+        public async Task<IResult> SignIn([FromBody] DAL.Models.UserCredentialsModel credentials)
         {
             UserEntity? userEntity;
             UserSettingsEntity? userSettingsEntity;
@@ -116,12 +105,12 @@ namespace IKnowCoding.Controllers
         /// <response code="400">Request is null</response>
         /// <response code="409">Email or password are incorrect</response>
         [HttpPost("/api/user/signin-google")]
-        public async Task<IResult> SignInGoogle([FromBody]DAL.Models.UserCredentialsModel credentials)
+        public async Task<IResult> SignInGoogle([FromBody] DAL.Models.UserCredentialsModel credentials)
         {
             //var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             //var claims = result.Principal.Identities.FirstOrDefault().Claims.Select;
-            
+
             return Results.Ok();
             //return Results.Json(user);
         }

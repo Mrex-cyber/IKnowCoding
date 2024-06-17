@@ -1,18 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using EnglishTesterServer.DAL.UnitsOfWork;
-using IKnowCoding.DAL.Models.Entities;
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+﻿using API.Filters;
+using API.Models.DTO.Tests;
 using AutoMapper;
-using IKnowCoding.DAL.UnitsOfWork;
-using IKnowCoding.API.Models.DTO.Tests;
-using IKnowCoding.DAL.Models.Entities.Relationships;
-using API.Filters;
-using IKnowCoding.Filters;
+using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.Tests;
+using DAL.UnitsOfWork;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
-namespace IKnowCoding.Controllers
+namespace API.Controllers
 {
     [Authorize]
     [ValidateModel]
@@ -21,7 +17,8 @@ namespace IKnowCoding.Controllers
         private UnitOfWorkPlatform _unitOfWork;
         private readonly IMapper _mapper;
 
-        public TestController(IUnitOfWork unitOfWork, IMapper mapper) {
+        public TestController(IUnitOfWork unitOfWork, IMapper mapper)
+        {
             if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
             {
                 _unitOfWork = unitOfWork as UnitOfWorkPlatform;
@@ -56,7 +53,7 @@ namespace IKnowCoding.Controllers
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
             return Results.Text(json, "text/plain");
         }

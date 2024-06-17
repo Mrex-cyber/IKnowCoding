@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.ErrorHandling.Handlers.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using IKnowCoding.ErrorHandling.Handlers.Interfaces;
 using System.Net;
-using System.Reflection.Metadata;
 
-namespace IKnowCoding.ErrorHandling.Handlers
+namespace API.ErrorHandling.Handlers
 {
     public class GeneralInternalExceptionHandler : IExceptionControllerHandler
     {

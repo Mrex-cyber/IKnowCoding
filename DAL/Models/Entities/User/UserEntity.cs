@@ -1,30 +1,20 @@
-﻿using DAL.Models;
-using IKnowCoding.API.Models.DTO.MainPage;
-using IKnowCoding.DAL.Models.Entities.Relationships;
-using Microsoft.EntityFrameworkCore;
+﻿using DAL.Models.Entities.MainPage;
+using DAL.Models.Entities.Relationships;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices;
 
 namespace DAL.Models.Entities.User
 {
+    [Table("obj_users")]
     public class UserEntity : BaseEntity
     {
         [Required]
-        [Column("firstName")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Column("lastName")]
-        public string LastName { get; set; }
-
-        [Required]
         [Column("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
 
         [Required]
         [Column("password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
 
         [ForeignKey(nameof(Feedback))]
         [Column("feedback_id")]
@@ -36,24 +26,25 @@ namespace DAL.Models.Entities.User
         public int SettingsId { get; set; }
         public UserSettingsEntity Settings { get; set; } = null!;
 
-        public List<UserTestResultEntity> TestResultEntities { get; set; } = null!;
+        [Required]
+        [ForeignKey(nameof(Person))]
+        [Column("person_id")]
+        public int PersonId { get; set; }
 
-        public UserEntity()
+        public PersonEntity Person { get; set; } = null!;
+
+        public ICollection<UserTestResultEntity> TestResultEntities { get; set; } = null!;
+
+        public ICollection<UserTeamConnectionEntity> Teams { get; set; } = null!;
+
+        public UserEntity(int id, string email, string password, int feedbackId, int settingsId, int personId)
+            : base(id)
         {
-            FirstName = "Anonimous";
-            LastName = "Anonimous";
-            Email = "None";
-            Password = "None";
-        }
-        public UserEntity(int id, string firstName, string lastName, string email, string password, int feedbackId, int settingsId)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
             Email = email;
             Password = password;
             FeedbackId = feedbackId;
             SettingsId = settingsId;
+            PersonId = personId;
         }
     }
 }

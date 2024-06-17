@@ -1,4 +1,4 @@
-﻿namespace IKnowCoding.API.Models
+﻿namespace API.Models
 {
     public record UserCredentialsModel(string? firstName, string? lastName, string email, string password);
 }

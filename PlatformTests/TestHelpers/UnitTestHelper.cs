@@ -1,8 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using System;
-using AutoMapper;
-using IKnowCoding.DAL;
 using API.Application.Helpers;
+using AutoMapper;
+using DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace PlatformTests.TestHelpers
 {
@@ -32,7 +31,7 @@ namespace PlatformTests.TestHelpers
 
         public static void SeedData(PlatformContext context)
         {
-            
+
 
 
             context.SaveChanges();

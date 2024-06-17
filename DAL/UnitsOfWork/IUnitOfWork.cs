@@ -1,5 +1,4 @@
-﻿
-namespace IKnowCoding.DAL.UnitsOfWork
+﻿namespace DAL.UnitsOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

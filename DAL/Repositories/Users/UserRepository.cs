@@ -1,9 +1,8 @@
-﻿
+﻿using DAL.Models;
 using DAL.Models.Entities.User;
-using IKnowCoding.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace IKnowCoding.DAL.Repositories.Users
+namespace DAL.Repositories.Users
 {
     public class UserRepository : IUserRepository, IDisposable
     {
@@ -70,7 +69,7 @@ namespace IKnowCoding.DAL.Repositories.Users
                 .GroupJoin(_context.UserTestResults,
                 u => u.Id,
                 r => r.UserId,
-                (u, r) => new { User = u, Points = r.Sum(i => i.Result)}
+                (u, r) => new { User = u, Points = r.Sum(i => i.Result) }
                 )
                 .OrderByDescending(res => res.Points)
                 .Select(res => res.User);
@@ -79,8 +78,8 @@ namespace IKnowCoding.DAL.Repositories.Users
         public UserEntity GetEntityByCredentials(UserCredentialsModel credentials)
         {
             UserEntity user = _context.Users
-                .Where(u => 
-                    u.Email == credentials.email 
+                .Where(u =>
+                    u.Email == credentials.email
                         && u.Password == credentials.password)
                 .Single();
 

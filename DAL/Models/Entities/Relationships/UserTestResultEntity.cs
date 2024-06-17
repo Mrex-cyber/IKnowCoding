@@ -1,11 +1,11 @@
-﻿using DAL.Models;
+﻿using DAL.Models.Entities.Tests;
 using DAL.Models.Entities.User;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IKnowCoding.DAL.Models.Entities.Relationships
+namespace DAL.Models.Entities.Relationships
 {
-    [Table("rel_user_test_result")]
+    [Table("rel_user_test_results")]
     public class UserTestResultEntity : BaseEntity
     {
         [Required]
@@ -35,11 +35,8 @@ namespace IKnowCoding.DAL.Models.Entities.Relationships
         [Column("result")]
         public int Result { get; set; }
 
-        public UserTestResultEntity() { }
-
-        public UserTestResultEntity(int id, int userId, int testId)
+        public UserTestResultEntity(int id, int userId, int testId) : base(id)
         {
-            Id = id;
             UserId = userId;
             TestId = testId;
             AccessTime = DateTime.UtcNow;

@@ -1,9 +1,8 @@
-﻿using IKnowCoding.Auth;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace IKnowCoding.DAL.Models.Models
+namespace API.Auth
 {
     public class AuthTokenModel
     {

@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
@@ -9,5 +9,10 @@ namespace DAL.Models
         [Column("id")]
         [Key]
         public int Id { get; set; }
+
+        public BaseEntity(int id = 0)
+        {
+            Id = id;
+        }
     }
 }

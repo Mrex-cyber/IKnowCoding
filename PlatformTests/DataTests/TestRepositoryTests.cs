@@ -1,13 +1,7 @@
-﻿using IKnowCoding.DAL;
-using IKnowCoding.DAL.Models.Entities;
-using IKnowCoding.DAL.Repositories.Tests;
-using NUnit.Framework;
+﻿using DAL.Models.Entities.Tests;
 using PlatformTests.TestHelpers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace TradeMarket.Tests.DataTests
+namespace PlatformTests.DataTests
 {
     [TestFixture]
     public class TestRepositoryTests
