@@ -1,8 +1,9 @@
 ﻿using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.User;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DAL.Models.Entities.User
+namespace DAL.Models.Entities.Teams
 {
     [Table("obj_teams")]
     public class TeamEntity : BaseEntity

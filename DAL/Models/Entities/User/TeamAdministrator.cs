@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.Models.Entities.Teams;
 
 namespace DAL.Models.Entities.User
 {

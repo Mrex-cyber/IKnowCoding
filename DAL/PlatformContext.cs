@@ -1,5 +1,6 @@
 ﻿using DAL.Models.Entities.MainPage;
 using DAL.Models.Entities.Relationships;
+using DAL.Models.Entities.Teams;
 using DAL.Models.Entities.Tests;
 using DAL.Models.Entities.User;
 using DAL.Providers;
