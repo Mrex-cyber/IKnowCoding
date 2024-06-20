@@ -1,11 +1,10 @@
-﻿using API.Application.Helpers;
+﻿using API.Application.ErrorHandling;
+using API.Application.ErrorHandling.Handlers.Interfaces;
+using API.Application.ErrorHandling.Interfaces;
+using API.Application.Filters;
 using API.Auth;
-using API.ErrorHandling;
-using API.ErrorHandling.Handlers.Interfaces;
-using API.ErrorHandling.Interfaces;
-using API.Filters;
-using API.Models.Program;
 using AutoMapper;
+using BLL.Helpers.Automapper;
 using DAL;
 using DAL.Repositories.MainPage;
 using DAL.Repositories.Tests;
@@ -13,6 +12,7 @@ using DAL.Repositories.Users;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using Shared.Models.Program;
 using System.Reflection;
 
 public class Program

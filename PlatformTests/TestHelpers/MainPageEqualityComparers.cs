@@ -1,5 +1,4 @@
-﻿using API.Models.DTO.MainPage;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace PlatformTests.TestHelpers
 {

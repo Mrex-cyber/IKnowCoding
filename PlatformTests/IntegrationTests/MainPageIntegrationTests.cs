@@ -1,5 +1,4 @@
-﻿using API.Models.DTO.MainPage;
-using AutoMapper;
+﻿using AutoMapper;
 using DAL.Models.Entities.MainPage;
 using DAL.Models.Entities.User;
 using FluentAssertions;

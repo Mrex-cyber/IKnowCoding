@@ -1,5 +1,4 @@
-﻿using API.Filters;
-using API.Models.DTO.Tests;
+﻿using API.Application.Filters;
 using AutoMapper;
 using DAL.Models.Entities.Relationships;
 using DAL.Models.Entities.Tests;
@@ -7,6 +6,7 @@ using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Shared.Models.DTO.Tests;
 
 namespace API.Controllers
 {
@@ -44,9 +44,9 @@ namespace API.Controllers
         /// <response code="204">If the test list is empty</response>
         [HttpGet("/api/tests")]
         [AllowAnonymous]
-        public IResult OnGetTests()
+        public async Task<IResult> OnGetTests()
         {
-            var commonTests = _unitOfWork.TestRepository.GetEntities();
+            var commonTests = await _unitOfWork.TestRepository.GetEntities();
 
             if (commonTests.Count() == 0)
             {
@@ -73,9 +73,9 @@ namespace API.Controllers
         /// <response code="200" link="">Returns tests for some user</response>
         /// <response code="204">If the test list is empty</response>
         [HttpPost("/api/tests")]
-        public IResult OnGetUserTests([FromBody] string userEmail)
+        public async Task<IResult> OnGetUserTests([FromBody] string userEmail)
         {
-            var userTests = _unitOfWork.TestRepository.GetUserTests(userEmail);
+            var userTests = await _unitOfWork.TestRepository.GetUserTests(userEmail);
 
             if (userTests.Count() == 0)
             {

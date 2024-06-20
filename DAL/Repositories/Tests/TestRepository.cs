@@ -13,20 +13,20 @@ namespace DAL.Repositories.Tests
             _context = context;
         }
 
-        public IEnumerable<TestEntity> GetEntities()
+        public async Task<IEnumerable<TestEntity>> GetEntities()
         {
-            IEnumerable<TestEntity> tests = _context.Tests
+            IEnumerable<TestEntity> tests = await _context.Tests
                 .Where(t => t.IsFree)
                 .Include(t => t.Questions)
                     .ThenInclude(q => q.Answers)
-                .ToList();
+                .ToListAsync();
 
             return tests;
         }
 
-        public IEnumerable<TestEntity> GetUserTests(string userEmail)
+        public async Task<IEnumerable<TestEntity>> GetUserTests(string userEmail)
         {
-            IEnumerable<TestEntity> commonTests = GetEntities();
+            IEnumerable<TestEntity> commonTests = await GetEntities();
 
             IEnumerable<TestEntity> userAccessedTests = _context.Tests
                 .Include(t => t.Questions)
@@ -39,7 +39,7 @@ namespace DAL.Repositories.Tests
             return allTests;
         }
 
-        public bool AddEntity(TestEntity newTest)
+        public async Task<bool> AddEntity(TestEntity newTest)
         {
             try
             {
@@ -60,15 +60,16 @@ namespace DAL.Repositories.Tests
                 return false;
             }
         }
-        public bool UpdatedEntity(TestEntity test)
+        public async Task<bool> UpdateEntity(TestEntity test)
         {
             return true;
         }
-        public bool RemoveEntity(int id)
+
+        public async Task<bool> RemoveEntity(int id)
         {
             return true;
         }
-        public TestEntity? GetEntityById(int id)
+        public async Task<TestEntity?> GetEntityById(int id)
         {
             return _context.Tests.Find(id);
         }

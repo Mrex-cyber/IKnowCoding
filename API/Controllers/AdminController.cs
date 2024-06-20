@@ -1,8 +1,8 @@
-﻿using API.Models.DTO.Tests;
-using AutoMapper;
+﻿using AutoMapper;
 using DAL.Models.Entities.Tests;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models.DTO.Tests;
 
 namespace API.Controllers
 {
@@ -48,11 +48,11 @@ namespace API.Controllers
         /// <response code="200" link="">Added test</response>
         /// <response code="204">If the test not found</response>
         [HttpPost("/api/tests/new")]
-        public bool OnPostNewTest([FromBody] TestRequestDto newTest)
+        public async Task<bool> OnPostNewTest([FromBody] TestRequestDto newTest)
         {
             TestEntity testEntity = _mapper.Map<TestEntity>(newTest);
 
-            return _unitOfWork.TestRepository.AddEntity(testEntity);
+            return await _unitOfWork.TestRepository.AddEntity(testEntity);
         }
     }
 }

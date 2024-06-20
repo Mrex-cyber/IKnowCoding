@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlatformTests", "PlatformTests\PlatformTests.csproj", "{2F4C2B6C-8856-48AC-B5E9-AB98D0575276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{8061CF04-4EEE-42A5-9CB4-B47D0F4D2899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{8061CF04-4EEE-42A5-9CB4-B47D0F4D2899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{1AAD5EE1-0E2C-4F0F-8C58-438C3B2CD841}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8061CF04-4EEE-42A5-9CB4-B47D0F4D2899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8061CF04-4EEE-42A5-9CB4-B47D0F4D2899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8061CF04-4EEE-42A5-9CB4-B47D0F4D2899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAD5EE1-0E2C-4F0F-8C58-438C3B2CD841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAD5EE1-0E2C-4F0F-8C58-438C3B2CD841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAD5EE1-0E2C-4F0F-8C58-438C3B2CD841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAD5EE1-0E2C-4F0F-8C58-438C3B2CD841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

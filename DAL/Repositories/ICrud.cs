@@ -2,11 +2,11 @@
 {
     public interface ICrud<T>
     {
-        public IEnumerable<T> GetEntities();
-        public T? GetEntityById(int id);
-        public bool AddEntity(T entity);
-        public bool UpdatedEntity(T entity);
-        public bool RemoveEntity(int id);
+        public Task<IEnumerable<T>> GetEntities();
+        public Task<T?> GetEntityById(int id);
+        public Task<bool> AddEntity(T entity);
+        public Task<bool> UpdateEntity(T entity);
+        public Task<bool> RemoveEntity(int id);
         void Save();
     }
 }

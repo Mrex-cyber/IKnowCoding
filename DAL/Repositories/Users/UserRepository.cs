@@ -1,5 +1,4 @@
-﻿using DAL.Models;
-using DAL.Models.Entities.User;
+﻿using DAL.Models.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories.Users
@@ -12,24 +11,24 @@ namespace DAL.Repositories.Users
             _context = context;
         }
 
-        public bool AddEntity(UserEntity entity)
+        public async Task<bool> AddEntity(UserEntity entity)
         {
-            _context.Users.Add(entity);
+            await _context.Users.AddAsync(entity);
 
             return true;
         }
 
-        public IEnumerable<UserEntity> GetEntities()
+        public async Task<IEnumerable<UserEntity>> GetEntities()
         {
             return _context.Users;
         }
 
-        public UserEntity GetEntityById(int id)
+        public async Task<UserEntity> GetEntityById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool RemoveEntity(int id)
+        public async Task<bool> RemoveEntity(int id)
         {
             throw new NotImplementedException();
         }
@@ -39,9 +38,54 @@ namespace DAL.Repositories.Users
             throw new NotImplementedException();
         }
 
-        public bool UpdatedEntity(UserEntity entity)
+        public async Task<bool> UpdateEntity(UserEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<UserEntity>> GetTopTenUsers()
+        {
+            return _context.Users
+                .GroupJoin(_context.UserTestResults,
+                u => u.Id,
+                r => r.UserId,
+                (u, r) => new { User = u, Points = r.Sum(i => i.Result) }
+                )
+                .OrderByDescending(res => res.Points)
+                .Select(res => res.User);
+        }
+
+        public async Task<UserEntity> GetEntityByCredentials(UserEntity credentials)
+        {
+            UserEntity user = _context.Users
+                .Where(u =>
+                    u.Email == credentials.Email
+                        && u.Password == credentials.Password)
+                .Single();
+
+            return user;
+        }
+
+        public async Task<UserSettingsEntity> GetUserSettingsByUserId(int userId)
+        {
+            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(u => u.UserId == userId);
+
+            return userSettingsEntity;
+        }
+
+        public async Task<UserSettingsEntity> GetUserSettingsByRefreshToken(string refreshToken)
+        {
+            UserSettingsEntity userSettingsEntity = _context.UserSettings
+                .Include(s => s.User)
+                .First(u => u.RefreshToken == refreshToken);
+
+            return userSettingsEntity;
+        }
+
+        public async Task UpdateUserSettings(UserSettingsEntity userSettings)
+        {
+            _context.Attach(userSettings);
+            _context.Update(userSettings);
         }
 
         private bool disposed = false;
@@ -61,51 +105,6 @@ namespace DAL.Repositories.Users
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        public IEnumerable<UserEntity> GetTopTenUsers()
-        {
-            return _context.Users
-                .GroupJoin(_context.UserTestResults,
-                u => u.Id,
-                r => r.UserId,
-                (u, r) => new { User = u, Points = r.Sum(i => i.Result) }
-                )
-                .OrderByDescending(res => res.Points)
-                .Select(res => res.User);
-        }
-
-        public UserEntity GetEntityByCredentials(UserCredentialsModel credentials)
-        {
-            UserEntity user = _context.Users
-                .Where(u =>
-                    u.Email == credentials.email
-                        && u.Password == credentials.password)
-                .Single();
-
-            return user;
-        }
-
-        public UserSettingsEntity GetUserSettingsByUserId(int userId)
-        {
-            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(u => u.UserId == userId);
-
-            return userSettingsEntity;
-        }
-
-        public UserSettingsEntity GetUserSettingsByRefreshToken(string refreshToken)
-        {
-            UserSettingsEntity userSettingsEntity = _context.UserSettings
-                .Include(s => s.User)
-                .First(u => u.RefreshToken == refreshToken);
-
-            return userSettingsEntity;
-        }
-
-        public async Task UpdateUserSettings(UserSettingsEntity userSettings)
-        {
-            _context.Attach(userSettings);
-            _context.Update(userSettings);
         }
     }
 }

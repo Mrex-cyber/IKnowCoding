@@ -1,8 +1,8 @@
-﻿using API.Models.DTO.MainPage;
-using AutoMapper;
+﻿using AutoMapper;
 using DAL.Models.Entities.MainPage;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models.DTO.MainPage;
 
 namespace API.Controllers
 {
@@ -54,7 +54,7 @@ namespace API.Controllers
         /// </remarks>
         /// <response code="200" link="">Returns feedbacks</response>
         [HttpGet("api/main/feedbacks")]
-        public IResult OnGetFeedbacks()
+        public async Task<IResult> OnGetFeedbacks()
         {
             IEnumerable<FeedbackEntity> feedbackEntities = _unitOfWork.MainPageRepository.GetFeedbacks();
 
