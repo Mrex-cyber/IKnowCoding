@@ -6,7 +6,7 @@ namespace DAL.Repositories.MainPage
 {
     public interface IMainPageRepository : IDisposable
     {
-        IEnumerable<AchievementEntity> GetAchievements();
-        IEnumerable<FeedbackEntity> GetFeedbacks();
+        Task<IEnumerable<AchievementEntity>> GetAchievementsAsync();
+        Task<IEnumerable<FeedbackEntity>> GetFeedbacksAsync();
     }
 }

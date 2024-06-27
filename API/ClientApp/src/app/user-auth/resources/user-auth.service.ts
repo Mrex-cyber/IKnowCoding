@@ -22,16 +22,25 @@ export class UserAuthResourceService {
   constructor(private client: HttpClient) { }
 
   public userSignIn(credentials: IUserCredentials): Observable<IUserSettings> {
-    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"});
+    console.log(JSON.stringify({
+      email: credentials.email,
+      password: credentials.password
+  }))
+    this.readLocalStorageUserData();
+
+    this.httpOptions.headers = new HttpHeaders({
+      "Accept": "application/json", 
+      "Content-Type": "application/json", 
+      "Authorization": "Bearer " + this._authOptions.value.access_token
+    });
+
     this.client
-    .post<IUserSettings>(
-      this.testsUrl + "/user/signin", {
-        firstName: null,
-        lastName: null,
-        email: credentials.email,
-        password: credentials.password
-      })
-    .subscribe(result => this.updateAuthOptions(result));
+      .post<IUserSettings>(
+        this.testsUrl + "/user/signin", JSON.stringify({
+          email: credentials.email,
+          password: credentials.password
+        }), this.httpOptions)
+      .subscribe(result => this.updateAuthOptions(result));
 
     return this.authOptions$;
   }

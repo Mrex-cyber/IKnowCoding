@@ -2,7 +2,7 @@
 
 namespace Shared.Models.DTO.User
 {
-    public record UserLoginDto
+    public class UserLoginDto
     {
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; } = null!;

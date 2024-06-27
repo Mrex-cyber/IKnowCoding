@@ -36,16 +36,19 @@ namespace API.Controllers
         /// <response code="204">The user was not found</response>
         /// <response code="400">Request is null</response>
         /// <response code="409">Email or password are incorrect</response>
-        [HttpGet("/api/user/signin")]
-        public async Task<IResult> SignIn([FromHeader] UserLoginDto login, [FromHeader] UserSettingsDto settings)
+        [HttpPost("/api/user/signin")]
+        public async Task<IResult> SignIn([FromBody] UserLoginDto login)
         {
             UserModel user = _mapper.Map<UserModel>(login);
 
-            user.Settings = _mapper.Map<UserSettingsModel>(settings);
+            UserSettingsModel? serviceResult = await _userService.SignIn(user);
 
-            UserSettingsModel serviceResult = await _userService.SignIn(user);
+            if (serviceResult is null)
+            {
+                return Results.BadRequest("Settings is null");
+            }
 
-            settings = _mapper.Map<UserSettingsDto>(serviceResult);
+            UserSettingsDto settings = _mapper.Map<UserSettingsDto>(serviceResult);
 
             return Results.Json(settings);
         }

@@ -2,8 +2,10 @@
 using AutoMapper;
 using BLL.Models.User;
 using DAL.Models.Entities.User;
+using DAL.Repositories.Users;
 using DAL.UnitsOfWork;
 using Microsoft.Extensions.Logging;
+using Shared.Models.DTO.User;
 
 namespace BLL.Services.Users.Settings
 {
@@ -28,20 +30,12 @@ namespace BLL.Services.Users.Settings
 
         public async Task<UserSettingsModel> SignIn(UserModel user)
         {
-            UserEntity? userEntity;
-            UserSettingsEntity? userSettingsEntity;
+            Console.WriteLine(user.FirstName + " " + user.LastName);
+            UserSettingsEntity userSettingsEntity = await _unitOfWork.UserRepository.GetUserSettingsByCredentials(user.Email, user.Password);
 
-            if (!string.IsNullOrWhiteSpace(user.Settings.RefreshToken))
+            if (!string.IsNullOrWhiteSpace(userSettingsEntity.RefreshToken))
             {
-                userSettingsEntity = await _unitOfWork.UserRepository.GetUserSettingsByRefreshToken(user.Settings.RefreshToken);
-            }
-            else
-            {
-                userEntity = _mapper.Map<UserEntity>(user);
-
-                userEntity = await _unitOfWork.UserRepository.GetEntityByCredentials(userEntity);
-
-                userSettingsEntity = await _unitOfWork.UserRepository.GetUserSettingsByUserId(userEntity.Id);
+                userSettingsEntity = await _unitOfWork.UserRepository.GetUserSettingsByRefreshToken(userSettingsEntity.RefreshToken);
             }
 
             if (userSettingsEntity.AccessTokenExpireTime is null || userSettingsEntity.AccessTokenExpireTime < DateTime.UtcNow)
@@ -56,10 +50,8 @@ namespace BLL.Services.Users.Settings
                 userSettingsEntity.RefreshTokenExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(3));
             }
 
-            UserSettingsEntity settingsEntity = _mapper.Map<UserSettingsEntity>(user.Settings);
-
-            await _unitOfWork.UserRepository.UpdateUserSettings(settingsEntity);
-
+            await _unitOfWork.UserRepository.UpdateUserSettings(userSettingsEntity);
+            Console.WriteLine(userSettingsEntity.AccessToken);
             UserSettingsModel settingsModel = _mapper.Map<UserSettingsModel>(userSettingsEntity);
 
             return settingsModel;
@@ -70,6 +62,8 @@ namespace BLL.Services.Users.Settings
             UserEntity entity = _mapper.Map<UserEntity>(user);
 
             await _unitOfWork.UserRepository.AddEntity(entity);
+
+            await _unitOfWork.UserRepository.AddSettings(entity.Settings);
 
             return _mapper.Map<UserModel>(entity);
         }

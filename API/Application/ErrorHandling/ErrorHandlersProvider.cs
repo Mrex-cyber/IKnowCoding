@@ -10,7 +10,9 @@ namespace API.Application.ErrorHandling
         {
             return new List<IExceptionControllerHandler>
             {
-                new GeneralInternalExceptionHandler()
+                new AutomapperMappingExceptionHandler(),
+                new NullExceptionHandler(),
+                new GeneralInternalExceptionHandler(),
             };
         }
     }

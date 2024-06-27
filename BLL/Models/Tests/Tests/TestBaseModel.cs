@@ -8,7 +8,7 @@ namespace BLL.Models.Tests.Tests
         public string Description { get; set; }
         public bool IsFree { get; set; }
         public string ImagePath { get; set; }
-        public int Result { get; set; }
-        public ICollection<QuestionModel> Questions { get; set; } = null!;
+        public int? Result { get; set; }
+        public ICollection<int> QuestionIds { get; set; } = new List<int>();
     }
 }

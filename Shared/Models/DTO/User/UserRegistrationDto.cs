@@ -2,7 +2,7 @@
 
 namespace Shared.Models.DTO.User
 {
-    public record UserRegistrationDto
+    public class UserRegistrationDto
     {
         [JsonProperty(PropertyName = "firstName")]
         public string? FirstName { get; set; }

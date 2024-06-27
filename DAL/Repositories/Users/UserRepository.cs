@@ -33,6 +33,15 @@ namespace DAL.Repositories.Users
             throw new NotImplementedException();
         }
 
+        public async Task<bool> AddSettings(UserSettingsEntity settings)
+        {
+            await _context.AddAsync(settings);
+
+            Save();
+
+            return true;
+        }
+
         public void Save()
         {
             throw new NotImplementedException();
@@ -66,9 +75,20 @@ namespace DAL.Repositories.Users
             return user;
         }
 
+
+
         public async Task<UserSettingsEntity> GetUserSettingsByUserId(int userId)
         {
-            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(u => u.UserId == userId);
+            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(s => s.UserId == userId);
+
+            return userSettingsEntity;
+        }
+
+        public async Task<UserSettingsEntity> GetUserSettingsByCredentials(string email, string password)
+        {
+            UserEntity user = await _context.Users.SingleAsync(u => u.Email == email && u.Password == password);
+
+            UserSettingsEntity userSettingsEntity = _context.UserSettings.First(s => s.UserId == user.Id);
 
             return userSettingsEntity;
         }

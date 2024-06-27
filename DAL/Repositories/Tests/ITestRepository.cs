@@ -6,7 +6,7 @@ namespace DAL.Repositories.Tests
     public interface ITestRepository : ICrud<TestEntity>, IDisposable
     {
 
-        Task<IEnumerable<TestEntity>> GetUserTests(string userEmail);
-        Task<UserTestResultEntity> CheckTestById(string userEmail, int testId, AnswerVariantEntity[] answers);
+        Task<IEnumerable<TestEntity>> GetUserTests(int userId);
+        Task<UserTestResultEntity> CheckTestById(int userId, int testId, AnswerVariantEntity[] answers);
     }
 }

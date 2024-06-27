@@ -5,6 +5,9 @@ using API.Application.Filters;
 using API.Auth;
 using AutoMapper;
 using BLL.Helpers.Automapper;
+using BLL.Services.MainPage;
+using BLL.Services.Tests.TestsService.BaseTestsService;
+using BLL.Services.Users.Settings;
 using DAL;
 using DAL.Repositories.MainPage;
 using DAL.Repositories.Tests;
@@ -29,11 +32,13 @@ public class Program
 
         builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
         builder.Services.AddDbContext<PlatformContext>();
-        builder.Services.AddScoped<ITestRepository, TestRepository>();
-        builder.Services.AddScoped<IMainPageRepository, MainPageRepository>();
-        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        //builder.Services.AddScoped<ITestRepository, TestRepository>();
+        //builder.Services.AddScoped<IMainPageRepository, MainPageRepository>();
+        //builder.Services.AddScoped<IUserRepository, UserRepository>();
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWorkPlatform>();
+
+        ConnectServices(builder);
 
         builder.Services.AddScoped<IObjectsProvider<IExceptionControllerHandler>, ErrorHandlersProvider>();
 
@@ -126,5 +131,12 @@ public class Program
 
         app.Run();
 
+    }
+
+    public static void ConnectServices(WebApplicationBuilder builder)
+    {
+        builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<IBaseTestService, BaseTestService>();
+        builder.Services.AddScoped<IMainPageService, MainPageService>();
     }
 }

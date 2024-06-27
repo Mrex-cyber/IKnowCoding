@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Shared.Models.DTO.MainPage;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PlatformTests.TestHelpers
 {

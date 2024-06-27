@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shared.Models.DTO.User
 {
-    public record UserSettingsDto
+    public class UserSettingsDto
     {
         [JsonProperty(PropertyName = "access_token")]
         public string? AccessToken { get; set; }

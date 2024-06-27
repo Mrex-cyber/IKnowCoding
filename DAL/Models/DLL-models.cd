@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.Models.Entities.MainPage.AchievementEntity">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAIAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\MainPage\AchievementEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.MainPage.FeedbackEntity">
+    <Position X="22.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAIgAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\MainPage\FeedbackEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Relationships.UserTeamConnectionEntity">
+    <Position X="29.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgCAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Relationships\UserTeamConnectionEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Relationships.UserTestResultEntity">
+    <Position X="36" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAAAAABAAAAQEAAwAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\Relationships\UserTestResultEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Teams.TeamEntity">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Teams\TeamEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Tests.AnswerVariantEntity">
+    <Position X="24.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACEQAAAA=</HashCode>
+      <FileName>Models\Entities\Tests\AnswerVariantEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Tests.QuestionEntity">
+    <Position X="31.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Models\Entities\Tests\QuestionEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.Tests.TestEntity">
+    <Position X="38.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAEAAAAAAAKAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Tests\TestEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.User.PersonEntity">
+    <Position X="20.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\Entities\User\PersonEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.User.TeamAdministrator">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\User\TeamAdministrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.User.UserEntity">
+    <Position X="33.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAAACAAAAAEAAAKACAAAAAAAAACgAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\User\UserEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.Entities.User.UserSettingsEntity">
+    <Position X="40.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAQAAAQAAAAAACAAgAGAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\User\UserSettingsEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Models.BaseEntity">
+    <Position X="28" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

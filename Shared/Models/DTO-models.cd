@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shared.Models.DTO.Answers.AnswerVariantRequestDto">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAAA=</HashCode>
+      <FileName>Models\DTO\Answers\AnswerVariantRequestDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.Answers.AnswerVariantResponseDto">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="Shared.Models.DTO.BaseDto" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="2.103" />
+        <Point X="11.5" Y="2.625" />
+        <Point X="6" Y="2.625" />
+        <Point X="6" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\DTO\Answers\AnswerVariantResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.MainPage.AchievementDto">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAIAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\DTO\MainPage\AchievementDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.MainPage.FeedbackDto">
+    <Position X="19" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAIAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Models\DTO\MainPage\FeedbackDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.Questions.QuestionResponseDto">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Models\DTO\Questions\QuestionRequestDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.Questions.QuestionRequestDto">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Models\DTO\Questions\QuestionResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.Tests.TestRequestDto">
+    <Position X="14.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTO\Tests\TestRequestDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.Tests.TestResponseDto">
+    <Position X="16.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAEAAAAAAAIQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTO\Tests\TestResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.BaseDto">
+    <Position X="10.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTO\BaseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.Program.Settings">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Models\Program\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.AuthTokenModel">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AuthTokenModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.User.UserLoginDto">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTO\User\UserLoginDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.User.UserRegistrationDto">
+    <Position X="12.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Models\DTO\User\UserRegistrationDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shared.Models.DTO.User.UserSettingsDto">
+    <Position X="10" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAQAAAAAACAAAAGAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTO\User\UserSettingsDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -20,6 +20,9 @@ namespace Shared.Models.DTO.Tests
         [JsonProperty(PropertyName = "imagePath")]
         public string ImagePath { get; set; }
 
+        [JsonProperty(PropertyName = "isFree")]
+        public bool IsFree { get; set; }
+
         public TestResponseDto() { }
         public TestResponseDto(int id, string title, string description, string imagePath)
         {

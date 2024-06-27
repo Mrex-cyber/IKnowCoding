@@ -24,7 +24,7 @@ namespace DAL.Repositories.Tests
             return tests;
         }
 
-        public async Task<IEnumerable<TestEntity>> GetUserTests(string userEmail)
+        public async Task<IEnumerable<TestEntity>> GetUserTests(int userId)
         {
             IEnumerable<TestEntity> commonTests = await GetEntities();
 
@@ -73,11 +73,26 @@ namespace DAL.Repositories.Tests
         {
             return _context.Tests.Find(id);
         }
-        public async Task<UserTestResultEntity> CheckTestById(string userEmail, int testId, AnswerVariantEntity[] userAnswers)
+
+        public async Task<IEnumerable<int>> GetCorrectAnswerIdsByTestId(int testId)
+        {
+            return _context.Tests
+                .First(t => t.Id == testId).Questions
+                .SelectMany(q => q.Answers)
+                .Where(a => a.IsRight)
+                .Select(a => a.Id);
+        }
+
+        public async Task<UserTestResultEntity> GetTestResultEntity(int userId, int testId)
+        {
+            return await _context.UserTestResults.FirstAsync(r => r.UserId == userId && r.TestId == testId);
+        }
+
+        public async Task<UserTestResultEntity> CheckTestById(int userId, int testId, AnswerVariantEntity[] userAnswers)
         {
             int result = CalculatePoints(userAnswers);
 
-            return await GetResultAndSave(userEmail, testId, result);
+            return await GetResultAndSave(userId, testId, result);
         }
 
         private async Task<AnswerVariantEntity[]> GetAllRightAnswers(AnswerVariantEntity[] userAnswers)
@@ -92,7 +107,7 @@ namespace DAL.Repositories.Tests
             return rightAnswers;
         }
 
-        private async Task<UserTestResultEntity> GetResultAndSave(string userEmail, int testId, int result)
+        private async Task<UserTestResultEntity> GetResultAndSave(int userId, int testId, int result)
         {
             try
             {
@@ -100,7 +115,7 @@ namespace DAL.Repositories.Tests
                                                             join users in _context.Users
                                                                on testResultEntity.UserId equals users.Id
                                                             where testResultEntity.TestId == testId
-                                                               && users.Email == userEmail
+                                                               && users.Id == userId
                                                             select testResultEntity).FirstOrDefaultAsync();
 
 
@@ -112,7 +127,7 @@ namespace DAL.Repositories.Tests
                 }
                 else
                 {
-                    UserEntity user = _context.Users.FirstOrDefault(u => u.Email == userEmail)!;
+                    UserEntity user = _context.Users.FirstOrDefault(u => u.Id == userId)!;
                     resultObject = new UserTestResultEntity(0, user.Id, testId);
                     resultObject.Result = result;
 

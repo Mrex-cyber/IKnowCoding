@@ -1,4 +1,9 @@
 ﻿using AutoMapper;
+using BLL.Models.MainPage;
+using BLL.Models.Tests.Answers;
+using BLL.Models.Tests.Questions;
+using BLL.Models.Tests.Tests;
+using BLL.Models.User;
 using DAL.Models.Entities.MainPage;
 using DAL.Models.Entities.Tests;
 using DAL.Models.Entities.User;
@@ -14,47 +19,111 @@ namespace BLL.Helpers.Automapper
     {
         public AutomapperProfile()
         {
-            CreateMap<TestEntity, TestResponseDto>()
-                .ForMember(e => e.Result, x => x.MapFrom(x => x.TestResultEntities.FirstOrDefault(r => r.TestId == x.Id).Result))
+            MainPageDTOtoModelMaps();
+            MainPageModeltoEntity();
+
+            UserDTOToModelMaps();
+            UserModelToEntityMaps();
+
+            //TestsSimpleMaps();
+        }
+
+
+        public void MainPageDTOtoModelMaps()
+        {
+            CreateMap<AchievementDto, AchievementModel>()
                 .ReverseMap();
 
-            CreateMap<TestRequestDto, TestEntity>()
+            CreateMap<FeedbackDto, FeedbackModel>()
+                .ForMember(m => m.UserId, dto => dto.Ignore())
+                .ReverseMap();
+        }
+
+        public void MainPageModeltoEntity()
+        {
+            CreateMap<AchievementModel, AchievementEntity>()
                 .ReverseMap();
 
+            CreateMap<FeedbackModel, FeedbackEntity>()
+                .ForMember(e => e.UserId, m => m.MapFrom(x => x.UserId))
+                .AfterMap((src, dest) =>
+                {
+                    if (dest.User != null && dest.User.Person != null)
+                    {
+                        src.FullName = $"{dest.User.Person.FirstName} {dest.User.Person.LastName}";
+                    }
+                })
+                .ReverseMap()
+                .ForMember(m => m.FullName, opt => opt.Ignore());
+        }
+
+        public void UserDTOToModelMaps()
+        {
+            CreateMap<UserLoginDto, UserModel>()
+                .ReverseMap();
+
+            CreateMap<UserRegistrationDto, UserModel>()
+                .ReverseMap();
+
+            CreateMap<UserSettingsDto, UserSettingsModel>()
+                .ReverseMap();
+        }
+
+        public void UserModelToEntityMaps()
+        {
+            CreateMap<UserModel, UserEntity>()
+                .ForPath(e => e.Person.FirstName, m => m.MapFrom(x => x.FirstName))
+                .ForPath(e => e.Person.LastName, m => m.MapFrom(x => x.LastName))
+                .ReverseMap();
+
+            CreateMap<PersonModel, PersonEntity>()
+                .ReverseMap();
+
+            CreateMap<UserSettingsModel, UserSettingsEntity>()
+                .ForPath(e => e.User.Id, m => m.MapFrom(x => x.UserId))
+                .ReverseMap();
+        }
+
+        public void TestsSimpleMaps()
+        {
             CreateMap<TestRequestDto, TestResponseDto>();
-
-
-            CreateMap<QuestionEntity, QuestionRequestDto>()
-                //.ForMember(e => e.Answers, x => x.MapFrom(x => x.Answers))
-                .ReverseMap();
-
-            CreateMap<QuestionEntity, QuestionResponseDto>()
-                //.ForMember(e => e.Answers, x => x.MapFrom(x => x.Answers))
-                .ReverseMap();
-
             CreateMap<QuestionResponseDto, QuestionRequestDto>();
+            CreateMap<AnswerVariantRequestDto, AnswerVariantResponseDto>();
+        }
 
+        public void TestsDTOtoModelMaps()
+        {
+            CreateMap<TestRequestDto, TestBaseModel>()
+                .ReverseMap();
 
-            CreateMap<AnswerVariantEntity, AnswerVariantRequestDto>()
+            CreateMap<TestResponseDto, TestBaseModel>()
+                .ReverseMap();
+
+            CreateMap<QuestionRequestDto, QuestionModel>()
+                .ReverseMap();
+
+            CreateMap<QuestionResponseDto, QuestionModel>()
+                .ReverseMap();
+
+            CreateMap<AnswerVariantRequestDto, AnswerVariantModel>()
                .ReverseMap();
 
-            CreateMap<AnswerVariantEntity, AnswerVariantResponseDto>()
+            CreateMap<AnswerVariantResponseDto, AnswerVariantModel>()
+                .ReverseMap();
+        }
+
+        public void TestsModelToEntityMaps()
+        {
+            CreateMap<TestBaseModel, TestEntity>()
+                .ReverseMap()
+                .ForMember(m => m.Result, e => e.MapFrom(x => x.TestResultEntities.FirstOrDefault(y => y.TestId == x.Id)))
+                .ForMember(m => m.QuestionIds, e => e.MapFrom(x => x.Questions.Select(q => q.Id)));
+
+            CreateMap<QuestionModel, QuestionEntity>()
+                .ForMember(e => e.Answers.Select(a => a.Id), m => m.MapFrom(x => x.AnswerIds))
                 .ReverseMap();
 
-            CreateMap<AnswerVariantRequestDto, AnswerVariantResponseDto>();
-
-
-            CreateMap<AchievementEntity, AchievementDto>()
-                .ReverseMap();
-
-            CreateMap<FeedbackEntity, FeedbackDto>()
-                .ForMember(e => e.FullName, x => x.MapFrom(x => x.User.Person.FirstName + " " + x.User.Person.LastName))
-                .ForMember(e => e.Date, x => x.MapFrom(x => x.Date))
-                .ReverseMap();
-
-
-            CreateMap<UserSettingsEntity, UserSettingsDto>()
-                .ReverseMap();
+            CreateMap<AnswerVariantModel, AnswerVariantEntity>();
         }
     }
 }
