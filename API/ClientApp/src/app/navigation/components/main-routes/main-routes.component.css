@@ -45,8 +45,23 @@
 }
 
 .main-navigation > button:hover {
+  background: linear-gradient(to right, CornflowerBlue, Aqua, DeepPink, CornflowerBlue);
+  animation: gradient 20s linear infinite;
+  filter: drop-shadow(0px 0px 30px, CornflowerBlue);
+  font-weight: 400;
+  text-shadow: 0px 0px 3px cornflowerblue;
+  background-size: 600% 600%;
   scale: 125%;
   transform: translateX(20px);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 600% 50%;
+  }
 }
 
 .settings-menu {

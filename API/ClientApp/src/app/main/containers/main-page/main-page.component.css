@@ -29,6 +29,11 @@ img {
     position: absolute;
 }
 
+.go-btn:hover {
+    display: block;
+    filter: drop-shadow(0 0 10px #fffdef);
+}
+
 .go-btn:active {
     transform: translateX(25px) scale(0.85);
     transition: ease-in-out;
