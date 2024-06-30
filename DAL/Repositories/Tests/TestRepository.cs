@@ -15,11 +15,12 @@ namespace DAL.Repositories.Tests
 
         public async Task<IEnumerable<TestEntity>> GetEntities()
         {
-            IEnumerable<TestEntity> tests = await _context.Tests
+            IEnumerable<TestEntity> tests = _context.Tests
+                .AsNoTracking()
                 .Where(t => t.IsFree)
                 .Include(t => t.Questions)
                     .ThenInclude(q => q.Answers)
-                .ToListAsync();
+                .AsEnumerable();
 
             return tests;
         }
@@ -29,6 +30,7 @@ namespace DAL.Repositories.Tests
             IEnumerable<TestEntity> commonTests = await GetEntities();
 
             IEnumerable<TestEntity> userAccessedTests = _context.Tests
+                .AsNoTracking()
                 .Include(t => t.Questions)
                     .ThenInclude(q => q.Answers)
                 .Include(t => t.TestResultEntities)
@@ -39,39 +41,43 @@ namespace DAL.Repositories.Tests
             return allTests;
         }
 
+        public TestEntity? GetEntityById(int id)
+        {
+            return _context.Tests.Find(id);
+        }
+
         public async Task<bool> AddEntity(TestEntity newTest)
         {
-            try
-            {
-                newTest.IsFree = true;
-                newTest.ImagePath ??= "";
+            newTest.IsFree = true;
+            newTest.ImagePath ??= "";
 
-                _context.Tests.Add(newTest);
-                _context.Questions.AddRange(newTest.Questions);
-                _context.Answers.AddRange(newTest.Questions.SelectMany(q => q.Answers));
+            _context.Tests.Add(newTest);
+            _context.Questions.AddRange(newTest.Questions);
+            _context.Answers.AddRange(newTest.Questions.SelectMany(q => q.Answers));
 
-                _context.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw ex;
-                return false;
-            }
+            _context.SaveChanges();
+            return true;
         }
-        public async Task<bool> UpdateEntity(TestEntity test)
+
+        public bool UpdateEntity(TestEntity test)
         {
+            _context.Tests.Update(test);
+
             return true;
         }
 
         public async Task<bool> RemoveEntity(int id)
         {
+            TestEntity? entity = GetEntityById(id);
+
+            if (entity is null)
+            {
+                throw new ArgumentNullException("Test entity is null.\n Method: GetEntityByid(int id)");
+            }
+
+            _context.Tests.Remove(entity);
+
             return true;
-        }
-        public async Task<TestEntity?> GetEntityById(int id)
-        {
-            return _context.Tests.Find(id);
         }
 
         public async Task<IEnumerable<int>> GetCorrectAnswerIdsByTestId(int testId)
@@ -86,88 +92,6 @@ namespace DAL.Repositories.Tests
         public async Task<UserTestResultEntity> GetTestResultEntity(int userId, int testId)
         {
             return await _context.UserTestResults.FirstAsync(r => r.UserId == userId && r.TestId == testId);
-        }
-
-        public async Task<UserTestResultEntity> CheckTestById(int userId, int testId, AnswerVariantEntity[] userAnswers)
-        {
-            int result = CalculatePoints(userAnswers);
-
-            return await GetResultAndSave(userId, testId, result);
-        }
-
-        private async Task<AnswerVariantEntity[]> GetAllRightAnswers(AnswerVariantEntity[] userAnswers)
-        {
-            int[] userAnswersIds = userAnswers.Select(a => a.Id).ToArray();
-
-            AnswerVariantEntity[] rightAnswers = await _context.Answers
-                .Where(a => a.IsRight
-                    && userAnswersIds.Contains(a.Id))
-                .ToArrayAsync();
-
-            return rightAnswers;
-        }
-
-        private async Task<UserTestResultEntity> GetResultAndSave(int userId, int testId, int result)
-        {
-            try
-            {
-                UserTestResultEntity? resultObject = await (from testResultEntity in _context.UserTestResults
-                                                            join users in _context.Users
-                                                               on testResultEntity.UserId equals users.Id
-                                                            where testResultEntity.TestId == testId
-                                                               && users.Id == userId
-                                                            select testResultEntity).FirstOrDefaultAsync();
-
-
-                if (resultObject != null)
-                {
-                    resultObject.Result = result;
-                    _context.Attach(resultObject);
-                    _context.Update(resultObject);
-                }
-                else
-                {
-                    UserEntity user = _context.Users.FirstOrDefault(u => u.Id == userId)!;
-                    resultObject = new UserTestResultEntity(0, user.Id, testId);
-                    resultObject.Result = result;
-
-                    _context.UserTestResults.Add(resultObject);
-                }
-
-                await SaveAsync();
-
-                return resultObject;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
-        private int CalculatePoints(AnswerVariantEntity[] userAnswers)
-        {
-            int result = userAnswers
-                .Where(a => a is not null)
-                .IntersectBy(_context.Answers.Select(a => a.Id), a => a.Id).Count();
-
-            return result;
-        }
-
-        private bool WriteResultToDB(ref UserTestResultEntity resultObject, int result)
-        {
-            try
-            {
-                resultObject.Result = result;
-                Save();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
         }
 
         public void Save()

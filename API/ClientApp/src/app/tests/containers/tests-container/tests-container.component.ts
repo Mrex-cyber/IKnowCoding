@@ -25,7 +25,7 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   private ngUnsubscribeDialog = new Subject<void>();
 
-  private authOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
+  private authOptions: IUserSettings = {accessToken: '', refreshToken: '', email: '', isAdmin: false};
 
   constructor(private testsService: TestsResourceService,
     private userAuthService: UserAuthResourceService,
@@ -57,7 +57,7 @@ export class TestsContainerComponent implements OnInit, OnDestroy {
       .pipe(
         startWith(0),
         switchMap(() => {
-          if (this.authOptions.access_token == ''){
+          if (this.authOptions.accessToken == ''){
             return this.testsService.getTests().pipe(
               catchError(err => {
                 console.error('Error fetching tests:', err);

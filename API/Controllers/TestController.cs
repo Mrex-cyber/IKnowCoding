@@ -49,9 +49,9 @@ namespace API.Controllers
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-            return Results.Text(json, "text/plain");
+            return Results.Ok(_mapper.Map<TestResponseDto[]>(commonTests));
         }
         /// <summary>
         /// Getting tests that are allowed to user with this email
@@ -78,9 +78,9 @@ namespace API.Controllers
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(userTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(userTests), Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-            return Results.Text(json, "text/plain");
+            return Results.Ok(_mapper.Map<TestResponseDto[]>(userTests));
         }
 
         /// <summary>

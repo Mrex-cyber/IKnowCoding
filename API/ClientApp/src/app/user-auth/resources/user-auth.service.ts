@@ -10,7 +10,7 @@ import { IUserSettings } from '../models/IUserSettings';
 export class UserAuthResourceService {
   private testsUrl: string = "https://localhost:7214/api";
 
-  public defaultAuthOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
+  public defaultAuthOptions: IUserSettings = {accessToken: '', refreshToken: '', email: '', isAdmin: false};
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
@@ -21,17 +21,13 @@ export class UserAuthResourceService {
 
   constructor(private client: HttpClient) { }
 
-  public userSignIn(credentials: IUserCredentials): Observable<IUserSettings> {
-    console.log(JSON.stringify({
-      email: credentials.email,
-      password: credentials.password
-  }))
+  public userSignIn(credentials: IUserCredentials): Observable<IUserSettings> {    
     this.readLocalStorageUserData();
 
     this.httpOptions.headers = new HttpHeaders({
       "Accept": "application/json", 
       "Content-Type": "application/json", 
-      "Authorization": "Bearer " + this._authOptions.value.access_token
+      "Authorization": "Bearer " + this._authOptions.value.accessToken
     });
 
     this.client
@@ -40,8 +36,14 @@ export class UserAuthResourceService {
           email: credentials.email,
           password: credentials.password
         }), this.httpOptions)
-      .subscribe(result => this.updateAuthOptions(result));
+      .subscribe(response => this._authOptions.next(response));
 
+      this.httpOptions.headers = new HttpHeaders({
+        "Accept": "application/json", 
+        "Content-Type": "application/json", 
+        "Authorization": "Bearer " + this._authOptions.value.accessToken
+      });
+      
     return this.authOptions$;
   }
 
@@ -62,24 +64,23 @@ export class UserAuthResourceService {
     location.reload();
   }
 
-  public readLocalStorageUserData(){
+  public readLocalStorageUserData(): void{
     const userSettings: IUserSettings = {
       email: localStorage.getItem('email') ?? '',
-      access_token: localStorage.getItem('access_token') ?? '',
-      refresh_token: localStorage.getItem('access_token') ?? '',
+      accessToken: localStorage.getItem('access_token') ?? '',
+      refreshToken: localStorage.getItem('access_token') ?? '',
       isAdmin: localStorage.getItem('isAdmin') == 'true'
     }
 
     this._authOptions.next(userSettings);
   }
 
-  public updateAuthOptions(newAuthOptions: IUserSettings) {
-    localStorage.setItem('email', this._authOptions.value.email)
-    localStorage.setItem('access_token', this._authOptions.value.access_token)
-    localStorage.setItem('refresh_token', this._authOptions.value.refresh_token)
-    localStorage.setItem('isAdmin', this._authOptions.value.isAdmin.toString())
-
-    this._authOptions.next(newAuthOptions);
+  public updateLocalAuthOptions(newAuthOptions: IUserSettings) {
+    console.log("Auth: ", newAuthOptions)
+    localStorage.setItem('email', newAuthOptions.email)
+    localStorage.setItem('access_token', newAuthOptions.accessToken)
+    localStorage.setItem('refresh_token', newAuthOptions.refreshToken)
+    localStorage.setItem('isAdmin', newAuthOptions.isAdmin.toString())
   }
 
 }

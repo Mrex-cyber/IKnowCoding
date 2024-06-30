@@ -1,26 +1,22 @@
 ﻿using AutoMapper;
+using BLL.Models.Tests.Tests;
+using BLL.Services.Tests.TestsService.BaseTestsService;
 using DAL.Models.Entities.Tests;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models.DTO.Tests;
+using Shared.Models.DTO.Tests.Create;
 
 namespace API.Controllers
 {
     public class AdminController : Controller
     {
-        private UnitOfWorkPlatform _unitOfWork;
+        private IBaseTestService _baseTestService;
         private readonly IMapper _mapper;
 
-        public AdminController(IUnitOfWork unitOfWork, IMapper mapper)
+        public AdminController(IBaseTestService baseTestService, IMapper mapper)
         {
-            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
-            {
-                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
-            }
-            else
-            {
-                _unitOfWork = new UnitOfWorkPlatform();
-            }
+            _baseTestService = baseTestService;
             _mapper = mapper;
         }
 
@@ -48,11 +44,13 @@ namespace API.Controllers
         /// <response code="200" link="">Added test</response>
         /// <response code="204">If the test not found</response>
         [HttpPost("/api/tests/new")]
-        public async Task<bool> OnPostNewTest([FromBody] TestRequestDto newTest)
+        public async Task<IResult> OnPostNewTest([FromBody] TestCreateRequestDto newTest)
         {
-            TestEntity testEntity = _mapper.Map<TestEntity>(newTest);
+            TestDetailModel model = _mapper.Map<TestDetailModel>(newTest);
 
-            return await _unitOfWork.TestRepository.AddEntity(testEntity);
+            model = await _baseTestService.CreateTestByAdmin(model);
+
+            return Results.Ok(model);
         }
     }
 }

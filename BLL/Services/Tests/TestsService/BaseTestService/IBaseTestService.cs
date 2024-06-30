@@ -7,11 +7,13 @@ namespace BLL.Services.Tests.TestsService.BaseTestsService
 {
     public interface IBaseTestService
     {
-        public Task<IEnumerable<TestBaseModel>> GetAllFreeTests();
+        public Task<IEnumerable<TestDetailModel>> GetAllFreeTests();
 
-        public Task<IEnumerable<TestBaseModel>> GetAllUserAccessedTests(int userId);
+        public Task<IEnumerable<TestDetailModel>> GetAllUserAccessedTests(int userId);
 
         public Task<TestBaseModel> GetTestById(int id);
+
+        public Task<TestDetailModel> CreateTestByAdmin(TestDetailModel model);
 
         public Task AddAccessToUserByTestId(int userId, int testId);
 

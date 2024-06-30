@@ -6,6 +6,8 @@ namespace BLL.Models.Tests.Answers
     {
         public string Text { get; set; }
         public bool IsRight { get; set; }
-        public QuestionModel Question { get; set; }
+        public QuestionDetailModel Question { get; set; }
+
+        public AnswerVariantModel() { }
     }
 }

@@ -16,7 +16,7 @@ namespace DAL.Models.Entities.Tests
         [Column("question_id")]
         public int QuestionId { get; set; }
 
-        public QuestionEntity Question { get; set; } = null!;
+        public QuestionEntity Question { get; set; }
 
         public AnswerVariantEntity()
         {

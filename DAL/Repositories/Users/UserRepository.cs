@@ -23,7 +23,7 @@ namespace DAL.Repositories.Users
             return _context.Users;
         }
 
-        public async Task<UserEntity> GetEntityById(int id)
+        public UserEntity GetEntityById(int id)
         {
             throw new NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace DAL.Repositories.Users
             throw new NotImplementedException();
         }
 
-        public async Task<bool> UpdateEntity(UserEntity entity)
+        public bool UpdateEntity(UserEntity entity)
         {
             throw new NotImplementedException();
         }

@@ -7,6 +7,5 @@ namespace DAL.Repositories.Tests
     {
 
         Task<IEnumerable<TestEntity>> GetUserTests(int userId);
-        Task<UserTestResultEntity> CheckTestById(int userId, int testId, AnswerVariantEntity[] answers);
     }
 }

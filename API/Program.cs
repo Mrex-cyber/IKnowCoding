@@ -62,6 +62,8 @@ public class Program
         builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
         {
             cfg.AddProfile(new AutomapperProfile());
+
+            cfg.AllowNullCollections = true;
         }).CreateMapper());
 
         builder.Services.AddSwaggerGen(options =>

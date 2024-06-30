@@ -9,7 +9,7 @@ import { UserAuthResourceService } from 'src/app/user-auth/resources/user-auth.s
   providedIn: 'root'
 })
 export class AdminPageService implements OnDestroy, CanActivate{
-  private userSettings: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};;
+  private userSettings: IUserSettings = {accessToken: '', refreshToken: '', email: '', isAdmin: false};;
 
   private userSettingsSubscription: Subscription = new Subscription();
 
@@ -30,7 +30,7 @@ export class AdminPageService implements OnDestroy, CanActivate{
 
     console.log("Going to admin page!");
     console.log(this.userSettings);
-    if (this.userSettings.access_token != "" && this.userSettings.email != "" && this.userSettings.isAdmin) {
+    if (this.userSettings.accessToken != "" && this.userSettings.email != "" && this.userSettings.isAdmin) {
       console.log("true admin page");
       return true;
     }

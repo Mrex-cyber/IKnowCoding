@@ -25,13 +25,13 @@ export class TestsResourceService {
   }
 
   public getUserTests(authOptions: IUserSettings): Observable<ITest[]> {
-    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.access_token});
+    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.accessToken});
 
     return this.client.post<ITest[]>(this.testsUrl + "/tests" , JSON.stringify(authOptions.email), this.httpOptions);
   }
 
   public postTestResultWithId(authOptions: IUserSettings, testId: number, answers: IAnswer[]): Observable<number> {
-    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.access_token});
+    this.httpOptions.headers = new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + authOptions.accessToken});
 
     return this.client.post<number>(this.testsUrl + "/tests/check" , JSON.stringify({userEmail: authOptions.email, testId, answers}), this.httpOptions);
   }

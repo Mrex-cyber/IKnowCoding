@@ -20,7 +20,7 @@ namespace DAL.Repositories.Teams
             throw new NotImplementedException();
         }
 
-        public Task<TeamEntity?> GetEntityById(int id)
+        public TeamEntity? GetEntityById(int id)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace DAL.Repositories.Teams
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateEntity(TeamEntity entity)
+        public bool UpdateEntity(TeamEntity entity)
         {
             throw new NotImplementedException();
         }

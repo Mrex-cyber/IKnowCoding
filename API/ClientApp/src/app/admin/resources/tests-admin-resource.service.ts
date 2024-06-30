@@ -13,7 +13,7 @@ export class TestsAdminResourceService {
 
   private testsUrl: string = "https://localhost:7214/api";
 
-  public defaultAuthOptions: IUserSettings = {access_token: '', refresh_token: '', email: '', isAdmin: false};
+  public defaultAuthOptions: IUserSettings = {accessToken: '', refreshToken: '', email: '', isAdmin: false};
 
   private httpOptions = {
     headers: new HttpHeaders({"Accept": "application/json", "Content-Type": "application/json"})
