@@ -7,7 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Swrvices\" />
+    <Folder Include="Models\Tests\Relationships\" />
+    <Folder Include="Services\AdminPanel\" />
+    <Folder Include="Services\Common\" />
+    <Folder Include="Services\Tests\AnswersService\" />
+    <Folder Include="Services\Tests\QuestionsService\MultiQuestionService\" />
+    <Folder Include="Services\Tests\QuestionsService\CodeQuestionService\" />
+    <Folder Include="Services\Tests\QuestionsService\TextPlainQuestionService\" />
+    <Folder Include="Services\Teams\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>

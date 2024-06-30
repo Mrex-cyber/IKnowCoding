@@ -1,27 +1,23 @@
-﻿using API.Models.DTO.MainPage;
-using AutoMapper;
+﻿using AutoMapper;
+using BLL.Models.MainPage;
+using BLL.Services.MainPage;
+using BLL.Services.Tests.TestsService.BaseTestsService;
 using DAL.Models.Entities.MainPage;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models.DTO.MainPage;
 
 namespace API.Controllers
 {
     [ApiController]
     public class MainPageController : ControllerBase
     {
-        private UnitOfWorkPlatform _unitOfWork;
+        private IMainPageService _mainPageService;
         private readonly IMapper _mapper;
 
-        public MainPageController(IUnitOfWork unitOfWork, IMapper mapper)
+        public MainPageController(IMainPageService mainPageService, IMapper mapper)
         {
-            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
-            {
-                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
-            }
-            else
-            {
-                _unitOfWork = new UnitOfWorkPlatform();
-            }
+            _mainPageService = mainPageService;
             _mapper = mapper;
         }
 
@@ -37,9 +33,13 @@ namespace API.Controllers
         /// </remarks>
         /// <response code="200" link="">Returns achievements</response>
         [HttpGet("api/main/achievements")]
-        public IResult OnGetAchievements()
+        public async Task<IResult> OnGetAchievements()
         {
-            return Results.Json(_unitOfWork.MainPageRepository.GetAchievements());
+            IEnumerable<AchievementModel> models = await _mainPageService.GetAchievementsAsync();
+
+            IEnumerable<AchievementDto> dtos = _mapper.Map<IEnumerable<AchievementDto>>(models);
+
+            return Results.Json(dtos);
         }
 
         /// <summary>
@@ -54,11 +54,14 @@ namespace API.Controllers
         /// </remarks>
         /// <response code="200" link="">Returns feedbacks</response>
         [HttpGet("api/main/feedbacks")]
-        public IResult OnGetFeedbacks()
+        public async Task<IResult> OnGetFeedbacks()
         {
-            IEnumerable<FeedbackEntity> feedbackEntities = _unitOfWork.MainPageRepository.GetFeedbacks();
+            IEnumerable<FeedbackModel> models = await _mainPageService.GetTopTenFeedbacksAsync();
 
-            return Results.Json(_mapper.Map<FeedbackDto[]>(feedbackEntities));
+            IEnumerable<FeedbackDto> dtos = _mapper.Map<FeedbackDto[]>(models);
+
+
+            return Results.Json(dtos);
         }
     }
 }

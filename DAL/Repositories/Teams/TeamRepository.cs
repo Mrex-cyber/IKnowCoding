@@ -1,20 +1,21 @@
 ﻿using DAL.Models.Entities.Teams;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories.Teams
 {
     public class TeamRepository : ITeamRepository
     {
-        public bool AddEntity(TeamEntity entity)
+        private PlatformContext _context;
+        public TeamRepository(PlatformContext context)
+        {
+            _context = context;
+        }
+
+        public Task<bool> AddEntity(TeamEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TeamEntity> GetEntities()
+        public Task<IEnumerable<TeamEntity>> GetEntities()
         {
             throw new NotImplementedException();
         }
@@ -24,7 +25,7 @@ namespace DAL.Repositories.Teams
             throw new NotImplementedException();
         }
 
-        public bool RemoveEntity(int id)
+        public Task<bool> RemoveEntity(int id)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +35,7 @@ namespace DAL.Repositories.Teams
             throw new NotImplementedException();
         }
 
-        public bool UpdatedEntity(TeamEntity entity)
+        public bool UpdateEntity(TeamEntity entity)
         {
             throw new NotImplementedException();
         }

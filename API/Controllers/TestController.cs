@@ -1,12 +1,15 @@
-﻿using API.Filters;
-using API.Models.DTO.Tests;
+﻿using API.Application.Filters;
 using AutoMapper;
+using BLL.Models.Tests.Tests;
+using BLL.Services.Tests.TestsService.BaseTestsService;
 using DAL.Models.Entities.Relationships;
 using DAL.Models.Entities.Tests;
+using DAL.Repositories.Tests;
 using DAL.UnitsOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Shared.Models.DTO.Tests;
 
 namespace API.Controllers
 {
@@ -14,19 +17,12 @@ namespace API.Controllers
     [ValidateModel]
     public class TestController : Controller
     {
-        private UnitOfWorkPlatform _unitOfWork;
+        private IBaseTestService _baseTestService;
         private readonly IMapper _mapper;
 
-        public TestController(IUnitOfWork unitOfWork, IMapper mapper)
+        public TestController(IBaseTestService baseTestService, IMapper mapper)
         {
-            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
-            {
-                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
-            }
-            else
-            {
-                _unitOfWork = new UnitOfWorkPlatform();
-            }
+            _baseTestService = baseTestService;
             _mapper = mapper;
         }
 
@@ -44,18 +40,18 @@ namespace API.Controllers
         /// <response code="204">If the test list is empty</response>
         [HttpGet("/api/tests")]
         [AllowAnonymous]
-        public IResult OnGetTests()
+        public async Task<IResult> OnGetTests()
         {
-            var commonTests = _unitOfWork.TestRepository.GetEntities();
+            var commonTests = await _baseTestService.GetAllFreeTests();
 
             if (commonTests.Count() == 0)
             {
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(commonTests), Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-            return Results.Text(json, "text/plain");
+            return Results.Ok(_mapper.Map<TestResponseDto[]>(commonTests));
         }
         /// <summary>
         /// Getting tests that are allowed to user with this email
@@ -73,18 +69,18 @@ namespace API.Controllers
         /// <response code="200" link="">Returns tests for some user</response>
         /// <response code="204">If the test list is empty</response>
         [HttpPost("/api/tests")]
-        public IResult OnGetUserTests([FromBody] string userEmail)
+        public async Task<IResult> OnGetUserTests([FromHeader]int userId)
         {
-            var userTests = _unitOfWork.TestRepository.GetUserTests(userEmail);
+            var userTests = await _baseTestService.GetAllUserAccessedTests(userId);
 
             if (userTests.Count() == 0)
             {
                 return Results.NoContent();
             }
 
-            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(userTests), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(_mapper.Map<TestResponseDto[]>(userTests), Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-            return Results.Text(json, "text/plain");
+            return Results.Ok(_mapper.Map<TestResponseDto[]>(userTests));
         }
 
         /// <summary>
@@ -102,7 +98,7 @@ namespace API.Controllers
         [HttpGet("/api/tests/{testId}")]
         public IResult OnGetTestById(int testId)
         {
-            var test = _unitOfWork.TestRepository.GetEntityById(testId);
+            var test = _baseTestService.GetTestById(testId);
 
             if (test is null)
             {
@@ -136,38 +132,16 @@ namespace API.Controllers
         /// <response code="200" link="">Returns result (number)</response>
         [AllowAnonymous]
         [HttpPost("/api/tests/check")]
-        public async Task<IResult> CheckTest([FromBody] AnswersForTheTestCheck testData)
+        public async Task<IResult> CheckTest([FromBody] TestCheckingModel test)
         {
-            try
-            {
-                UserTestResultEntity testResult = await _unitOfWork.TestRepository.CheckTestById(testData.userEmail, testData.testId, testData.answers);
+            int result = await _baseTestService.CheckTestResult(test);
 
-                if (testResult is null)
-                {
-                    throw new NullReferenceException();
-                }
-
-                int result = testResult.Result;
-
-                _unitOfWork.Save();
-                return Results.Json(result);
-            }
-            catch (NullReferenceException nullEx)
-            {
-                Console.WriteLine(nullEx.Message);
-                return Results.NoContent();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return Results.Json(ex.Message);
-            }
-
+            return Results.Ok(result);
         }
-        public record AnswersForTheTestCheck(string userEmail, int testId, AnswerVariantEntity[] answers);
+        public record AnswersForTheTestCheck(int userId, int testId, AnswerVariantEntity[] answers);
         protected override void Dispose(bool disposing)
         {
-            _unitOfWork.Dispose();
+            //_baseTestService.Dispose();
             base.Dispose(disposing);
         }
     }

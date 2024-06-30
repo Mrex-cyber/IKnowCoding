@@ -1,28 +1,19 @@
-﻿using API.Auth;
-using API.Models.DTO.User;
-using AutoMapper;
-using DAL.Models.Entities.User;
-using DAL.UnitsOfWork;
+﻿using AutoMapper;
+using BLL.Models.User;
+using BLL.Services.Users.Settings;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Shared.Models.DTO.User;
 
 namespace API.Controllers
 {
     public class UserController : Controller
     {
-        private UnitOfWorkPlatform _unitOfWork;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public UserController(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserController(IUserService userService, IMapper mapper)
         {
-            if (unitOfWork is not null && unitOfWork is UnitOfWorkPlatform)
-            {
-                _unitOfWork = unitOfWork as UnitOfWorkPlatform;
-            }
-            else
-            {
-                _unitOfWork = new UnitOfWorkPlatform();
-            }
+            _userService = userService;
             _mapper = mapper;
         }
 
@@ -33,55 +24,33 @@ namespace API.Controllers
         /// <remarks>
         /// Sample request: 
         /// 
-        ///     POST /api/user/signin
+        ///     GET /api/user/signin
+        ///     Header:
         ///     {
-        ///         "firstName": null, 
-        ///         "lastName": null, 
         ///         "email": "someemail@gmail.com", 
         ///         "password": "key12345"
         ///     }
         ///     
         /// </remarks>
-        /// <response code="200" link="">Returns tests for some user</response>
+        /// <response code="200" link="">Returns user settings saved in the DB</response>
         /// <response code="204">The user was not found</response>
         /// <response code="400">Request is null</response>
         /// <response code="409">Email or password are incorrect</response>
         [HttpPost("/api/user/signin")]
-        public async Task<IResult> SignIn([FromBody] DAL.Models.UserCredentialsModel credentials)
+        public async Task<IResult> SignIn([FromBody] UserLoginDto login)
         {
-            UserEntity? userEntity;
-            UserSettingsEntity? userSettingsEntity;
+            UserModel user = _mapper.Map<UserModel>(login);
 
-            if (!string.IsNullOrWhiteSpace(Request.Headers["refresh_token"]))
-            {
-                userSettingsEntity = _unitOfWork.UserRepository.GetUserSettingsByRefreshToken(Request.Headers["refresh_token"]!);
-            }
-            else
-            {
-                userEntity = _unitOfWork.UserRepository.GetEntityByCredentials(credentials);
+            UserSettingsModel? serviceResult = await _userService.SignIn(user);
 
-                userSettingsEntity = _unitOfWork.UserRepository.GetUserSettingsByUserId(userEntity.Id);
+            if (serviceResult is null)
+            {
+                return Results.BadRequest("Settings is null");
             }
 
-            if (userSettingsEntity.AccessTokenExpireTime is null || userSettingsEntity.AccessTokenExpireTime < DateTime.UtcNow)
-            {
-                userSettingsEntity.AccessToken = AuthTokenModel.MakeAccessToken(credentials.email);
-                userSettingsEntity.AccessTokenExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(0.5));
-            }
+            UserSettingsDto settings = _mapper.Map<UserSettingsDto>(serviceResult);
 
-            if (userSettingsEntity.RefreshTokenExpireTime is null || userSettingsEntity.RefreshTokenExpireTime < DateTime.UtcNow)
-            {
-                userSettingsEntity.RefreshToken = AuthTokenModel.MakeRefreshToken(credentials.email);
-                userSettingsEntity.RefreshTokenExpireTime = DateTime.UtcNow.Add(TimeSpan.FromDays(3));
-            }
-
-            await _unitOfWork.UserRepository.UpdateUserSettings(userSettingsEntity);
-
-            UserSettingsDto userSettingsDto = _mapper.Map<UserSettingsDto>(userSettingsEntity);
-
-            string json = JsonConvert.SerializeObject(_mapper.Map<UserSettingsDto>(userSettingsDto), new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-
-            return Results.Text(json, "text/plain");
+            return Results.Json(settings);
         }
 
         /// <summary>
@@ -135,12 +104,44 @@ namespace API.Controllers
         /// <response code="400">Request is null</response>
         /// <response code="409">Email or password are incorrect</response>
         [HttpPost("/api/user/signup")]
-        public async Task<IResult> SignUp([FromBody] UserEntity userData)
+        public async Task<IResult> SignUp([FromBody] UserRegistrationDto user)
         {
-            bool result = _unitOfWork.UserRepository.AddEntity(userData);
+            UserModel userModel = _mapper.Map<UserModel>(user);
 
-            return Results.Json(result);
+            userModel = await _userService.SignUp(userModel);
+
+            return Results.Json(userModel);
         }
 
+
+        /// <summary>
+        /// Change user settings
+        /// </summary>
+        /// <returns>Successfull message</returns>
+        /// <remarks>
+        /// Sample request: 
+        /// 
+        ///     POST /api/user/signup
+        ///     {
+        ///         "accessToken": "XXXXXXXXXXXXXXXXXXXX", 
+        ///         "accessTokenExpireTime": "10/02/2024", 
+        ///         "refreshToken": "XXXXXXXXXXXXXXXXXXXX", 
+        ///         "refreshTokenExpireTime": "15/07/2024"
+        ///     }
+        ///     
+        /// </remarks>
+        /// <response code="200" link="">Settings changed successfully</response>
+        /// <response code="400">Request body is incorrect</response>
+        [HttpPut("/api/user/signup")]
+        public async Task<IResult> ChangeSettigns([FromBody] UserSettingsDto settigns)
+        {
+            UserSettingsModel userSettigns = _mapper.Map<UserSettingsModel>(settigns);
+
+            bool operationResult = await _userService.ChangeSettings(userSettigns);
+
+            return operationResult
+                ? Results.Ok("Settings changed successfully!")
+                : Results.BadRequest("Something went wrong");
+        }
     }
 }

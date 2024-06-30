@@ -10,11 +10,13 @@ namespace DAL.Models.Entities.Tests
 
         [ForeignKey(nameof(Test))]
         [Column("test_id")]
-        public int TestId { get; set; }
-        public TestEntity Test { get; set; } = null!;
+        public int? TestId { get; set; }
+        public TestEntity? Test { get; set; }
 
-        public ICollection<AnswerVariantEntity> Answers { get; set; } = null!;
+        public IList<AnswerVariantEntity>? Answers { get; set; }
 
+
+        public QuestionEntity () { }
         public QuestionEntity(int id, int testId, string text)
             : base(id)
         {

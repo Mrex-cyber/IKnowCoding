@@ -1,4 +1,6 @@
-﻿namespace BLL.Models.User
+﻿using BLL.Models.Teams;
+
+namespace BLL.Models.User
 {
     public class TeamAdministratorModel : UserModel
     {

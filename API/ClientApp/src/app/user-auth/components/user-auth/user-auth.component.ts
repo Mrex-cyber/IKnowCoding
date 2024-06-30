@@ -45,18 +45,14 @@ export class UserAuthComponent implements OnInit{
       }
       this.authorized = true;
 
-      this.authService.userSignIn(result).pipe(
-        catchError(error => {
-          console.log('UserSigningInError: ' + error);
-          return throwError(() => new Error('Wrong user signing in'));
-        })
-      ).subscribe(userData => {
-        this.authService.updateAuthOptions({
-          access_token: userData.access_token,
-          refresh_token: userData.refresh_token,
-          email: userData.email,
-          isAdmin: userData.isAdmin
-        });
+      this.authService.userSignIn(result)
+        .subscribe(userData => {
+          this.authService.updateLocalAuthOptions({
+            accessToken: userData.accessToken,
+            refreshToken: userData.refreshToken,
+            email: userData.email,
+            isAdmin: userData.isAdmin
+          });
       });
     })
   }

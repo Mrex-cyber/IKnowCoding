@@ -1,5 +1,4 @@
-﻿using API.Application.Helpers;
-using AutoMapper;
+﻿using AutoMapper;
 using DAL;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;

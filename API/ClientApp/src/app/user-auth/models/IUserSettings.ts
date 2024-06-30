@@ -1,6 +1,6 @@
 export interface IUserSettings {
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  refreshToken: string;
   email: string;
   isAdmin: boolean;
 }

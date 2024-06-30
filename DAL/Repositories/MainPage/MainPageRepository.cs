@@ -6,18 +6,31 @@ namespace DAL.Repositories.MainPage
     public class MainPageRepository : IMainPageRepository, IDisposable
     {
         private PlatformContext _context;
+
         public MainPageRepository(PlatformContext context)
         {
             _context = context;
         }
-        public IEnumerable<AchievementEntity> GetAchievements()
+
+        public async Task<IEnumerable<AchievementEntity>> GetAchievementsAsync()
         {
             return _context.Achievements;
         }
-        public IEnumerable<FeedbackEntity> GetFeedbacks()
+
+        public async Task<IEnumerable<FeedbackEntity>> GetFeedbacksAsync()
         {
             return _context.Feedbacks
                 .Include(f => f.User)
+                    .ThenInclude(u => u.Person)
+                .AsEnumerable();
+        }
+
+        public async Task<IEnumerable<FeedbackEntity>> GetTopTenFeedbacksAsync()
+        {
+            return _context.Feedbacks
+                .Include(f => f.User)
+                    .ThenInclude(u => u.Person)
+                .Take(10)
                 .AsEnumerable();
         }
 

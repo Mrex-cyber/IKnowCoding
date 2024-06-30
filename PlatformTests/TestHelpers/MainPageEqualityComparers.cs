@@ -1,4 +1,4 @@
-﻿using API.Models.DTO.MainPage;
+﻿using Shared.Models.DTO.MainPage;
 using System.Diagnostics.CodeAnalysis;
 
 namespace PlatformTests.TestHelpers

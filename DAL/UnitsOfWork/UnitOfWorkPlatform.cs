@@ -1,4 +1,5 @@
 ﻿using DAL.Repositories.MainPage;
+using DAL.Repositories.Teams;
 using DAL.Repositories.Tests;
 using DAL.Repositories.Users;
 
@@ -11,6 +12,20 @@ namespace DAL.UnitsOfWork
         private TestRepository _testRepository;
         private MainPageRepository _mainPageRepository;
         private UserRepository _userRepository;
+        private TeamRepository _teamRepository;
+
+        public TeamRepository TeamRepository
+        {
+            get
+            {
+                if (_teamRepository == null)
+                {
+                    _teamRepository = new TeamRepository(context);
+                }
+
+                return _teamRepository;
+            }
+        }
 
         public UserRepository UserRepository
         {

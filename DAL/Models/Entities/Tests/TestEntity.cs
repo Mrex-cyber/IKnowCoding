@@ -18,9 +18,12 @@ namespace DAL.Models.Entities.Tests
         [Column("image_path")]
         public string ImagePath { get; set; }
 
-        public ICollection<UserTestResultEntity> TestResultEntities { get; set; } = null!;
+        public IList<UserTestResultEntity> TestResultEntities { get; set; }
 
-        public ICollection<QuestionEntity> Questions { get; set; } = null!;
+        public IList<QuestionEntity> Questions { get; set; }
+
+
+        public TestEntity() { }
 
         public TestEntity(int id, string title, string description, bool isFree, string imagePath)
         {

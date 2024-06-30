@@ -7,6 +7,6 @@
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpireTime { get; set; }
         public bool IsAdmin { get; set; }
-        public UserModel User { get; set; }
+        public int UserId { get; set; }
     }
 }

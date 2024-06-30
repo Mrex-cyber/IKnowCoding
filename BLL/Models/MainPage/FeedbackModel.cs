@@ -7,7 +7,7 @@ namespace BLL.Models.MainPage
         public string Text { get; set; }
         public string ImagePath { get; set; }
         public DateTime Date { get; set; }
+        public string FullName { get; set; }
         public int UserId { get; set; }
-        public UserModel User { get; set; }
     }
 }
